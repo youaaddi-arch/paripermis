@@ -1,9 +1,10 @@
 import SectionTitle from "@/components/SectionTitle";
 import FormationCard from "@/components/FormationCard";
 import FinalCta from "@/components/FinalCta";
-import { marchandises, voyageurs } from "@/data/formations";
+import { useFormationsByCategory } from "@/lib/formations";
 
 export default function Formations() {
+  const { marchandises, voyageurs } = useFormationsByCategory();
   return (
     <>
       <section className="bg-brand-navy py-16 text-center text-white">

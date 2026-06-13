@@ -24,6 +24,8 @@ export interface Formation {
   debouches: string[];
   certification: string;
   image: string;
+  qualiopi?: boolean;
+  programmePdfUrl?: string; // lien du PDF de programme à télécharger
 }
 
 const TRUCK = "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=80";

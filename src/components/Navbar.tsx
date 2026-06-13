@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Logo from "./Logo";
-import { marchandises, voyageurs } from "@/data/formations";
+import { useFormationsByCategory } from "@/lib/formations";
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
   `text-sm font-medium transition-colors hover:text-brand-green ${
@@ -11,6 +11,7 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { marchandises, voyageurs } = useFormationsByCategory();
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">

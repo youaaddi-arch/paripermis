@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowLeft, Check, Truck, Bus, RefreshCw } from "lucide-react";
 import { metiers } from "@/data/metiers";
 import { profils, dispositifs } from "@/data/financements";
-import { formations } from "@/data/formations";
+import { useFormations } from "@/lib/formations";
 
 const steps = ["Votre projet", "Votre statut", "Résultat"];
 
@@ -11,6 +11,7 @@ export default function Simulateur() {
   const [step, setStep] = useState(0);
   const [metier, setMetier] = useState<string | null>(null);
   const [statut, setStatut] = useState<string | null>(null);
+  const formations = useFormations();
 
   const selectedMetier = metiers.find((m) => m.name === metier);
   const profil = profils.find((p) => p.id === statut);

@@ -8,7 +8,7 @@ import SectionTitle from "@/components/SectionTitle";
 import FormationCard from "@/components/FormationCard";
 import FinalCta from "@/components/FinalCta";
 import { site, stats, badges } from "@/lib/site";
-import { marchandises, voyageurs } from "@/data/formations";
+import { useFormationsByCategory } from "@/lib/formations";
 
 const heroBadgeIcons = [ShieldCheck, BadgeCheck, CreditCard, TrendingUp, MapPin];
 
@@ -39,6 +39,7 @@ const avis = [
 ];
 
 export default function Home() {
+  const { marchandises, voyageurs } = useFormationsByCategory();
   return (
     <>
       {/* HERO */}
