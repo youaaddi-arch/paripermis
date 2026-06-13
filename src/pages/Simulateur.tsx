@@ -29,12 +29,22 @@ export default function Simulateur() {
     const kinds = parcoursFormations.map((f) => f.kind);
     const hasRNCP = kinds.includes("Titre Professionnel");
     const hasRegistered = kinds.some((k) => k === "Titre Professionnel" || k === "Formation Obligatoire");
-    const codes = profil.codes.filter((c) => {
-      if (c === "APP") return hasRNCP; // contrat d'apprentissage : RNCP uniquement
+
+    // Financements liés au statut du candidat...
+    const codes = new Set(profil.codes);
+    // ...complétés par ceux liés au type de formation (certifications RNCP/RS).
+    if (hasRegistered) {
+      codes.add("PTP"); // CPF de transition professionnelle
+      codes.add("PRO"); // contrat de professionnalisation (alternance)
+    }
+    if (hasRNCP) codes.add("APP"); // contrat d'apprentissage : RNCP uniquement
+
+    const filtered = [...codes].filter((c) => {
+      if (c === "APP") return hasRNCP; // apprentissage : RNCP uniquement
       if (c === "PTP") return hasRegistered; // transition pro : RNCP / RS uniquement
       return true;
     });
-    return dispositifs.filter((d) => codes.includes(d.code));
+    return dispositifs.filter((d) => filtered.includes(d.code));
   };
 
   const reset = () => {
