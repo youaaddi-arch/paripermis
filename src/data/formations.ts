@@ -877,6 +877,7 @@ const formationsData: Formation[] = [
       "Conduite dans des conditions difficiles et gestion des situations à risque",
       "Éco-conduite et sensibilisation à l'environnement (bonnes pratiques, pics de pollution)",
       "Bilan de compétences et préparation à l'examen (examen blanc)",
+      "Formules possibles : traditionnelle, conduite accompagnée (AAC) dès 15 ans, ou conduite supervisée dès 18 ans",
     ],
     methodes: [
       "Pédagogie individualisée à partir du niveau évalué de chaque candidat",
@@ -935,10 +936,10 @@ const formationsData: Formation[] = [
     public:
       "Toute personne souhaitant conduire un véhicule à boîte automatique (≤ 3,5 t). Particulièrement adapté pour une obtention plus rapide ou en cas de difficultés avec la boîte manuelle. Accessible aux personnes en situation de handicap (nous contacter).",
     prerequis: [
-      "Être âgé d'au moins 17 ans",
-      "Avoir obtenu ou préparer le Code de la route (épreuve théorique générale) en cours de validité",
+      "Être âgé d'au moins 17 ans pour obtenir le permis BEA",
+      "Réussir des tests de connaissances : le Code de la route (épreuve théorique générale) en cours de validité",
+      "Effectuer des heures de conduite avec un instructeur agréé jusqu'à l'autonomie",
       "Réaliser une évaluation de départ pour déterminer le nombre d'heures nécessaires",
-      "Avoir 18 ans à la date de l'examen pratique",
       "Enregistrement de la demande de permis sur le site ANTS avec le centre",
     ],
     programme: [
@@ -1048,8 +1049,8 @@ const formationsData: Formation[] = [
     title: "Permis Moto — AM (BSR), A1, A2 et A",
     cardTitle: "Permis Moto",
     cardSubtitle: "AM / BSR, A1, A2, A",
-    durationBadge: "Selon catégorie",
-    duration: "Variable selon le permis visé (AM : 8 h ; A1/A2 : plateau + circulation ; passerelle A2→A : 7 h)",
+    durationBadge: "AM/BSR : 7 h",
+    duration: "Variable selon le permis : AM/BSR 7 h (dont 4 h en circulation) ; A1/A2 plateau + circulation ; passerelle A2 → A 7 h",
     price: "Sur devis — évaluation offerte en agence",
     summary:
       "PariPermis vous prépare au BSR / permis AM, ainsi qu'aux permis A1, A2 et A (motos de plus de 35 kW). Nous alternons cours théoriques et formation pratique sur nos motos (Yamaha MT-07, BMW GS 800) régulièrement renouvelées, avec interventions ponctuelles de spécialistes (sapeurs-pompiers, secouristes) pour la sensibilisation aux risques.",
@@ -1075,13 +1076,14 @@ const formationsData: Formation[] = [
       "Évaluation préalable du niveau ; enregistrement de la demande sur le site ANTS",
     ],
     programme: [
-      "AM / BSR : 8 h de formation pratique (dont circulation) et sensibilisation aux risques",
+      "AM / BSR : formation pratique de 7 h, dont 4 h en circulation et 3 h d'enseignement et de sensibilisation aux risques",
+      "AM / BSR : volet théorique via l'ASSR (ASSR1 en 5e, ASSR2 en 3e) ou l'ASR ; attestation de suivi permettant de circuler en scooter pendant 4 mois en attendant la réception du titre (catégorie AM)",
       "Formation théorique moto (ETM) pour les permis A1/A2 (le cas échéant)",
       "Maîtrise du véhicule hors circulation : plateau (maniabilité lente et rapide)",
       "Conduite en circulation et partage de la route",
-      "Sensibilisation aux risques avec intervenants spécialisés",
+      "Sensibilisation aux risques avec intervenants spécialisés (sapeurs-pompiers, secouristes…)",
       "Examen blanc et préparation aux épreuves",
-      "Formation 7 h obligatoire pour conduire un 125 cm³ avec le permis B (le cas échéant)",
+      "Formation 7 h obligatoire pour conduire un 125 cm³ (L3e) ou un tricycle > 50 cm³ avec le permis B (depuis le 1ᵉʳ janvier 2011)",
     ],
     methodes: [
       "Alternance cours théoriques / pratique pour une mise en application progressive",
