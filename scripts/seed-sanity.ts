@@ -263,6 +263,11 @@ async function main() {
       certification: f.certification,
       imageUrl: f.image,
       programmePdfUrl: `/programmes/${f.slug}.pdf`,
+      rncpCode: f.rncpCode,
+      rsCode: f.rsCode,
+      certifInfo: f.certifInfo,
+      officialLinkLabel: f.officialLinkLabel,
+      officialLinkUrl: f.officialLinkUrl,
     };
     await client.createOrReplace(doc);
     console.log(`Sanity : ${_id} publié`);

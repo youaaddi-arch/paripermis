@@ -26,6 +26,11 @@ export interface Formation {
   image: string;
   qualiopi?: boolean;
   programmePdfUrl?: string; // lien du PDF de programme à télécharger
+  rncpCode?: string; // Titres Professionnels
+  rsCode?: string; // FIMO / FCO / Passerelle (Répertoire Spécifique)
+  certifInfo?: string; // numéro Certif'Info (à renseigner par l'organisme)
+  officialLinkLabel?: string; // ex : "Fiche France Compétences" / "Catalogue CARIF OREF"
+  officialLinkUrl?: string;
 }
 
 const TRUCK = "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=80";
@@ -824,12 +829,51 @@ const formationsData: Formation[] = [
   },
 ];
 
+// Enregistrement officiel par formation.
+// - Titres Professionnels : code RNCP + fiche France Compétences
+// - FIMO / FCO / Passerelle : code RS (Répertoire Spécifique) + fiche France Compétences
+// - Permis : lien vers le catalogue CARIF OREF (Certif'Info national)
+// Les n° Certif'Info (propres à l'organisme) sont à renseigner dans le champ certifInfo.
+const fcRncp = (code: string) => ({
+  rncpCode: code,
+  officialLinkLabel: "Fiche France Compétences",
+  officialLinkUrl: `https://www.francecompetences.fr/recherche/rncp/${code}/`,
+});
+const fcRs = (code: string) => ({
+  rsCode: code,
+  officialLinkLabel: "Fiche France Compétences",
+  officialLinkUrl: `https://www.francecompetences.fr/recherche/rs/${code}/`,
+});
+const carifOref = {
+  officialLinkLabel: "Catalogue CARIF OREF",
+  officialLinkUrl: "https://reflet.cariforef.fr/",
+};
+
+const registrations: Record<string, Partial<Formation>> = {
+  // Permis (délivrés par la Préfecture — référencés au catalogue CARIF OREF)
+  "permis-c": { ...carifOref },
+  "permis-ce": { ...carifOref },
+  "permis-d": { ...carifOref },
+  // Titres Professionnels (RNCP)
+  "tp-transport-marchandises-porteur": fcRncp("39796"),
+  "tp-transport-marchandises-tous-vehicules": fcRncp("39795"),
+  "tp-transport-en-commun": fcRncp("37878"),
+  // FIMO / FCO / Passerelle (Répertoire Spécifique)
+  "fimo-marchandises": fcRs("5769"),
+  "fco-marchandises": fcRs("5769"),
+  "passerelle-marchandises": fcRs("5769"),
+  "fimo-voyageurs": fcRs("5768"),
+  "fco-voyageurs": fcRs("5768"),
+  "passerelle-voyageurs": fcRs("5768"),
+};
+
 // Chaque formation est certifiée Qualiopi et dispose d'un programme PDF servi
 // par le site (/programmes/<slug>.pdf) — repli autonome si Sanity est indisponible.
 export const formations: Formation[] = formationsData.map((f) => ({
   ...f,
   qualiopi: f.qualiopi ?? true,
   programmePdfUrl: f.programmePdfUrl ?? `/programmes/${f.slug}.pdf`,
+  ...registrations[f.slug],
 }));
 
 export const getFormation = (slug: string) => formations.find((f) => f.slug === slug);
