@@ -13,7 +13,7 @@ export const dispositifs: Dispositif[] = [
     code: "CPF",
     name: "Compte Personnel de Formation",
     description:
-      "Le CPF est un compte individuel permettant à une personne de financer une formation certifiante inscrite au RNCP ou au Répertoire Spécifique. Depuis 2024, une participation forfaitaire obligatoire de 102,23 € (montant 2025, revalorisé chaque année) est à la charge du bénéficiaire pour toute formation financée via le CPF. Cette participation est réglée directement sur la plateforme Mon Compte Formation. Les demandeurs d'emploi inscrits à France Travail en sont exonérés.",
+      "Le CPF est un compte individuel permettant de financer une formation certifiante inscrite au RNCP ou au Répertoire Spécifique. Depuis le 1er janvier 2026, la participation forfaitaire obligatoire à la charge du titulaire est de 150 € (revalorisée chaque année selon l'inflation), réglée directement sur Mon Compte Formation. En sont exonérés : les demandeurs d'emploi, les bénéficiaires d'un abondement de leur employeur et les titulaires mobilisant leur Compte Professionnel de Prévention (C2P).",
     public: "Salariés, demandeurs d'emploi, travailleurs indépendants.",
     link: { label: "Accéder à Mon Compte Formation", url: "https://www.moncompteformation.gouv.fr/espace-prive/html/#/" },
     links: [
@@ -136,7 +136,7 @@ export const dispositifDetails: Record<string, DispositifDetail> = {
     prerequis: [
       "Disposer d'un compte CPF alimenté en droits (en euros)",
       "Choisir une formation éligible, inscrite au RNCP ou au Répertoire Spécifique",
-      "Participation forfaitaire de 102,23 € à la charge du bénéficiaire (montant 2025) — demandeurs d'emploi indemnisés exonérés",
+      "Participation forfaitaire de 150 € à la charge du titulaire (depuis le 1er janvier 2026, revalorisée chaque année) — exonérés : demandeurs d'emploi, bénéficiaires d'un abondement employeur, mobilisation du C2P",
     ],
     modalites: [
       "Créer ou activer son compte sur Mon Compte Formation (connexion FranceConnect+)",
@@ -279,6 +279,83 @@ export const dispositifDetails: Record<string, DispositifDetail> = {
     ],
   },
 };
+
+// Simulateur d'OPCO : secteur d'activité de l'entreprise → OPCO compétent.
+export interface OpcoSecteur {
+  secteur: string;
+  opco: string;
+  url: string;
+  exemples: string;
+}
+
+export const opcoSecteurs: OpcoSecteur[] = [
+  {
+    secteur: "Transport, logistique & mobilités",
+    opco: "OPCO Mobilités",
+    url: "https://www.opcomobilites.fr/",
+    exemples: "Transport routier de marchandises et de voyageurs, logistique, services de l'automobile, tourisme.",
+  },
+  {
+    secteur: "Industrie",
+    opco: "OPCO 2i",
+    url: "https://www.opco2i.fr/",
+    exemples: "Métallurgie, plasturgie, chimie, énergie, textile, ameublement, papier-carton.",
+  },
+  {
+    secteur: "Artisanat & entreprises de proximité",
+    opco: "OPCO EP",
+    url: "https://www.opcoep.fr/",
+    exemples: "Artisanat, professions libérales, pharmacie d'officine, boulangerie, coiffure, fleuristes.",
+  },
+  {
+    secteur: "Commerce & distribution",
+    opco: "L'Opcommerce",
+    url: "https://www.lopcommerce.com/",
+    exemples: "Commerce de détail, de gros, grande distribution, e-commerce.",
+  },
+  {
+    secteur: "Banque, assurance & conseil",
+    opco: "Atlas",
+    url: "https://www.opco-atlas.fr/",
+    exemples: "Banque, assurance, audit, conseil, bureaux d'études techniques.",
+  },
+  {
+    secteur: "Santé, social & médico-social privé",
+    opco: "OPCO Santé",
+    url: "https://www.opco-sante.fr/",
+    exemples: "Établissements de santé privés, secteur social et médico-social.",
+  },
+  {
+    secteur: "Services à forte main-d'œuvre",
+    opco: "AKTO",
+    url: "https://www.akto.fr/",
+    exemples: "Propreté, sécurité, travail temporaire, hôtellerie-restauration, formation.",
+  },
+  {
+    secteur: "Culture, médias, sport & loisirs",
+    opco: "AFDAS",
+    url: "https://www.afdas.com/",
+    exemples: "Spectacle, audiovisuel, presse, communication, sport, loisirs.",
+  },
+  {
+    secteur: "Agriculture, agroalimentaire & pêche",
+    opco: "OCAPIAT",
+    url: "https://www.ocapiat.fr/",
+    exemples: "Production agricole, agroalimentaire, coopératives, pêche.",
+  },
+  {
+    secteur: "Bâtiment & travaux publics",
+    opco: "Constructys",
+    url: "https://www.constructys.fr/",
+    exemples: "Bâtiment, travaux publics, négoce des matériaux de construction.",
+  },
+  {
+    secteur: "Cohésion sociale & économie sociale",
+    opco: "Uniformation",
+    url: "https://www.uniformation.fr/",
+    exemples: "Animation, sport, aide à domicile, mutualité, économie sociale et solidaire.",
+  },
+];
 
 export interface Profil {
   id: string;
