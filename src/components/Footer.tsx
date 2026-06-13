@@ -74,6 +74,26 @@ export default function Footer() {
           <p>© 2026 PariPermis — Centre de formation transport routier. Tous droits réservés.</p>
           <p>{site.agrement} — Centre certifié Qualiopi</p>
         </div>
+        <div className="container pb-4 text-center text-[10px] text-white/30">
+          Vidéo d'accueil :{" "}
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Military_truck_convoy_on_the_Manali-Leh_Highway.webm"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-white/60"
+          >
+            Yann Forget
+          </a>{" "}
+          — Wikimedia Commons,{" "}
+          <a
+            href="https://creativecommons.org/licenses/by/3.0/"
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-white/60"
+          >
+            CC BY 3.0
+          </a>
+        </div>
       </div>
     </footer>
   );
