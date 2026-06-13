@@ -13,7 +13,7 @@ export const dispositifs: Dispositif[] = [
     code: "CPF",
     name: "Compte Personnel de Formation",
     description:
-      "Le CPF est un compte individuel permettant de financer une formation certifiante inscrite au RNCP ou au Répertoire Spécifique. Depuis le 1er janvier 2026, la participation forfaitaire obligatoire à la charge du titulaire est de 150 € (revalorisée chaque année selon l'inflation), réglée directement sur Mon Compte Formation. En sont exonérés : les demandeurs d'emploi, les bénéficiaires d'un abondement de leur employeur et les titulaires mobilisant leur Compte Professionnel de Prévention (C2P).",
+      "Le CPF est un compte individuel permettant de financer une formation certifiante inscrite au RNCP ou au Répertoire Spécifique. Il est alimenté automatiquement chaque année : 500 € par an dans la limite de 5 000 € (800 € par an jusqu'à 8 000 € pour les personnes peu qualifiées ou en situation de handicap). Depuis le 1er janvier 2026, une participation forfaitaire de 150 € (revalorisée chaque année) est à la charge du titulaire, réglée sur Mon Compte Formation. En sont exonérés : les demandeurs d'emploi, les bénéficiaires d'un abondement (employeur ou France Travail) et les titulaires mobilisant leur Compte Professionnel de Prévention (C2P). Si le solde est insuffisant, l'employeur ou France Travail peuvent co-financer (abonder) la formation.",
     public: "Salariés, demandeurs d'emploi, travailleurs indépendants.",
     link: { label: "Accéder à Mon Compte Formation", url: "https://www.moncompteformation.gouv.fr/espace-prive/html/#/" },
     links: [
@@ -132,38 +132,46 @@ export const dispositifDetails: Record<string, DispositifDetail> = {
   CPF: {
     scope: "all",
     intro:
-      "Le Compte Personnel de Formation (CPF) accompagne chaque actif tout au long de sa vie professionnelle. Il est crédité en euros chaque année et permet de financer une formation certifiante, comme un permis, une FIMO/FCO ou un titre professionnel du transport.",
+      "Le Compte Personnel de Formation (CPF) accompagne chaque actif tout au long de sa vie professionnelle. Il est alimenté automatiquement chaque année : 500 € par an dans la limite de 5 000 € (800 € par an jusqu'à 8 000 € pour les personnes peu qualifiées ou en situation de handicap). Il finance des formations certifiantes inscrites au RNCP ou au Répertoire Spécifique : permis poids lourd, FIMO/FCO ou titre professionnel du transport.",
     prerequis: [
-      "Disposer d'un compte CPF alimenté en droits (en euros)",
+      "Disposer d'un compte CPF alimenté en droits (500 €/an, plafond 5 000 € ; 800 €/an, plafond 8 000 € pour les moins qualifiés ou en situation de handicap)",
       "Choisir une formation éligible, inscrite au RNCP ou au Répertoire Spécifique",
-      "Participation forfaitaire de 150 € à la charge du titulaire (depuis le 1er janvier 2026, revalorisée chaque année) — exonérés : demandeurs d'emploi, bénéficiaires d'un abondement employeur, mobilisation du C2P",
+      "Participation forfaitaire de 150 € à la charge du titulaire (depuis le 1er janvier 2026, revalorisée chaque année) — exonérés : demandeurs d'emploi, bénéficiaires d'un abondement (employeur ou France Travail), mobilisation du C2P",
     ],
     modalites: [
       "Créer ou activer son compte sur Mon Compte Formation (connexion FranceConnect+)",
       "Rechercher la formation PariPermis et vérifier son solde de droits",
       "Envoyer la demande d'inscription en ligne (délai minimum de 11 jours ouvrés avant le début)",
-      "Régler la participation forfaitaire et valider le dossier",
+      "Si le solde est insuffisant, solliciter un abondement (employeur ou France Travail), puis valider le dossier",
     ],
     avantages: [
       "Financement total ou partiel sans avance de frais",
-      "Abondements possibles (France Travail, employeur, Région) pour compléter le solde",
+      "Co-financement possible par l'employeur (plan de développement des compétences) pour couvrir le reste à charge",
+      "Co-financement possible par France Travail (abondement / AIF) pour les demandeurs d'emploi",
+      "Un abondement (employeur ou France Travail) exonère de la participation forfaitaire de 150 €",
     ],
   },
   AIF: {
     scope: "all",
     intro:
-      "L'Aide Individuelle à la Formation (AIF) est versée par France Travail pour financer tout ou partie d'une formation lorsque les autres dispositifs ne suffisent pas. Elle s'inscrit dans le cadre du projet de retour à l'emploi.",
+      "L'Aide Individuelle à la Formation (AIF) est une aide de France Travail qui finance tout ou partie du coût d'une formation lorsque les autres dispositifs (CPF, conventionnements, aides de la Région…) ne couvrent pas la totalité. Elle est accordée au cas par cas, dans le cadre du Projet Personnalisé d'Accès à l'Emploi (PPAE), pour une formation cohérente avec le retour à l'emploi.",
     prerequis: [
       "Être inscrit comme demandeur d'emploi à France Travail",
-      "Disposer d'un devis de formation établi par PariPermis",
-      "Que le projet soit validé par le conseiller France Travail (cohérence avec le projet de retour à l'emploi)",
+      "Disposer d'un devis de formation (Cerfa) établi par PariPermis",
+      "Avoir d'abord mobilisé son CPF si le solde le permet (l'AIF intervient en complément)",
+      "Que le projet de formation soit validé par le conseiller (cohérence avec le projet de retour à l'emploi)",
     ],
     modalites: [
-      "Faire valider son projet de formation avec son conseiller France Travail",
-      "Transmettre le devis et le programme PariPermis",
-      "France Travail étudie la demande et notifie la prise en charge avant l'entrée en formation",
+      "1. Demander un devis et le programme à PariPermis (nous nous en chargeons avec vous)",
+      "2. Prendre rendez-vous avec votre conseiller France Travail pour présenter et faire valider le projet",
+      "3. Le conseiller saisit la demande d'AIF en ligne ; vous joignez le devis Cerfa et le programme",
+      "4. France Travail instruit le dossier et notifie l'accord AVANT l'entrée en formation (anticipez ~15 jours)",
     ],
-    avantages: ["Complète les autres financements (CPF, OPCO…)", "Peut couvrir le reste à charge"],
+    avantages: [
+      "Complète le CPF et les autres financements pour couvrir le reste à charge",
+      "Peut financer jusqu'à 100 % du coût selon la situation",
+      "Cumulable avec une rémunération de formation (RFF / AREF) pendant la formation",
+    ],
   },
   POE: {
     scope: "all",
@@ -180,103 +188,157 @@ export const dispositifDetails: Record<string, DispositifDetail> = {
       "Validation du plan de formation par le candidat, puis par France Travail",
       "Embauche du candidat à l'issue de la formation",
     ],
+    avantages: [
+      "Formation financée par France Travail (et/ou l'OPCO) sans mobiliser votre CPF",
+      "Maintien de l'indemnisation / rémunération de stagiaire pendant la formation",
+      "Débouché direct sur un emploi durable (CDI ou CDD long)",
+    ],
   },
   POEC: {
     scope: "all",
     intro:
-      "La Préparation Opérationnelle à l'Emploi Collective (POEC) est une formation collective financée par les OPCO et l'État pour répondre aux besoins de recrutement d'un secteur, comme le transport routier.",
+      "La Préparation Opérationnelle à l'Emploi Collective (POEC) est une formation collective (groupe de demandeurs d'emploi) financée par un OPCO — OPCO Mobilités pour le transport — avec l'appui de l'État (Plan d'Investissement dans les Compétences). Elle prépare aux métiers en tension d'une branche et débouche sur des opportunités d'emploi, sans qu'une promesse d'embauche individuelle soit nécessaire au départ.",
     prerequis: [
-      "Être demandeur d'emploi ou en parcours d'insertion",
-      "Correspondre au profil recherché par la branche / les entreprises partenaires",
+      "Être inscrit comme demandeur d'emploi à France Travail",
+      "Correspondre au profil de la session ouverte pour le secteur transport (entretien / tests de sélection)",
+      "Aucune promesse d'embauche individuelle requise (contrairement à la POEI / AFPR)",
     ],
     modalites: [
-      "Repérage des candidats avec France Travail et l'OPCO",
-      "Formation collective débouchant sur les besoins en emploi du secteur",
-      "Accompagnement vers l'emploi à l'issue",
+      "1. Repérer une session POEC « transport » (via France Travail, l'OPCO Mobilités ou PariPermis)",
+      "2. Candidater et participer à la réunion d'information / sélection",
+      "3. Suivre la formation collective (gratuite, avec maintien de votre indemnisation ou rémunération de stagiaire)",
+      "4. Bénéficier de la mise en relation avec les entreprises qui recrutent à l'issue",
+    ],
+    avantages: [
+      "Formation entièrement financée, sans mobiliser votre CPF",
+      "Maintien de l'indemnisation ou rémunération de stagiaire pendant la formation",
+      "Forte employabilité : sessions construites avec des entreprises qui recrutent",
     ],
   },
   AFPR: {
     scope: "all",
     intro:
-      "L'Action de Formation Préalable au Recrutement (AFPR) finance une formation courte préalable à une embauche en CDD de 6 à moins de 12 mois ou en contrat de professionnalisation à durée déterminée.",
+      "L'Action de Formation Préalable au Recrutement (AFPR) permet à un employeur de former un futur salarié pour combler l'écart entre ses compétences et le poste à pourvoir, avant une embauche en CDD de 6 à moins de 12 mois (ou contrat de professionnalisation à durée déterminée). C'est le pendant de la POEI pour les contrats plus courts.",
     prerequis: [
-      "Être demandeur d'emploi inscrit à France Travail",
-      "Disposer d'une promesse d'embauche (CDD de 6 à moins de 12 mois ou contrat pro à durée déterminée)",
+      "Être demandeur d'emploi inscrit à France Travail (indemnisé ou non)",
+      "Disposer d'une promesse d'embauche : CDD de 6 à moins de 12 mois, ou contrat de professionnalisation à durée déterminée",
+      "Un besoin d'adaptation des compétences au poste proposé",
     ],
     modalites: [
-      "L'employeur dépose la demande auprès de France Travail",
-      "Réalisation de la formation préalable au recrutement (jusqu'à 400 heures)",
-      "Recrutement du candidat à l'issue",
+      "1. L'employeur formalise son besoin de recrutement et l'offre d'emploi",
+      "2. L'employeur dépose la demande d'AFPR auprès de son conseiller France Travail (formation chez PariPermis)",
+      "3. Réalisation de la formation préalable au recrutement (jusqu'à 400 heures)",
+      "4. Embauche du candidat à l'issue de la formation",
+    ],
+    avantages: [
+      "Formation prise en charge par France Travail (frais pédagogiques + éventuels frais annexes)",
+      "Maintien de l'indemnisation / rémunération de stagiaire pendant la formation",
+      "Sécurise le recrutement pour l'employeur comme pour le candidat",
     ],
   },
   OPCO: {
     scope: "all",
     intro:
-      "Les OPCO (Opérateurs de Compétences) financent la formation des salariés dans le cadre du plan de développement des compétences de l'entreprise. Pour le transport routier, l'OPCO de référence est OPCO Mobilités.",
+      "Les OPCO (Opérateurs de Compétences) financent la formation des salariés dans le cadre du plan de développement des compétences de l'entreprise. Chaque entreprise dépend d'un OPCO selon sa branche professionnelle (convention collective / IDCC). Pour le transport routier, l'OPCO de référence est OPCO Mobilités. C'est l'employeur qui mobilise ce financement.",
     prerequis: [
-      "Être salarié d'une entreprise relevant d'un OPCO (transport : OPCO Mobilités)",
+      "Être salarié d'une entreprise cotisant à un OPCO (transport routier : OPCO Mobilités)",
       "Formation inscrite au plan de développement des compétences de l'employeur",
+      "Accord de l'employeur (c'est lui qui engage la démarche)",
     ],
     modalites: [
-      "L'employeur identifie son OPCO selon sa branche professionnelle (IDCC)",
-      "Dépôt de la demande de prise en charge auprès de l'OPCO",
-      "Accord puis financement de la formation",
+      "1. L'employeur identifie son OPCO selon sa branche (IDCC) — utilisez notre simulateur d'OPCO ci-dessous",
+      "2. Demander un devis et le programme à PariPermis",
+      "3. L'employeur dépose la demande de prise en charge sur l'espace en ligne de son OPCO",
+      "4. Après accord, l'OPCO finance tout ou partie des frais pédagogiques (subrogation possible : pas d'avance par l'entreprise)",
+    ],
+    avantages: [
+      "Prise en charge des frais pédagogiques (selon les niveaux définis par la branche)",
+      "Possibilité de subrogation (l'OPCO paie directement l'organisme)",
+      "Maintien de la rémunération du salarié pendant la formation",
     ],
   },
   PRO: {
     scope: "registered",
     intro:
-      "Le contrat de professionnalisation est un contrat de travail en alternance qui permet d'acquérir une qualification reconnue (RNCP ou Répertoire Spécifique) tout en étant rémunéré.",
+      "Le contrat de professionnalisation est un contrat de travail en alternance (CDD de 6 à 12 mois, parfois jusqu'à 36 mois, ou CDI débutant par une période de professionnalisation). Il permet d'acquérir une qualification reconnue (RNCP ou Répertoire Spécifique) tout en étant salarié et rémunéré. La formation est financée par l'OPCO de l'entreprise.",
     prerequis: [
-      "Avoir 16 à 25 ans révolus, être demandeur d'emploi de 26 ans et plus, ou bénéficiaire de minima sociaux",
-      "Signer un contrat de professionnalisation avec une entreprise du transport",
+      "Avoir 16 à 25 ans révolus, OU être demandeur d'emploi de 26 ans et plus, OU bénéficiaire du RSA / ASS / AAH ou d'un CUI",
+      "Trouver une entreprise du transport prête à signer le contrat",
+      "Viser une qualification enregistrée (RNCP/RS) — titre pro, FIMO, FCO",
     ],
     modalites: [
-      "Trouver une entreprise d'accueil",
-      "Signature du contrat (CDD ou CDI)",
-      "Formation financée par l'OPCO, rémunération prise en charge selon l'âge et le niveau",
+      "1. Rechercher une entreprise d'accueil (nous pouvons vous orienter vers nos partenaires)",
+      "2. Signer le contrat de professionnalisation (Cerfa) avec l'employeur",
+      "3. L'employeur transmet le contrat à son OPCO pour prise en charge",
+      "4. Démarrage de l'alternance : formation chez PariPermis + travail en entreprise",
+    ],
+    avantages: [
+      "Rémunération pendant toute la formation (% du SMIC selon l'âge et le niveau)",
+      "Frais de formation pris en charge par l'OPCO",
+      "Expérience professionnelle et insertion facilitée à l'issue",
     ],
   },
   APP: {
     scope: "rncp",
     intro:
-      "Le contrat d'apprentissage est un contrat de travail en alternance permettant de préparer un titre professionnel inscrit au RNCP, tout en étant rémunéré. Il concerne nos titres professionnels.",
+      "Le contrat d'apprentissage est un contrat de travail en alternance permettant de préparer un titre professionnel inscrit au RNCP tout en étant salarié et rémunéré. Il concerne nos titres professionnels (conducteur marchandises ou voyageurs). La formation est gratuite pour l'apprenti et financée par l'OPCO.",
     prerequis: [
-      "Avoir entre 16 et 29 ans révolus (dérogations possibles, notamment pour les travailleurs handicapés)",
-      "Signer un contrat d'apprentissage avec une entreprise",
+      "Avoir entre 16 et 29 ans révolus (sans limite d'âge pour les travailleurs handicapés ou les créateurs/repreneurs d'entreprise)",
+      "Trouver une entreprise du transport prête à signer le contrat",
       "Préparer un titre professionnel enregistré au RNCP",
     ],
     modalites: [
-      "Trouver une entreprise d'accueil",
-      "Signature du contrat d'apprentissage",
-      "Formation financée par l'OPCO, rémunération selon l'âge et l'année du contrat",
+      "1. Rechercher une entreprise d'accueil (nous pouvons vous accompagner)",
+      "2. Signer le contrat d'apprentissage (Cerfa) avec l'employeur",
+      "3. L'employeur transmet le contrat à son OPCO pour prise en charge",
+      "4. Démarrage de l'alternance : formation chez PariPermis + travail en entreprise",
+    ],
+    avantages: [
+      "Formation gratuite pour l'apprenti (zéro reste à charge)",
+      "Rémunération mensuelle (% du SMIC selon l'âge et l'année du contrat)",
+      "Aide au permis B de 500 € possible pour les apprentis majeurs",
     ],
   },
   PTP: {
     scope: "registered",
     intro:
-      "Le Projet de Transition Professionnelle (PTP, ex-CIF, aussi appelé CPF de transition) permet à un salarié de s'absenter pour suivre une formation certifiante en vue d'une reconversion, avec maintien partiel de sa rémunération.",
+      "Le Projet de Transition Professionnelle (PTP), aussi appelé CPF de transition (ex-CIF), permet à un salarié de s'absenter de son poste pour suivre une formation certifiante en vue d'une reconversion. La rémunération est maintenue (en grande partie) pendant la formation et les frais pédagogiques sont pris en charge. Le dispositif est géré par les associations Transitions Pro (ATpro) de chaque région.",
     prerequis: [
-      "Être salarié et justifier de l'ancienneté requise (24 mois dont 12 dans l'entreprise, sauf cas particuliers)",
-      "Viser une certification RNCP/RS dans le cadre d'un projet de reconversion",
+      "Être salarié en CDI : justifier de 24 mois d'ancienneté (consécutifs ou non) dont 12 mois dans l'entreprise actuelle",
+      "Salariés en CDD : avoir travaillé 24 mois (consécutifs ou non) au cours des 5 dernières années dont 4 mois en CDD sur les 12 derniers mois",
+      "Viser une certification RNCP/RS correspondant à un projet de reconversion (ancienneté non exigée pour certains publics : licenciés économiques, bénéficiaires de l'obligation d'emploi…)",
     ],
     modalites: [
-      "Constituer le dossier auprès de l'association Transitions Pro de sa région",
-      "Demander une autorisation d'absence à son employeur",
-      "Validation et financement par Transitions Pro (maintien partiel du salaire)",
+      "1. Construire son projet, si besoin avec un Conseil en Évolution Professionnelle (CEP) gratuit",
+      "2. Demander une autorisation d'absence à l'employeur (60 jours avant si formation < 6 mois, 120 jours si ≥ 6 mois ou à temps partiel)",
+      "3. Constituer le dossier de financement auprès de Transitions Pro Île-de-France (avec le devis PariPermis)",
+      "4. Passage en commission ; en cas d'accord, prise en charge des frais et maintien de la rémunération",
+    ],
+    avantages: [
+      "Maintien de la rémunération (100 % jusqu'à 2 SMIC, 90 % au-delà, sous conditions)",
+      "Prise en charge des frais pédagogiques et, le cas échéant, des frais annexes",
+      "Congé spécifique : votre contrat de travail est suspendu, pas rompu",
     ],
   },
   REG: {
     scope: "all",
     intro:
-      "Les Régions financent des programmes de formation pour les métiers en tension, dont le transport routier, principalement à destination des demandeurs d'emploi.",
+      "Le Conseil régional finance des programmes de formation pour les métiers en tension, dont le transport routier, principalement pour les demandeurs d'emploi. En Île-de-France, ces formations sont souvent gratuites et rémunérées pendant la durée du parcours.",
     prerequis: [
-      "Être demandeur d'emploi",
-      "Formation inscrite au programme régional de formation",
+      "Être inscrit comme demandeur d'emploi",
+      "Que la formation soit inscrite au programme régional (PRF) ou conventionnée",
+      "Répondre aux critères de la session (entretien / positionnement)",
     ],
     modalites: [
-      "Vérifier l'éligibilité auprès de la Région ou de France Travail",
-      "Inscription via l'organisme de formation",
+      "1. Vérifier l'éligibilité et les sessions ouvertes avec France Travail ou la Région (Île-de-France)",
+      "2. Se positionner sur une session conventionnée (avec l'aide de PariPermis)",
+      "3. Validation du dossier par la Région / France Travail avant l'entrée en formation",
+      "4. Suivre la formation (prise en charge des frais + rémunération de stagiaire possible)",
+    ],
+    avantages: [
+      "Formation prise en charge sans mobiliser le CPF",
+      "Rémunération de stagiaire de la formation professionnelle possible",
+      "Orientée vers les métiers qui recrutent en région",
     ],
   },
 };
