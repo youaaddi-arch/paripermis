@@ -31,6 +31,7 @@ export interface Formation {
   certifInfo?: string; // numéro Certif'Info (= identifiant CARIF OREF)
   franceCompetencesUrl?: string; // fiche RNCP / RS
   carifOrefUrl?: string; // fiche CARIF OREF / Certif'Info
+  passerelles?: string; // passerelles, équivalences et voies d'accès (France Compétences)
 }
 
 const TRUCK = "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=80";
@@ -863,6 +864,29 @@ const registrations: Record<string, Partial<Formation>> = {
   "passerelle-voyageurs": reg("84532", { rs: "5768" }),
 };
 
+// Passerelles, équivalences et voies d'accès (source : fiches France Compétences).
+// Uniquement pour les certifications enregistrées (RNCP / RS) ; les permis n'en relèvent pas.
+const passerellesBySlug: Record<string, string> = {
+  "tp-transport-marchandises-porteur":
+    "Certification constituée d'un bloc unique non sécable : aucune certification partielle possible. Aucune passerelle ni équivalence vers une autre certification enregistrée. Le titre confère par équivalence le permis C, la qualification initiale de conducteur (CQC) et le certificat ADR. Voies d'accès : formation continue, contrat d'apprentissage, contrat de professionnalisation, VAE ou candidature individuelle.",
+  "tp-transport-marchandises-tous-vehicules":
+    "Certification constituée d'un bloc unique non sécable : aucune certification partielle possible. Aucune passerelle ni équivalence vers une autre certification enregistrée. Le titre confère par équivalence le permis CE, la qualification initiale de conducteur (CQC) et le certificat ADR. Voies d'accès : formation continue, contrat d'apprentissage, contrat de professionnalisation, VAE ou candidature individuelle.",
+  "tp-transport-en-commun":
+    "Certification constituée d'un bloc unique non sécable : aucune certification partielle possible. Aucune passerelle ni équivalence vers une autre certification enregistrée. Voies d'accès : formation initiale, contrat d'apprentissage, formation continue, reconversion, VAE ou candidature individuelle. (Remplace l'ancien titre RNCP31085.)",
+  "fimo-marchandises":
+    "Aucune correspondance officielle avec d'autres certifications. Passerelle reconnue : les conducteurs déjà titulaires de la qualification initiale voyageurs peuvent accéder à la qualification marchandises via une formation passerelle de 35 h (au lieu de la FIMO complète).",
+  "fco-marchandises":
+    "Aucune correspondance officielle avec d'autres certifications. Les conducteurs déjà qualifiés dans le transport de voyageurs peuvent rejoindre le secteur marchandises via une formation passerelle de 35 h.",
+  "passerelle-marchandises":
+    "Formation passerelle de 35 h réservée aux conducteurs déjà titulaires de la qualification initiale voyageurs souhaitant exercer dans le transport de marchandises. Aucune autre correspondance officielle.",
+  "fimo-voyageurs":
+    "Aucune correspondance officielle avec d'autres certifications. Passerelle reconnue : les conducteurs déjà titulaires de la qualification initiale marchandises peuvent accéder à la qualification voyageurs via une formation passerelle de 35 h (au lieu de la FIMO complète).",
+  "fco-voyageurs":
+    "Aucune correspondance officielle avec d'autres certifications. Les conducteurs déjà qualifiés dans le transport de marchandises peuvent rejoindre le secteur voyageurs via une formation passerelle de 35 h.",
+  "passerelle-voyageurs":
+    "Formation passerelle de 35 h réservée aux conducteurs déjà titulaires de la qualification initiale marchandises souhaitant exercer dans le transport de voyageurs. Aucune autre correspondance officielle.",
+};
+
 // Chaque formation est certifiée Qualiopi et dispose d'un programme PDF servi
 // par le site (/programmes/<slug>.pdf) — repli autonome si Sanity est indisponible.
 export const formations: Formation[] = formationsData.map((f) => ({
@@ -870,6 +894,7 @@ export const formations: Formation[] = formationsData.map((f) => ({
   qualiopi: f.qualiopi ?? true,
   programmePdfUrl: f.programmePdfUrl ?? `/programmes/${f.slug}.pdf`,
   ...registrations[f.slug],
+  passerelles: passerellesBySlug[f.slug],
 }));
 
 export const getFormation = (slug: string) => formations.find((f) => f.slug === slug);

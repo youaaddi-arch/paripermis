@@ -2,7 +2,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import {
   ArrowLeft, ArrowRight, Clock, Phone, MapPin, CheckCircle2, Target,
   Users, ListChecks, Wrench, ClipboardCheck, CalendarClock, Accessibility,
-  Briefcase, Award, Download, FileText, ShieldCheck, ExternalLink,
+  Briefcase, Award, Download, FileText, ShieldCheck, ExternalLink, Route,
 } from "lucide-react";
 import { useFormation } from "@/lib/formations";
 import { dispositifs } from "@/data/financements";
@@ -40,6 +40,14 @@ export default function FormationDetail() {
   if (!f) return <Navigate to="/formations" replace />;
 
   const accent = f.category === "marchandises" ? "text-brand-blue" : "text-brand-green";
+
+  // Apprentissage : réservé aux certifications RNCP (Titres Pro).
+  // Transition Pro : réservée aux certifications enregistrées RNCP/RS (pas les permis).
+  const finDispositifs = dispositifs.filter((d) => {
+    if (d.code === "APP") return f.kind === "Titre Professionnel";
+    if (d.code === "PTP") return f.kind !== "Permis";
+    return true;
+  });
 
   return (
     <>
@@ -150,9 +158,21 @@ export default function FormationDetail() {
 
           <Block icon={CalendarClock} title="Modalités d'accès"><p>{f.acces}</p></Block>
 
-          <Block icon={Accessibility} title="Accessibilité handicap"><p>{f.accessibilite}</p></Block>
+          <Block icon={Accessibility} title="Accessibilité handicap">
+            <p>{f.accessibilite}</p>
+            <p className="mt-3 text-sm">
+              <span className="font-semibold text-brand-navy">Référent handicap :</span>{" "}
+              <a href={`mailto:${site.referentHandicapEmail}`} className="font-semibold text-brand-blue hover:underline">
+                {site.referentHandicapEmail}
+              </a>
+            </p>
+          </Block>
 
           <Block icon={Briefcase} title="Débouchés professionnels"><BulletList items={f.debouches} /></Block>
+
+          {f.passerelles && (
+            <Block icon={Route} title="Passerelles, équivalences et voies d'accès"><p>{f.passerelles}</p></Block>
+          )}
 
           <Block icon={Award} title="Certification / Validation">
             <p>{f.certification}</p>
@@ -262,7 +282,7 @@ export default function FormationDetail() {
             (salarié, demandeur d'emploi, entreprise).
           </p>
           <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {dispositifs.map((d) => (
+            {finDispositifs.map((d) => (
               <div key={d.code} className="card p-5">
                 <p className="font-bold text-brand-navy">{d.name}</p>
                 <p className="mt-2 text-sm text-slate-500">{d.description.split(". ")[0]}.</p>
