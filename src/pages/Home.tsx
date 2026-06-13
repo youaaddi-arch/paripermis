@@ -24,7 +24,7 @@ const metiersHome = [
 
 const atouts = [
   { icon: ShieldCheck, title: "Certifié Qualiopi", text: "Centre agréé préfecture, certification Qualiopi pour des formations reconnues par l'État." },
-  { icon: Users, title: "Formateurs Experts", text: "Des professionnels du transport avec plus de 15 ans d'expérience terrain et pédagogique." },
+  { icon: Users, title: "Formateurs Experts", text: "Des professionnels du transport avec 20 ans d'expérience terrain et pédagogique." },
   { icon: Briefcase, title: "Accompagnement Emploi", text: "Aide à la recherche d'emploi et mise en relation avec nos entreprises partenaires." },
   { icon: Building2, title: "Formations Financées", text: "Éligibles CPF, France Travail, OPCO, alternance. Financement possible à 100%." },
 ];
