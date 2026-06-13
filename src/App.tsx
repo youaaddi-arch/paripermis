@@ -4,6 +4,7 @@ import Home from "@/pages/Home";
 import Formations from "@/pages/Formations";
 import FormationDetail from "@/pages/FormationDetail";
 import Financement from "@/pages/Financement";
+import FinancementDetail from "@/pages/FinancementDetail";
 import Metiers from "@/pages/Metiers";
 import Simulateur from "@/pages/Simulateur";
 import NotreCentre from "@/pages/NotreCentre";
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/formations" element={<Formations />} />
         <Route path="/formations/:slug" element={<FormationDetail />} />
         <Route path="/financement" element={<Financement />} />
+        <Route path="/financement/:code" element={<FinancementDetail />} />
         <Route path="/metiers" element={<Metiers />} />
         <Route path="/simulateur" element={<Simulateur />} />
         <Route path="/a-propos" element={<NotreCentre />} />

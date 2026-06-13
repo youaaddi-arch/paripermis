@@ -118,6 +118,168 @@ export const dispositifs: Dispositif[] = [
   },
 ];
 
+// Détail de chaque dispositif pour sa fiche dédiée (/financement/:code).
+// scope : formations concernées — "all" (toutes), "registered" (RNCP/RS), "rncp" (Titres Pro).
+export interface DispositifDetail {
+  scope: "all" | "registered" | "rncp";
+  intro: string;
+  prerequis: string[];
+  modalites: string[];
+  avantages?: string[];
+}
+
+export const dispositifDetails: Record<string, DispositifDetail> = {
+  CPF: {
+    scope: "all",
+    intro:
+      "Le Compte Personnel de Formation (CPF) accompagne chaque actif tout au long de sa vie professionnelle. Il est crédité en euros chaque année et permet de financer une formation certifiante, comme un permis, une FIMO/FCO ou un titre professionnel du transport.",
+    prerequis: [
+      "Disposer d'un compte CPF alimenté en droits (en euros)",
+      "Choisir une formation éligible, inscrite au RNCP ou au Répertoire Spécifique",
+      "Participation forfaitaire de 102,23 € à la charge du bénéficiaire (montant 2025) — demandeurs d'emploi indemnisés exonérés",
+    ],
+    modalites: [
+      "Créer ou activer son compte sur Mon Compte Formation (connexion FranceConnect+)",
+      "Rechercher la formation PariPermis et vérifier son solde de droits",
+      "Envoyer la demande d'inscription en ligne (délai minimum de 11 jours ouvrés avant le début)",
+      "Régler la participation forfaitaire et valider le dossier",
+    ],
+    avantages: [
+      "Financement total ou partiel sans avance de frais",
+      "Abondements possibles (France Travail, employeur, Région) pour compléter le solde",
+    ],
+  },
+  AIF: {
+    scope: "all",
+    intro:
+      "L'Aide Individuelle à la Formation (AIF) est versée par France Travail pour financer tout ou partie d'une formation lorsque les autres dispositifs ne suffisent pas. Elle s'inscrit dans le cadre du projet de retour à l'emploi.",
+    prerequis: [
+      "Être inscrit comme demandeur d'emploi à France Travail",
+      "Disposer d'un devis de formation établi par PariPermis",
+      "Que le projet soit validé par le conseiller France Travail (cohérence avec le projet de retour à l'emploi)",
+    ],
+    modalites: [
+      "Faire valider son projet de formation avec son conseiller France Travail",
+      "Transmettre le devis et le programme PariPermis",
+      "France Travail étudie la demande et notifie la prise en charge avant l'entrée en formation",
+    ],
+    avantages: ["Complète les autres financements (CPF, OPCO…)", "Peut couvrir le reste à charge"],
+  },
+  POE: {
+    scope: "all",
+    intro:
+      "La Préparation Opérationnelle à l'Emploi Individuelle (POEI) finance une formation d'adaptation au poste avant une embauche, lorsque l'employeur identifie un écart de compétences.",
+    prerequis: [
+      "Être demandeur d'emploi inscrit à France Travail",
+      "Disposer d'une promesse d'embauche (CDD d'au moins 6 mois, CDI ou contrat de professionnalisation)",
+      "Un besoin d'adaptation des compétences au poste proposé",
+    ],
+    modalites: [
+      "L'employeur dépose la demande auprès de France Travail (et/ou de l'OPCO)",
+      "Réalisation de la formation d'adaptation (jusqu'à 400 heures)",
+      "Embauche du candidat à l'issue de la formation",
+    ],
+  },
+  POEC: {
+    scope: "all",
+    intro:
+      "La Préparation Opérationnelle à l'Emploi Collective (POEC) est une formation collective financée par les OPCO et l'État pour répondre aux besoins de recrutement d'un secteur, comme le transport routier.",
+    prerequis: [
+      "Être demandeur d'emploi ou en parcours d'insertion",
+      "Correspondre au profil recherché par la branche / les entreprises partenaires",
+    ],
+    modalites: [
+      "Repérage des candidats avec France Travail et l'OPCO",
+      "Formation collective débouchant sur les besoins en emploi du secteur",
+      "Accompagnement vers l'emploi à l'issue",
+    ],
+  },
+  AFPR: {
+    scope: "all",
+    intro:
+      "L'Action de Formation Préalable au Recrutement (AFPR) finance une formation courte préalable à une embauche en CDD de 6 à moins de 12 mois ou en contrat de professionnalisation à durée déterminée.",
+    prerequis: [
+      "Être demandeur d'emploi inscrit à France Travail",
+      "Disposer d'une promesse d'embauche (CDD de 6 à moins de 12 mois ou contrat pro à durée déterminée)",
+    ],
+    modalites: [
+      "L'employeur dépose la demande auprès de France Travail",
+      "Réalisation de la formation préalable au recrutement (jusqu'à 400 heures)",
+      "Recrutement du candidat à l'issue",
+    ],
+  },
+  OPCO: {
+    scope: "all",
+    intro:
+      "Les OPCO (Opérateurs de Compétences) financent la formation des salariés dans le cadre du plan de développement des compétences de l'entreprise. Pour le transport routier, l'OPCO de référence est OPCO Mobilités.",
+    prerequis: [
+      "Être salarié d'une entreprise relevant d'un OPCO (transport : OPCO Mobilités)",
+      "Formation inscrite au plan de développement des compétences de l'employeur",
+    ],
+    modalites: [
+      "L'employeur identifie son OPCO selon sa branche professionnelle (IDCC)",
+      "Dépôt de la demande de prise en charge auprès de l'OPCO",
+      "Accord puis financement de la formation",
+    ],
+  },
+  PRO: {
+    scope: "registered",
+    intro:
+      "Le contrat de professionnalisation est un contrat de travail en alternance qui permet d'acquérir une qualification reconnue (RNCP ou Répertoire Spécifique) tout en étant rémunéré.",
+    prerequis: [
+      "Avoir 16 à 25 ans révolus, être demandeur d'emploi de 26 ans et plus, ou bénéficiaire de minima sociaux",
+      "Signer un contrat de professionnalisation avec une entreprise du transport",
+    ],
+    modalites: [
+      "Trouver une entreprise d'accueil",
+      "Signature du contrat (CDD ou CDI)",
+      "Formation financée par l'OPCO, rémunération prise en charge selon l'âge et le niveau",
+    ],
+  },
+  APP: {
+    scope: "rncp",
+    intro:
+      "Le contrat d'apprentissage est un contrat de travail en alternance permettant de préparer un titre professionnel inscrit au RNCP, tout en étant rémunéré. Il concerne nos titres professionnels.",
+    prerequis: [
+      "Avoir entre 16 et 29 ans révolus (dérogations possibles, notamment pour les travailleurs handicapés)",
+      "Signer un contrat d'apprentissage avec une entreprise",
+      "Préparer un titre professionnel enregistré au RNCP",
+    ],
+    modalites: [
+      "Trouver une entreprise d'accueil",
+      "Signature du contrat d'apprentissage",
+      "Formation financée par l'OPCO, rémunération selon l'âge et l'année du contrat",
+    ],
+  },
+  PTP: {
+    scope: "registered",
+    intro:
+      "Le Projet de Transition Professionnelle (PTP, ex-CIF, aussi appelé CPF de transition) permet à un salarié de s'absenter pour suivre une formation certifiante en vue d'une reconversion, avec maintien partiel de sa rémunération.",
+    prerequis: [
+      "Être salarié et justifier de l'ancienneté requise (24 mois dont 12 dans l'entreprise, sauf cas particuliers)",
+      "Viser une certification RNCP/RS dans le cadre d'un projet de reconversion",
+    ],
+    modalites: [
+      "Constituer le dossier auprès de l'association Transitions Pro de sa région",
+      "Demander une autorisation d'absence à son employeur",
+      "Validation et financement par Transitions Pro (maintien partiel du salaire)",
+    ],
+  },
+  REG: {
+    scope: "all",
+    intro:
+      "Les Régions financent des programmes de formation pour les métiers en tension, dont le transport routier, principalement à destination des demandeurs d'emploi.",
+    prerequis: [
+      "Être demandeur d'emploi",
+      "Formation inscrite au programme régional de formation",
+    ],
+    modalites: [
+      "Vérifier l'éligibilité auprès de la Région ou de France Travail",
+      "Inscription via l'organisme de formation",
+    ],
+  },
+};
+
 export interface Profil {
   id: string;
   label: string;
