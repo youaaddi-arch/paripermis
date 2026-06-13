@@ -17,6 +17,9 @@ export default function Counter({ value, className = "" }: { value: string; clas
   const [n, setN] = useState(0);
   const started = useRef(false);
 
+  // Valeur non numérique (ex. "Meilleur") : affichage tel quel, sans animation.
+  const isNumeric = match !== null;
+
   useEffect(() => {
     const el = ref.current;
     if (!el || target === 0) {
@@ -44,6 +47,10 @@ export default function Counter({ value, className = "" }: { value: string; clas
   }, [target]);
 
   const display = decimals > 0 ? n.toFixed(decimals) : Math.round(n).toLocaleString("fr-FR");
+
+  if (!isNumeric) {
+    return <span ref={ref} className={className}>{value}</span>;
+  }
 
   return (
     <span ref={ref} className={className}>

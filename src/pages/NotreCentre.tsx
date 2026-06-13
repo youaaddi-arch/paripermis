@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 const formateurPoints = [
   "Formateurs certifiés BEPECASER mention lourds",
-  "Plus de 15 ans d'expérience en moyenne",
+  "20 ans d'expérience en moyenne",
   "Pédagogie adaptée à chaque profil",
   "Suivi individualisé de chaque stagiaire",
 ];
@@ -34,7 +34,7 @@ export default function NotreCentre() {
             <div className="mt-4 space-y-4 text-slate-600">
               <p>
                 PariPermis est un centre de formation spécialisé dans le transport routier, implanté à Longjumeau
-                (Essonne). Depuis plus de 15 ans, nous formons les conducteurs professionnels de demain.
+                (Essonne). Depuis 20 ans, nous formons les conducteurs professionnels de demain.
               </p>
               <p>
                 Notre mission : vous accompagner vers l'obtention de votre permis poids lourd ou titre professionnel avec

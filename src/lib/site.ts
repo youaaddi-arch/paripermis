@@ -10,20 +10,20 @@ export const site = {
   agrement: "Agrément n° E1709100250",
   rating: "4,8",
   reviews: "793",
-  successRate: "92%",
+  successRate: "83%",
 };
 
 export const stats = [
-  { value: "2 500+", label: "Élèves formés" },
-  { value: "92%", label: "Taux de réussite" },
-  { value: "87%", label: "Insertion professionnelle" },
-  { value: "15+", label: "Années d'expérience" },
+  { value: "4 500", label: "Formations par an" },
+  { value: "83%", label: "Réussite au permis" },
+  { value: "Meilleur", label: "Rapport qualité / prix" },
+  { value: "20 ans", label: "D'expérience" },
 ];
 
 export const badges = [
   "Certifié Qualiopi",
   "Agrément préfectoral",
   "Éligible CPF",
-  "92% de réussite",
+  "83% de réussite",
   "Longjumeau (91)",
 ];
