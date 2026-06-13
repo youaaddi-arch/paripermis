@@ -7,7 +7,7 @@ export default function Formations() {
   const { marchandises, voyageurs } = useFormationsByCategory();
   return (
     <>
-      <section className="bg-brand-navy py-16 text-center text-white">
+      <section className="relative overflow-hidden bg-immersive py-16 text-center text-white">
         <div className="container">
           <h1 className="text-4xl font-extrabold text-white">Nos Formations</h1>
           <p className="mx-auto mt-3 max-w-2xl text-white/75">

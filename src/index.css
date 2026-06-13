@@ -16,30 +16,90 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  /* léger soulèvement + ombre au survol pour tous les boutons */
+  .btn:hover {
+    @apply -translate-y-0.5;
   }
   .btn-green {
-    @apply btn bg-brand-green text-white hover:bg-brand-green-dark focus:ring-brand-green;
+    @apply btn bg-brand-green text-white hover:bg-brand-green-dark hover:shadow-glow focus:ring-brand-green;
   }
   .btn-navy {
     @apply btn bg-brand-navy text-white hover:bg-brand-navy-light focus:ring-brand-navy;
   }
   .btn-outline {
-    @apply btn border border-slate-300 bg-white text-brand-navy hover:bg-slate-50 focus:ring-slate-300;
+    @apply btn border border-slate-300 bg-white text-brand-navy hover:bg-slate-50 hover:border-brand-green/40 focus:ring-slate-300;
   }
   .btn-blue {
-    @apply btn bg-brand-blue text-white hover:bg-blue-700 focus:ring-brand-blue;
+    @apply btn bg-brand-blue text-white hover:bg-blue-700 hover:shadow-glow-blue focus:ring-brand-blue;
   }
   .section {
     @apply py-16 md:py-20;
   }
   .eyebrow {
-    @apply inline-flex items-center gap-1.5 rounded-full bg-brand-green/10 px-3 py-1 text-xs font-semibold text-brand-green;
+    @apply inline-flex items-center gap-1.5 rounded-full bg-brand-green/10 px-3 py-1 text-xs font-semibold text-brand-green ring-1 ring-brand-green/15;
   }
   .card {
-    @apply rounded-xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md;
+    @apply rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300;
+  }
+  /* carte interactive : soulèvement + bordure verte + ombre douce */
+  .card-hover {
+    @apply hover:-translate-y-1.5 hover:border-brand-green/30 hover:shadow-soft;
   }
   .input {
     @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-700 outline-none transition focus:border-brand-green focus:ring-2 focus:ring-brand-green/20;
+  }
+}
+
+@layer utilities {
+  /* Texte en dégradé animé */
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-green via-emerald-400 to-brand-cyan bg-clip-text text-transparent;
+    background-size: 200% auto;
+    animation: gradient-x 6s ease infinite;
+  }
+  /* Effet verre dépoli */
+  .glass {
+    @apply border border-white/15 bg-white/10 backdrop-blur-md;
+  }
+  /* Fond dégradé immersif (héros / CTA) */
+  .bg-immersive {
+    background:
+      radial-gradient(1100px 500px at 15% -10%, rgba(34, 211, 238, 0.18), transparent 60%),
+      radial-gradient(900px 500px at 100% 0%, rgba(22, 163, 74, 0.22), transparent 55%),
+      linear-gradient(135deg, #0b1a36 0%, #0f1f3d 55%, #16305f 100%);
+  }
+  /* Grille discrète en surimpression */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  /* Reveal au scroll (piloté par IntersectionObserver) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .animate-float,
+  .animate-float-slow,
+  .animate-blob,
+  .text-gradient,
+  .animate-marquee {
+    animation: none !important;
   }
 }

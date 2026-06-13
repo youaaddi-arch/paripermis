@@ -91,3 +91,22 @@ export function localAnswer(question: string): string {
   // Défaut
   return `Je n'ai pas toutes les infos sur ce point précis. Voici ce que je peux vous montrer :\n• Nos formations : /formations\n• Les financements : /financement\n• Le simulateur de parcours : /simulateur\n\nPour une réponse personnalisée : ${site.phone} ou /contact`;
 }
+
+/** Suggestions de questions contextuelles affichées sous la conversation. */
+export function suggestFollowups(lastQuestion?: string): string[] {
+  const n = lastQuestion ? norm(lastQuestion) : "";
+  if (/financ|cpf|aif|opco/.test(n))
+    return ["Suis-je éligible au CPF ?", "Pièces du dossier PTP ?", "Combien coûte le permis CE ?"];
+  if (/prix|tarif|cout/.test(n))
+    return ["Comment financer ma formation ?", "Quels sont les prérequis ?", "Voir toutes les formations"];
+  if (/permis|formation|fimo|fco|titre/.test(n))
+    return ["Quel est le tarif ?", "Quels prérequis ?", "Comment financer ?"];
+  if (/metier|chauffeur|salaire/.test(n))
+    return ["Quelle formation pour ce métier ?", "Simuler mon projet", "Comment financer ?"];
+  return [
+    "Comment financer ma formation ?",
+    "Devenir chauffeur poids lourd ?",
+    "Prérequis du permis C ?",
+    "Vous contacter",
+  ];
+}
