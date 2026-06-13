@@ -9,8 +9,10 @@ import FormationCard from "@/components/FormationCard";
 import FinalCta from "@/components/FinalCta";
 import Reveal from "@/components/Reveal";
 import Counter from "@/components/Counter";
+import DrivingTruck from "@/components/DrivingTruck";
 import { site, stats, badges } from "@/lib/site";
 import { useFormationsByCategory } from "@/lib/formations";
+import { articles } from "@/data/articles";
 
 const heroBadgeIcons = [ShieldCheck, BadgeCheck, CreditCard, TrendingUp, MapPin];
 
@@ -335,6 +337,63 @@ export default function Home() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BLOG sur fond bleu avec camion animé */}
+      <section className="relative isolate overflow-hidden bg-immersive py-20 text-white">
+        <div className="absolute inset-0 -z-10 bg-grid opacity-25" />
+        <div className="absolute -right-16 top-0 -z-10 h-72 w-72 rounded-full bg-brand-cyan/20 blur-3xl animate-blob" />
+        <div className="container">
+          <Reveal className="max-w-2xl">
+            <span className="glass inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold text-white/90">
+              Blog
+            </span>
+            <h2 className="mt-3 text-3xl font-extrabold text-white md:text-4xl">
+              Conseils & actualités du <span className="text-gradient">transport</span>
+            </h2>
+            <p className="mt-3 text-white/75">
+              Formations, réglementation, financement et métiers : nos guides pour réussir votre projet.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {articles.map((a, i) => (
+              <Reveal key={a.title} delay={(i % 4) * 90}>
+                <Link
+                  to="/blog"
+                  className="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-white/25 hover:bg-white/10"
+                >
+                  <div className="h-36 overflow-hidden">
+                    <img
+                      src={a.image}
+                      alt={a.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
+                  <div className="flex flex-1 flex-col p-5">
+                    <span className="self-start rounded-full bg-brand-green/20 px-2.5 py-0.5 text-xs font-semibold text-emerald-300">
+                      {a.tag}
+                    </span>
+                    <h3 className="mt-3 text-sm font-bold leading-snug text-white">{a.title}</h3>
+                    <p className="mt-2 line-clamp-3 text-xs text-white/65">{a.excerpt}</p>
+                    <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-brand-cyan transition-all group-hover:gap-2">
+                      Lire l'article <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <DrivingTruck />
+
+          <div className="text-center">
+            <Link to="/blog" className="btn glass text-white hover:bg-white/20">
+              Voir tous les articles <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
