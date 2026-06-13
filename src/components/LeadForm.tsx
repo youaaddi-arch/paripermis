@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CheckCircle2, Send } from "lucide-react";
-import { formations } from "@/data/formations";
+import { useFormations } from "@/lib/formations";
 
 interface Props {
   submitLabel?: string;
@@ -9,6 +9,7 @@ interface Props {
 
 export default function LeadForm({ submitLabel = "Envoyer ma demande", defaultFormation = "" }: Props) {
   const [sent, setSent] = useState(false);
+  const formations = useFormations();
 
   if (sent) {
     return (

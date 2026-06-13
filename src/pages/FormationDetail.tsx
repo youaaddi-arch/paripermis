@@ -2,9 +2,9 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import {
   ArrowLeft, ArrowRight, Clock, Phone, MapPin, CheckCircle2, Target,
   Users, ListChecks, Wrench, ClipboardCheck, CalendarClock, Accessibility,
-  Briefcase, Award,
+  Briefcase, Award, Download, FileText, ShieldCheck,
 } from "lucide-react";
-import { getFormation } from "@/data/formations";
+import { useFormation } from "@/lib/formations";
 import { dispositifs } from "@/data/financements";
 import { site } from "@/lib/site";
 
@@ -36,7 +36,7 @@ function BulletList({ items }: { items: string[] }) {
 
 export default function FormationDetail() {
   const { slug } = useParams();
-  const f = getFormation(slug || "");
+  const f = useFormation(slug);
   if (!f) return <Navigate to="/formations" replace />;
 
   const accent = f.category === "marchandises" ? "text-brand-blue" : "text-brand-green";
@@ -51,9 +51,16 @@ export default function FormationDetail() {
           <Link to="/formations" className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white">
             <ArrowLeft className="h-4 w-4" /> Retour aux formations
           </Link>
-          <span className="mt-5 inline-block rounded-full bg-brand-green px-3 py-1 text-xs font-semibold">
-            {f.kind}
-          </span>
+          <div className="mt-5 flex flex-wrap items-center gap-2">
+            <span className="inline-block rounded-full bg-brand-green px-3 py-1 text-xs font-semibold">
+              {f.kind}
+            </span>
+            {f.qualiopi !== false && (
+              <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold ring-1 ring-white/25">
+                <ShieldCheck className="h-3.5 w-3.5 text-brand-green" /> Certifié Qualiopi
+              </span>
+            )}
+          </div>
           <h1 className="mt-4 max-w-3xl text-3xl font-extrabold text-white md:text-4xl">{f.title}</h1>
           <p className="mt-3 inline-flex items-center gap-2 text-white/80">
             <Clock className="h-4 w-4" /> {f.duration}
@@ -67,6 +74,17 @@ export default function FormationDetail() {
             <Link to="/contact" className="btn bg-white/10 text-white ring-1 ring-white/30 hover:bg-white/20">
               Demander un devis
             </Link>
+            {f.programmePdfUrl && (
+              <a
+                href={f.programmePdfUrl}
+                target="_blank"
+                rel="noreferrer"
+                download
+                className="btn bg-white text-brand-navy hover:bg-white/90"
+              >
+                <Download className="h-4 w-4" /> Télécharger le programme
+              </a>
+            )}
           </div>
         </div>
       </section>
@@ -132,6 +150,27 @@ export default function FormationDetail() {
               <Link to="/contact" className="btn-green mt-4 w-full">Demander un devis</Link>
               <Link to="/inscription" className="btn-outline mt-2 w-full">S'inscrire</Link>
             </div>
+
+            {f.programmePdfUrl && (
+              <div className="card p-6">
+                <p className="flex items-center gap-2 text-sm font-semibold text-brand-navy">
+                  <FileText className="h-4 w-4 text-brand-green" /> Programme de formation
+                </p>
+                <p className="mt-2 text-xs text-slate-500">
+                  Téléchargez le programme détaillé au format PDF (objectifs, prérequis, contenu, évaluation,
+                  certification).
+                </p>
+                <a
+                  href={f.programmePdfUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  download
+                  className="btn-outline mt-4 w-full"
+                >
+                  <Download className="h-4 w-4" /> Télécharger le PDF
+                </a>
+              </div>
+            )}
 
             <div className="card bg-brand-navy p-6 text-white">
               <p className="text-sm font-semibold">Une question ?</p>
