@@ -15,10 +15,27 @@ export default function Simulateur() {
 
   const selectedMetier = metiers.find((m) => m.name === metier);
   const profil = profils.find((p) => p.id === statut);
-  const reco = selectedMetier
-    ? formations.filter((f) => f.category === selectedMetier.category).slice(0, 4)
-    : [];
-  const aides = profil ? dispositifs.filter((d) => profil.codes.includes(d.code)) : [];
+
+  // Parcours du métier, avec leurs formations résolues.
+  const parcoursList = (selectedMetier?.parcours ?? []).map((p) => ({
+    ...p,
+    formations: p.formationSlugs.map((s) => formations.find((f) => f.slug === s)).filter(Boolean) as typeof formations,
+  }));
+
+  // Financements applicables à un parcours = éligibilité liée au statut
+  // ET au type de formation (apprentissage = RNCP ; transition pro = RNCP/RS).
+  const financementsFor = (parcoursFormations: typeof formations) => {
+    if (!profil) return [];
+    const kinds = parcoursFormations.map((f) => f.kind);
+    const hasRNCP = kinds.includes("Titre Professionnel");
+    const hasRegistered = kinds.some((k) => k === "Titre Professionnel" || k === "Formation Obligatoire");
+    const codes = profil.codes.filter((c) => {
+      if (c === "APP") return hasRNCP; // contrat d'apprentissage : RNCP uniquement
+      if (c === "PTP") return hasRegistered; // transition pro : RNCP / RS uniquement
+      return true;
+    });
+    return dispositifs.filter((d) => codes.includes(d.code));
+  };
 
   const reset = () => {
     setStep(0);
@@ -129,26 +146,69 @@ export default function Simulateur() {
                 Profil : {profil.label} · Salaire débutant {selectedMetier.salaire}
               </p>
 
-              <h3 className="mt-8 text-base font-bold text-brand-navy">Formations recommandées</h3>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                {reco.map((f) => (
-                  <Link key={f.slug} to={`/formations/${f.slug}`} className="card p-4 hover:border-brand-green/40">
-                    <p className="font-semibold text-brand-navy">{f.cardTitle}</p>
-                    <p className="text-xs text-slate-500">{f.duration}</p>
-                    <span className="mt-2 inline-flex items-center gap-1 text-sm font-semibold text-brand-blue">
-                      Voir la formation <ArrowRight className="h-3.5 w-3.5" />
-                    </span>
-                  </Link>
-                ))}
-              </div>
+              <h3 className="mt-8 text-base font-bold text-brand-navy">
+                Vos parcours possibles ({parcoursList.length})
+              </h3>
+              <p className="mt-1 text-sm text-slate-500">
+                Pour ce métier, plusieurs parcours mènent à l'emploi. Les financements ci-dessous tiennent compte de votre
+                statut <span className="font-medium text-brand-navy">({profil.label})</span> et du type de formation.
+              </p>
 
-              <h3 className="mt-8 text-base font-bold text-brand-navy">Vos financements possibles</h3>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {aides.map((a) => (
-                  <span key={a.code} className="rounded-full bg-brand-green/10 px-3 py-1.5 text-sm font-medium text-brand-green">
-                    {a.name}
-                  </span>
-                ))}
+              <div className="mt-5 space-y-5">
+                {parcoursList.map((p, idx) => {
+                  const aides = financementsFor(p.formations);
+                  return (
+                    <div key={p.id} className="card p-5">
+                      <div className="flex items-baseline gap-2">
+                        <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-green/10 text-xs font-bold text-brand-green">
+                          {idx + 1}
+                        </span>
+                        <p className="font-bold text-brand-navy">{p.title}</p>
+                      </div>
+                      <p className="mt-2 text-sm text-slate-500">{p.description}</p>
+
+                      <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                        {p.formations.map((f) => (
+                          <Link
+                            key={f.slug}
+                            to={`/formations/${f.slug}`}
+                            className="rounded-lg border border-slate-200 p-3 hover:border-brand-green/40"
+                          >
+                            <p className="text-sm font-semibold text-brand-navy">{f.cardTitle}</p>
+                            <p className="text-xs text-slate-500">{f.duration}</p>
+                            <span className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-brand-blue">
+                              Voir la formation <ArrowRight className="h-3 w-3" />
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+
+                      {p.note && (
+                        <p className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800">{p.note}</p>
+                      )}
+
+                      <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-slate-400">
+                        Financements possibles
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {aides.length > 0 ? (
+                          aides.map((a) => (
+                            <span
+                              key={a.code}
+                              className="rounded-full bg-brand-green/10 px-3 py-1.5 text-sm font-medium text-brand-green"
+                            >
+                              {a.name}
+                            </span>
+                          ))
+                        ) : (
+                          <span className="text-sm text-slate-400">
+                            Aucun dispositif standard pour ce statut — contactez-nous pour étudier votre situation.
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
 
               <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-xl bg-slate-50 p-6">
