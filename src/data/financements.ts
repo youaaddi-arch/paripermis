@@ -168,15 +168,16 @@ export const dispositifDetails: Record<string, DispositifDetail> = {
   POE: {
     scope: "all",
     intro:
-      "La Préparation Opérationnelle à l'Emploi Individuelle (POEI) finance une formation d'adaptation au poste avant une embauche, lorsque l'employeur identifie un écart de compétences.",
+      "La Préparation Opérationnelle à l'Emploi Individuelle (POEI) finance une formation d'adaptation au poste avant une embauche, lorsque l'employeur identifie un écart de compétences à combler.",
     prerequis: [
-      "Être demandeur d'emploi inscrit à France Travail",
-      "Disposer d'une promesse d'embauche (CDD d'au moins 6 mois, CDI ou contrat de professionnalisation)",
-      "Un besoin d'adaptation des compétences au poste proposé",
+      "Être demandeur d'emploi inscrit à France Travail (indemnisé ou non)",
+      "Disposer d'une offre d'emploi déposée par l'employeur : CDI, CDD d'au moins 6 mois, contrat de professionnalisation ou d'apprentissage d'au moins 6 mois, contrat saisonnier d'au moins 4 mois, ou intérim (6 mois cumulés sur 9 mois)",
+      "Un écart de compétences à combler entre votre profil et le poste proposé",
     ],
     modalites: [
-      "L'employeur dépose la demande auprès de France Travail (et/ou de l'OPCO)",
-      "Réalisation de la formation d'adaptation (jusqu'à 400 heures)",
+      "L'employeur dépose la demande auprès de son conseiller France Travail",
+      "Réalisation de la formation d'adaptation au poste (jusqu'à 450 heures, 600 heures pour certains publics)",
+      "Validation du plan de formation par le candidat, puis par France Travail",
       "Embauche du candidat à l'issue de la formation",
     ],
   },
