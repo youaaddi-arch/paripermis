@@ -74,26 +74,6 @@ export default function Footer() {
           <p>© 2026 PariPermis — Centre de formation transport routier. Tous droits réservés.</p>
           <p>{site.agrement} — Centre certifié Qualiopi</p>
         </div>
-        <div className="container pb-4 text-center text-[10px] text-white/30">
-          Vidéo d'accueil :{" "}
-          <a
-            href="https://commons.wikimedia.org/wiki/File:Truck_Driving_on_Southern_Nevada_Liteweight_Road_in_The_Mojave_Desert.webm"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-white/60"
-          >
-            Thomas Farley
-          </a>{" "}
-          — Wikimedia Commons,{" "}
-          <a
-            href="https://creativecommons.org/publicdomain/zero/1.0/"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-white/60"
-          >
-            CC0
-          </a>
-        </div>
       </div>
     </footer>
   );
