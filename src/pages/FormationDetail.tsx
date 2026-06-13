@@ -66,6 +66,25 @@ export default function FormationDetail() {
             <Clock className="h-4 w-4" /> {f.duration}
           </p>
           <p className="mt-2 font-semibold text-brand-green">{f.price}</p>
+          {(f.rncpCode || f.rsCode || f.certifInfo) && (
+            <div className="mt-4 flex flex-wrap gap-2">
+              {f.rncpCode && (
+                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/25">
+                  Code RNCP {f.rncpCode}
+                </span>
+              )}
+              {f.rsCode && (
+                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/25">
+                  Code RS {f.rsCode}
+                </span>
+              )}
+              {f.certifInfo && (
+                <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/25">
+                  N° Certif'Info {f.certifInfo}
+                </span>
+              )}
+            </div>
+          )}
           <p className="mt-4 max-w-2xl text-white/75">{f.summary}</p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link to="/inscription" className="btn-green">
@@ -137,50 +156,6 @@ export default function FormationDetail() {
 
           <Block icon={Award} title="Certification / Validation">
             <p>{f.certification}</p>
-            {(f.rncpCode || f.rsCode || f.certifInfo || f.franceCompetencesUrl || f.carifOrefUrl) && (
-              <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5">
-                <p className="text-sm font-semibold text-brand-navy">Enregistrement officiel</p>
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  {f.rncpCode && (
-                    <li className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-brand-navy ring-1 ring-slate-200">
-                      Code RNCP {f.rncpCode}
-                    </li>
-                  )}
-                  {f.rsCode && (
-                    <li className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-brand-navy ring-1 ring-slate-200">
-                      Code RS {f.rsCode}
-                    </li>
-                  )}
-                  {f.certifInfo && (
-                    <li className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-brand-navy ring-1 ring-slate-200">
-                      N° Certif'Info {f.certifInfo}
-                    </li>
-                  )}
-                </ul>
-                <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
-                  {f.franceCompetencesUrl && (
-                    <a
-                      href={f.franceCompetencesUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:gap-2.5 transition-all"
-                    >
-                      Fiche France Compétences <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  )}
-                  {f.carifOrefUrl && (
-                    <a
-                      href={f.carifOrefUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:gap-2.5 transition-all"
-                    >
-                      Fiche CARIF OREF <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  )}
-                </div>
-              </div>
-            )}
           </Block>
         </div>
 
@@ -196,6 +171,53 @@ export default function FormationDetail() {
               <Link to="/contact" className="btn-green mt-4 w-full">Demander un devis</Link>
               <Link to="/inscription" className="btn-outline mt-2 w-full">S'inscrire</Link>
             </div>
+
+            {(f.rncpCode || f.rsCode || f.certifInfo || f.franceCompetencesUrl || f.carifOrefUrl) && (
+              <div className="card border-brand-green/30 p-6">
+                <p className="flex items-center gap-2 text-sm font-semibold text-brand-navy">
+                  <Award className="h-4 w-4 text-brand-green" /> Enregistrement officiel
+                </p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {f.rncpCode && (
+                    <li className="rounded-full bg-brand-green/10 px-3 py-1 text-xs font-bold text-brand-green">
+                      RNCP {f.rncpCode}
+                    </li>
+                  )}
+                  {f.rsCode && (
+                    <li className="rounded-full bg-brand-green/10 px-3 py-1 text-xs font-bold text-brand-green">
+                      RS {f.rsCode}
+                    </li>
+                  )}
+                  {f.certifInfo && (
+                    <li className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-brand-navy">
+                      Certif'Info {f.certifInfo}
+                    </li>
+                  )}
+                </ul>
+                <div className="mt-4 space-y-2">
+                  {f.franceCompetencesUrl && (
+                    <a
+                      href={f.franceCompetencesUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2 text-sm font-semibold text-brand-navy hover:border-brand-green/50 hover:text-brand-green transition-colors"
+                    >
+                      Fiche France Compétences <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                  {f.carifOrefUrl && (
+                    <a
+                      href={f.carifOrefUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex items-center justify-between rounded-lg border border-slate-200 px-3 py-2 text-sm font-semibold text-brand-navy hover:border-brand-green/50 hover:text-brand-green transition-colors"
+                    >
+                      Fiche CARIF OREF <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                </div>
+              </div>
+            )}
 
             {f.programmePdfUrl && (
               <div className="card p-6">
