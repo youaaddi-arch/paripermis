@@ -6,6 +6,7 @@ import {
 import { dispositifs, dispositifDetails } from "@/data/financements";
 import { useFormations } from "@/lib/formations";
 import { site } from "@/lib/site";
+import OpcoFinder from "@/components/OpcoFinder";
 
 function Block({ icon: Icon, title, children }: { icon: any; title: string; children: React.ReactNode }) {
   return (
@@ -91,6 +92,12 @@ export default function FinancementDetail() {
 
           {detail.avantages && detail.avantages.length > 0 && (
             <Block icon={Sparkles} title="Avantages"><BulletList items={detail.avantages} /></Block>
+          )}
+
+          {d.code === "OPCO" && (
+            <section className="border-t border-slate-200 pt-7">
+              <OpcoFinder />
+            </section>
           )}
 
           <Block icon={GraduationCap} title={`Formations concernées — ${scopeLabel}`}>
