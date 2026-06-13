@@ -142,7 +142,8 @@ export const dispositifDetails: Record<string, DispositifDetail> = {
       "Créer ou activer son compte sur Mon Compte Formation (connexion FranceConnect+)",
       "Rechercher la formation PariPermis et vérifier son solde de droits",
       "Envoyer la demande d'inscription en ligne (délai minimum de 11 jours ouvrés avant le début)",
-      "Si le solde est insuffisant, solliciter un abondement (employeur ou France Travail), puis valider le dossier",
+      "Si le solde est insuffisant, solliciter un abondement (employeur ou France Travail)",
+      "Régler la participation forfaitaire de 150 € (sauf exonération : demandeur d'emploi, abondement employeur/France Travail, C2P), puis valider le dossier",
     ],
     avantages: [
       "Financement total ou partiel sans avance de frais",
