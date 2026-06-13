@@ -1,14 +1,20 @@
 import { createClient } from "@sanity/client";
 import type { Formation } from "@/data/formations";
 
-export const sanityClient = createClient({
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID || "yguvu8t3",
-  dataset: import.meta.env.VITE_SANITY_DATASET || "production",
-  apiVersion: "2024-01-01",
-  useCdn: true,
-});
+// Sanity est OPTIONNEL et entièrement piloté par variables d'environnement.
+// Aucun identifiant de projet n'est codé en dur : si VITE_SANITY_PROJECT_ID
+// n'est pas défini, le site fonctionne uniquement sur ses données intégrées
+// (src/data/formations.ts). Cela garantit la portabilité : le dépôt peut être
+// transféré sur un autre compte sans aucun lien vers un compte tiers.
+const projectId = import.meta.env.VITE_SANITY_PROJECT_ID as string | undefined;
+const dataset = (import.meta.env.VITE_SANITY_DATASET as string | undefined) || "production";
 
-// Récupère le programme PDF : priorité au fichier uploadé dans Sanity, sinon URL fournie.
+export const sanityEnabled = Boolean(projectId);
+
+export const sanityClient = sanityEnabled
+  ? createClient({ projectId: projectId!, dataset, apiVersion: "2024-01-01", useCdn: true })
+  : null;
+
 const FORMATIONS_QUERY = `*[_type == "formation"] | order(order asc){
   "slug": slug.current,
   category, kind, title, cardTitle, cardSubtitle, durationBadge, duration, price,
@@ -20,6 +26,7 @@ const FORMATIONS_QUERY = `*[_type == "formation"] | order(order asc){
 }`;
 
 export async function fetchFormations(): Promise<Formation[]> {
+  if (!sanityClient) return [];
   const res = await sanityClient.fetch<Formation[]>(FORMATIONS_QUERY);
   return (res || []).filter((f) => f && f.slug);
 }

@@ -19,7 +19,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const PDF_DIR = join(ROOT, "public", "programmes");
 
-const projectId = process.env.SANITY_PROJECT_ID || "yguvu8t3";
+const projectId = process.env.SANITY_PROJECT_ID;
 const dataset = process.env.SANITY_DATASET || "production";
 const token = process.env.SANITY_WRITE_TOKEN;
 
@@ -227,8 +227,10 @@ async function main() {
     console.log(`PDF généré : public/programmes/${f.slug}.pdf`);
   }
 
-  if (!token) {
-    console.log("\nSANITY_WRITE_TOKEN absent → documents Sanity non créés (PDF générés uniquement).");
+  if (!token || !projectId) {
+    console.log(
+      "\nSANITY_WRITE_TOKEN ou SANITY_PROJECT_ID absent → documents Sanity non créés (PDF générés uniquement)."
+    );
     return;
   }
 
