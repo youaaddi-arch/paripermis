@@ -39,11 +39,19 @@ const ML = 50; // marge gauche
 const MR = 545; // bord droit du contenu
 const CW = MR - ML; // largeur de contenu
 
+function drawWordmark(doc: PDFKit.PDFDocument, x: number, y: number, size: number, onDark: boolean) {
+  const pariColor = onDark ? "#ffffff" : NAVY;
+  doc.font("Helvetica-Bold").fontSize(size);
+  doc.fillColor(pariColor).text("Pari", x, y, { continued: true });
+  doc.fillColor("#22c55e").text("permis", { continued: true });
+  doc.fontSize(size * 0.5).fillColor(onDark ? "#7dd3a8" : GREEN).text(" ®", { continued: false });
+}
+
 function slimHeader(doc: PDFKit.PDFDocument) {
   doc.save();
   doc.rect(0, 0, PAGE_W, 60).fill(NAVY);
   doc.rect(0, 60, PAGE_W, 3).fill(GREEN);
-  doc.fillColor("#ffffff").font("Helvetica-Bold").fontSize(13).text("PariPermis", ML, 22);
+  drawWordmark(doc, ML, 21, 13, true);
   doc.fillColor("#9fb3c8").font("Helvetica").fontSize(8).text("Programme de formation", ML, 40);
   doc.fillColor("#7dd3a8").font("Helvetica-Bold").fontSize(8).text("CERTIFIÉ QUALIOPI", MR - 160, 31, { width: 160, align: "right", characterSpacing: 0.6 });
   doc.restore();
@@ -57,8 +65,8 @@ function hero(doc: PDFKit.PDFDocument, f: Formation) {
   // bande décorative
   doc.rect(0, 0, 6, 150).fill(GREEN);
   doc.rect(0, 150, PAGE_W, 5).fill(GREEN);
-  // marque
-  doc.fillColor("#ffffff").font("Helvetica-Bold").fontSize(24).text("PariPermis", ML, 38);
+  // marque (logo PariPermis)
+  drawWordmark(doc, ML, 36, 24, true);
   doc.fillColor("#7dd3a8").font("Helvetica-Bold").fontSize(9).text("CENTRE DE FORMATION · TRANSPORT ROUTIER", ML, 72, { characterSpacing: 1 });
   doc.fillColor("#cbd5e1").font("Helvetica").fontSize(9).text("Programme détaillé de formation", ML, 88);
   // badge Qualiopi
@@ -178,19 +186,29 @@ function generatePdf(f: Formation): Promise<void> {
     paragraph(doc, f.certification);
 
     // --- Pieds de page numérotés (toutes les pages) ---
+    // On fige le nombre de pages AVANT la boucle : on n'écrit que sur ces pages.
     const range = doc.bufferedPageRange();
-    for (let i = 0; i < range.count; i++) {
+    const total = range.count;
+    const fy = 794;
+    for (let i = 0; i < total; i++) {
       doc.switchToPage(range.start + i);
-      const fy = 794;
+      // Neutralise la marge basse pour que le tracé du pied de page
+      // ne déclenche JAMAIS l'ajout automatique d'une nouvelle page (pages blanches).
+      doc.page.margins.bottom = 0;
       doc.save();
       doc.strokeColor(BORDER).lineWidth(0.8).moveTo(ML, fy).lineTo(MR, fy).stroke();
       doc.fillColor(MUTED).font("Helvetica").fontSize(7.5).text(
         "PariPermis · Centre de formation au transport routier certifié Qualiopi · Document non contractuel",
-        ML, fy + 7, { width: 370, lineBreak: false }
+        ML, fy + 7, { width: 380, lineBreak: false }
       );
-      doc.fillColor(MUTED).font("Helvetica").fontSize(8).text(`Page ${i + 1} / ${range.count}`, MR - 100, fy + 7, { width: 100, align: "right" });
+      doc.fillColor(MUTED).font("Helvetica").fontSize(8).text(`Page ${i + 1} / ${total}`, MR - 100, fy + 7, {
+        width: 100,
+        align: "right",
+        lineBreak: false,
+      });
       doc.restore();
     }
+    doc.flushPages();
 
     doc.end();
   });
