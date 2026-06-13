@@ -1,4 +1,4 @@
-export type Category = "marchandises" | "voyageurs";
+export type Category = "marchandises" | "voyageurs" | "auto";
 
 export interface Formation {
   slug: string;
@@ -38,6 +38,10 @@ const TRUCK = "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto
 const TRUCK2 = "https://images.unsplash.com/photo-1591768793355-74d04bb6608f?auto=format&fit=crop&w=900&q=80";
 const BUS = "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=900&q=80";
 const BUS2 = "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=80";
+const CAR = "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=900&q=80";
+const CAR2 = "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=80";
+const MOTO = "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=900&q=80";
+const CODE = "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80";
 
 const CPF_INTRO =
   "Inscription après vérification des prérequis. Délai : 14 jours à compter de la demande, sous réserve de réponse favorable du financeur et de disponibilité.";
@@ -827,6 +831,348 @@ const formationsData: Formation[] = [
     certification:
       "Carte de Qualification de Conducteur (CQC) Voyageurs délivrée par l'Imprimerie Nationale — Validité 5 ans. Formation éligible au CPF.",
     image: BUS,
+  },
+
+  // ---------------------- AUTO / MOTO ----------------------
+  {
+    slug: "permis-b",
+    category: "auto",
+    kind: "Permis",
+    title: "Permis B — Voiture (boîte manuelle)",
+    cardTitle: "Permis B",
+    cardSubtitle: "Voiture & utilitaire ≤ 3,5t",
+    durationBadge: "Parcours sur-mesure",
+    duration: "Formation individualisée selon l'évaluation de départ (forfait adapté à chaque candidat)",
+    price: "Sur devis — évaluation d'1 h offerte en agence",
+    summary:
+      "Le permis de la catégorie B permet la conduite de tous les véhicules de tourisme et des véhicules utilitaires dont le poids total en charge ne dépasse pas 3,5 tonnes. PariPermis propose une offre sur-mesure : un parcours établi à partir d'un test d'évaluation sur simulateur, tenant compte de vos prérequis, de vos disponibilités et de votre rythme de progression.",
+    objectifs: [
+      "Maîtriser le maniement du véhicule et les commandes en sécurité",
+      "Appréhender la route et circuler dans des conditions normales puis difficiles",
+      "Partager la route avec les autres usagers et respecter le Code de la route",
+      "Pratiquer une conduite autonome, sûre, citoyenne et économique (éco-conduite)",
+      "Être prêt à se présenter et réussir l'examen pratique du permis B",
+    ],
+    competences: [
+      "Connaître et utiliser les commandes, lire la signalisation et anticiper les dangers",
+      "Réaliser les vérifications de sécurité (intérieures et extérieures)",
+      "Circuler en agglomération, sur route et sur voie rapide en autonomie",
+      "Adopter les bons comportements en situation difficile (pluie, nuit, trafic dense)",
+      "Adopter une conduite éco-responsable et respectueuse de l'environnement",
+    ],
+    public:
+      "Toute personne souhaitant obtenir le permis B (conduite de véhicules de tourisme et utilitaires ≤ 3,5 t). Les personnes en situation de handicap peuvent avoir des besoins spécifiques : contactez-nous pour une analyse de vos besoins et un éventuel aménagement.",
+    prerequis: [
+      "Être âgé de 15 ans minimum pour s'inscrire (apprentissage anticipé de la conduite dès 15 ans)",
+      "Avoir 18 ans à la date de l'examen pratique (17 ans dans le cadre de la conduite accompagnée, selon la réglementation en vigueur)",
+      "Avoir obtenu ou préparer l'épreuve théorique générale (le Code de la route), en cours de validité",
+      "Réaliser une évaluation de départ afin de déterminer le volume de formation nécessaire",
+      "Savoir lire et écrire le français ; enregistrement de la demande de permis sur le site ANTS avec le centre",
+    ],
+    programme: [
+      "Évaluation de départ sur simulateur et élaboration d'un parcours individualisé",
+      "Formation au Code de la route (en salle et/ou plateforme en ligne illimitée)",
+      "Maîtrise du véhicule à allure réduite, hors circulation (commandes, manœuvres)",
+      "Conduite en circulation : agglomération, route, voies rapides",
+      "Conduite dans des conditions difficiles et gestion des situations à risque",
+      "Éco-conduite et sensibilisation à l'environnement (bonnes pratiques, pics de pollution)",
+      "Bilan de compétences et préparation à l'examen (examen blanc)",
+    ],
+    methodes: [
+      "Pédagogie individualisée à partir du niveau évalué de chaque candidat",
+      "Alternance de cours de code, de simulateur et de conduite réelle",
+      "Suivi pédagogique numérique : le moniteur note vos progrès sur tablette, consultable depuis votre compte personnel",
+    ],
+    moyens: [
+      "Moniteurs diplômés (titulaires du BEPECASER ou du Titre Pro ECSR)",
+      "Véhicules à double commande récents",
+      "Simulateurs de conduite (agglomération, autoroute, tunnel, pluie, verglas, neige, nuit, brouillard)",
+      "Plateforme de Code de la route en ligne, accès à un agenda de réservation des leçons",
+    ],
+    evaluation: [
+      "Évaluations continues de la progression consignées dans le livret numérique",
+      "Examen blanc avant présentation",
+      "Examen officiel : épreuve théorique générale (Code) puis épreuve pratique de conduite avec un inspecteur",
+    ],
+    acces:
+      "Inscription après une évaluation de départ (1 h offerte). Démarrage selon les disponibilités et le financement. Délai indicatif d'accès : sous 2 semaines après validation du dossier.",
+    accessibilite: HANDICAP,
+    debouches: [
+      "Autonomie et mobilité au quotidien (vie personnelle et professionnelle)",
+      "Accès aux emplois nécessitant le permis B",
+      "Prérequis pour les permis poids lourd (C, CE) et transport en commun (D)",
+    ],
+    certification:
+      "Permis de conduire catégorie B délivré par l'État après réussite de l'épreuve pratique. Évaluation gratuite en agence.",
+    image: CAR,
+  },
+  {
+    slug: "permis-bea",
+    category: "auto",
+    kind: "Permis",
+    title: "Permis BEA — Voiture boîte automatique (BVA)",
+    cardTitle: "Permis BEA",
+    cardSubtitle: "Voiture boîte automatique",
+    durationBadge: "13 h minimum",
+    duration: "Parcours individualisé (13 h de conduite minimum réglementaires)",
+    price: "Sur devis — évaluation d'1 h offerte en agence",
+    summary:
+      "Le permis B avec Embrayage Automatique (BEA) permet la conduite des véhicules de tourisme et utilitaires ≤ 3,5 t équipés d'une Boîte de Vitesses Automatique (BVA). Souvent plus rapide à obtenir car il nécessite moins de temps d'apprentissage du passage des vitesses, il se concentre sur la maîtrise de la circulation et de la sécurité.",
+    objectifs: [
+      "Maîtriser la conduite d'un véhicule à boîte automatique en sécurité",
+      "Connaître et appliquer les règles du Code de la route",
+      "Circuler en autonomie en agglomération, sur route et voie rapide",
+      "Adopter une conduite sûre, apaisée et économique",
+      "Être prêt à réussir l'examen pratique du permis BEA",
+    ],
+    competences: [
+      "Utiliser les commandes spécifiques d'un véhicule à boîte automatique (BVA)",
+      "Réaliser les vérifications de sécurité et les manœuvres",
+      "Conduire en circulation dans des conditions variées",
+      "Anticiper et gérer les situations à risque",
+      "Pratiquer l'éco-conduite",
+    ],
+    public:
+      "Toute personne souhaitant conduire un véhicule à boîte automatique (≤ 3,5 t). Particulièrement adapté pour une obtention plus rapide ou en cas de difficultés avec la boîte manuelle. Accessible aux personnes en situation de handicap (nous contacter).",
+    prerequis: [
+      "Être âgé d'au moins 17 ans",
+      "Avoir obtenu ou préparer le Code de la route (épreuve théorique générale) en cours de validité",
+      "Réaliser une évaluation de départ pour déterminer le nombre d'heures nécessaires",
+      "Avoir 18 ans à la date de l'examen pratique",
+      "Enregistrement de la demande de permis sur le site ANTS avec le centre",
+    ],
+    programme: [
+      "Évaluation de départ et parcours individualisé",
+      "Formation au Code de la route (salle et/ou plateforme en ligne)",
+      "Prise en main du véhicule à boîte automatique hors circulation",
+      "Conduite en circulation : agglomération, route, voie rapide",
+      "Conduite en conditions difficiles et gestion des risques",
+      "Éco-conduite et préparation à l'examen (examen blanc)",
+    ],
+    methodes: [
+      "Pédagogie individualisée et progressive",
+      "Alternance code / simulateur / conduite réelle",
+      "Suivi pédagogique numérique consultable sur compte personnel",
+    ],
+    moyens: [
+      "Moniteurs diplômés",
+      "Véhicules à boîte automatique à double commande",
+      "Simulateurs de conduite et plateforme de Code en ligne",
+    ],
+    evaluation: [
+      "Suivi continu de la progression (livret numérique)",
+      "Examen blanc avant présentation",
+      "Examen officiel : Code puis épreuve pratique BEA avec un inspecteur",
+    ],
+    acces:
+      "Inscription après évaluation (1 h offerte). Une formation passerelle de 7 h permet ensuite de lever la restriction « boîte automatique » pour conduire une boîte manuelle. Délai indicatif d'accès : sous 2 semaines.",
+    accessibilite: HANDICAP,
+    debouches: [
+      "Mobilité et autonomie au quotidien",
+      "Obtention souvent plus rapide du permis",
+      "Possibilité de passer ensuite à la boîte manuelle (formation 7 h)",
+    ],
+    certification:
+      "Permis de conduire catégorie B restreint « boîte automatique » (BEA) délivré par l'État après réussite de l'épreuve pratique.",
+    image: CAR,
+  },
+  {
+    slug: "permis-accelere",
+    category: "auto",
+    kind: "Permis",
+    title: "Permis accéléré — B et A (moto)",
+    cardTitle: "Permis accéléré",
+    cardSubtitle: "Obtention en quelques semaines",
+    durationBadge: "Intensif",
+    duration: "Formation intensive : 2 jours de Code en collectif + conduite en accéléré selon forfait",
+    price: "Sur devis — évaluation d'1 h offerte en agence",
+    summary:
+      "Rapide et efficace, le permis accéléré vous immerge complètement dans l'univers du permis pour une obtention en quelques semaines. Dispensé pour le permis B et le permis A (moto), il associe un apprentissage intensif du Code et un planning de conduite sur-mesure, avec une date d'examen rapprochée.",
+    objectifs: [
+      "Acquérir rapidement les connaissances du Code de la route",
+      "Réussir l'examen théorique général dans un délai court",
+      "Atteindre le niveau de conduite requis grâce à un planning intensif",
+      "Obtenir une date d'examen pratique rapprochée",
+    ],
+    competences: [
+      "Maîtriser les 10 thèmes du Code de la route",
+      "Conduire en sécurité en circulation",
+      "Gérer le stress et les situations d'examen",
+    ],
+    public:
+      "Candidats disponibles et motivés souhaitant obtenir leur permis B ou A dans un délai court (reconversion, mobilité urgente, emploi…). Accessible aux personnes en situation de handicap (nous contacter).",
+    prerequis: [
+      "Remplir les conditions d'âge du permis visé (B ou A)",
+      "Forte disponibilité pour suivre une formation intensive",
+      "Évaluation de conduite d'1 h pour déterminer le forfait adapté",
+      "Enregistrement de la demande de permis sur le site ANTS avec le centre",
+    ],
+    programme: [
+      "Code en accéléré : 2 jours de formation intensive en collectif (1 formateur dédié, 10 thèmes)",
+      "Accès illimité à la plateforme de Code en ligne pour s'entraîner",
+      "Passage de l'examen du Code de la route",
+      "Évaluation de conduite (1 h) et élaboration d'un planning sur-mesure",
+      "Formation à la conduite en accéléré selon le forfait et les disponibilités",
+      "Obtention d'une date d'examen en seulement 2 semaines (selon places disponibles)",
+    ],
+    methodes: [
+      "Formation intensive en immersion, formateur dédié",
+      "Alternance code / conduite, planning resserré",
+      "Suivi pédagogique numérique",
+    ],
+    moyens: [
+      "Moniteurs diplômés",
+      "Salle de code et plateforme en ligne illimitée",
+      "Véhicules (ou motos) à double commande, simulateurs",
+    ],
+    evaluation: [
+      "Tests blancs de Code pendant les 2 jours intensifs",
+      "Suivi continu de la conduite et examen blanc",
+      "Examens officiels : Code puis épreuve pratique",
+    ],
+    acces:
+      "Sessions planifiées selon le calendrier des stages de Code et la disponibilité des places d'examen. Délai indicatif : démarrage sous 2 semaines.",
+    accessibilite: HANDICAP,
+    debouches: [
+      "Obtention du permis dans un délai court",
+      "Mobilité rapide pour un emploi ou une reconversion",
+    ],
+    certification:
+      "Permis de conduire (B ou A) délivré par l'État après réussite des épreuves théorique et pratique.",
+    image: CAR2,
+  },
+  {
+    slug: "permis-moto",
+    category: "auto",
+    kind: "Permis",
+    title: "Permis Moto — AM (BSR), A1, A2 et A",
+    cardTitle: "Permis Moto",
+    cardSubtitle: "AM / BSR, A1, A2, A",
+    durationBadge: "Selon catégorie",
+    duration: "Variable selon le permis visé (AM : 8 h ; A1/A2 : plateau + circulation ; passerelle A2→A : 7 h)",
+    price: "Sur devis — évaluation offerte en agence",
+    summary:
+      "PariPermis vous prépare au BSR / permis AM, ainsi qu'aux permis A1, A2 et A (motos de plus de 35 kW). Nous alternons cours théoriques et formation pratique sur nos motos (Yamaha MT-07, BMW GS 800) régulièrement renouvelées, avec interventions ponctuelles de spécialistes (sapeurs-pompiers, secouristes) pour la sensibilisation aux risques.",
+    objectifs: [
+      "Maîtriser la conduite d'un deux-roues motorisé en sécurité (plateau et circulation)",
+      "Connaître et appliquer la réglementation propre aux deux-roues",
+      "Adopter l'équipement et les comportements de sécurité adaptés",
+      "Être prêt à réussir les épreuves du permis moto visé",
+    ],
+    competences: [
+      "Réaliser les manœuvres de maniabilité à allure lente et soutenue (plateau)",
+      "Circuler en sécurité en intégrant la vulnérabilité du motard",
+      "Vérifier et utiliser les équipements de protection individuelle",
+      "Gérer les situations à risque spécifiques aux deux-roues",
+    ],
+    public:
+      "Toute personne souhaitant conduire un deux-roues : scooter ≤ 50 cm³ (AM/BSR dès 14 ans), motos légères A1, motos A2, puis A. Accessible aux personnes en situation de handicap (nous contacter).",
+    prerequis: [
+      "Permis AM (BSR) : avoir 14 ans ou plus ; ASSR1/ASSR2 ou ASR pour les personnes nées après le 31/12/1997",
+      "Permis A1 : être âgé d'au moins 16 ans et avoir le Code de la route",
+      "Permis A2 : être âgé d'au moins 18 ans et avoir le Code de la route",
+      "Permis A : avoir au moins 2 ans de permis A2 et suivre la formation passerelle de 7 h",
+      "Évaluation préalable du niveau ; enregistrement de la demande sur le site ANTS",
+    ],
+    programme: [
+      "AM / BSR : 8 h de formation pratique (dont circulation) et sensibilisation aux risques",
+      "Formation théorique moto (ETM) pour les permis A1/A2 (le cas échéant)",
+      "Maîtrise du véhicule hors circulation : plateau (maniabilité lente et rapide)",
+      "Conduite en circulation et partage de la route",
+      "Sensibilisation aux risques avec intervenants spécialisés",
+      "Examen blanc et préparation aux épreuves",
+      "Formation 7 h obligatoire pour conduire un 125 cm³ avec le permis B (le cas échéant)",
+    ],
+    methodes: [
+      "Alternance cours théoriques / pratique pour une mise en application progressive",
+      "Interventions ponctuelles de spécialistes (pompiers, secouristes, préventeurs santé)",
+      "Suivi pédagogique numérique",
+    ],
+    moyens: [
+      "Motos récentes et régulièrement renouvelées (Yamaha MT-07, BMW GS 800, motos A1/A2)",
+      "Piste / plateau de maniabilité, équipements de protection",
+      "Moniteurs diplômés de la mention deux-roues",
+    ],
+    evaluation: [
+      "Suivi continu de la progression sur plateau et en circulation",
+      "Examen blanc avant présentation",
+      "Examens officiels : épreuve théorique moto (ETM) le cas échéant, plateau et circulation",
+    ],
+    acces:
+      "Inscription après évaluation. Démarrage selon les disponibilités et le calendrier d'examen. Délai indicatif d'accès : sous 2 semaines.",
+    accessibilite: HANDICAP,
+    debouches: [
+      "Mobilité à deux-roues (scooter, moto)",
+      "Conduite d'un 125 cm³ avec le permis B après la formation de 7 h",
+      "Loisir et liberté de déplacement",
+    ],
+    certification:
+      "Permis AM, A1, A2 ou A délivré par l'État après réussite des épreuves ; attestation de suivi pour la formation 7 h (125 cm³).",
+    image: MOTO,
+  },
+  {
+    slug: "code-de-la-route",
+    category: "auto",
+    kind: "Formation",
+    title: "Code de la route — en ligne et en salle",
+    cardTitle: "Code de la route",
+    cardSubtitle: "En ligne illimité & cours collectifs",
+    durationBadge: "Illimité",
+    duration: "Accès illimité en ligne + cours collectifs ; formule accélérée possible (2 jours)",
+    price: "Sur devis — packs Code disponibles",
+    summary:
+      "Préparez et obtenez votre Code de la route grâce à notre plateforme en ligne illimitée, mise à jour quotidiennement, accessible depuis votre ordinateur ou votre mobile. Choisissez la formule qui vous convient : 100 % digital, en auto-école (cours collectifs) ou les deux. Une solution d'apprentissage accéléré sur 2 jours est aussi proposée pour les plus pressés.",
+    objectifs: [
+      "Acquérir une connaissance complète et à jour du Code de la route",
+      "Maîtriser les règles de circulation, la signalisation et les situations à risque",
+      "Se préparer efficacement à l'examen théorique général (ETG)",
+      "Réussir l'examen du Code de la route",
+    ],
+    competences: [
+      "Connaître la réglementation et la signalisation routière",
+      "Analyser des situations de conduite et identifier les dangers",
+      "Répondre aux questions de l'examen officiel (séries type ETG)",
+    ],
+    public:
+      "Toute personne préparant le Code de la route (préalable au permis B, A, ou poids lourd) en autonomie, en salle ou en formule mixte. Accessible aux personnes en situation de handicap (nous contacter).",
+    prerequis: [
+      "Savoir lire et écrire le français",
+      "Disposer d'un accès internet pour la plateforme en ligne (formule digitale)",
+      "Enregistrement de la demande de permis sur le site ANTS pour le passage de l'examen",
+    ],
+    programme: [
+      "Les 10 thèmes officiels du Code de la route",
+      "Entraînement illimité en ligne (séries de questions mises à jour quotidiennement)",
+      "Cours collectifs en salle avec un formateur (selon la formule)",
+      "Formule accélérée : 2 jours d'immersion complète au Code",
+      "Examens blancs et suivi des résultats via un compte personnel",
+      "Passage de l'examen théorique général (ETG)",
+    ],
+    methodes: [
+      "Apprentissage flexible : 100 % digital, en salle, ou mixte",
+      "Plateforme pédagogique avec mises en situation réelles",
+      "Cours collectifs bénéficiant de l'effet de groupe et des réponses du formateur",
+    ],
+    moyens: [
+      "Plateforme de Code en ligne illimitée (ordinateur et mobile)",
+      "Salle de code et formateurs diplômés",
+      "Compte personnel de suivi des résultats",
+    ],
+    evaluation: [
+      "Séries d'entraînement et examens blancs notés",
+      "Suivi de la progression sur compte personnel",
+      "Examen officiel : épreuve théorique générale (ETG) en centre agréé",
+    ],
+    acces:
+      "Accès à la plateforme dès l'achat du pack. Cours collectifs et sessions accélérées selon le calendrier de l'agence.",
+    accessibilite: HANDICAP,
+    debouches: [
+      "Obtention du Code de la route (ETG), valable 5 ans",
+      "Prérequis indispensable au permis B, A et poids lourd",
+    ],
+    certification:
+      "Réussite de l'épreuve théorique générale (ETG) du Code de la route — validité 5 ans pour le passage des épreuves pratiques.",
+    image: CODE,
   },
 ];
 

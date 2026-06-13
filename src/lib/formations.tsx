@@ -16,7 +16,17 @@ export function FormationsProvider({ children }: { children: ReactNode }) {
     let active = true;
     fetchFormations()
       .then((data) => {
-        if (active && data.length) setFormations(data);
+        if (!active || !data.length) return;
+        // Fusion : Sanity surcharge les champs renseignés, mais on conserve
+        // toujours les formations définies en statique (y compris celles
+        // absentes de Sanity, ex. permis auto/moto récemment ajoutés).
+        const staticBySlug = new Map(staticFormations.map((f) => [f.slug, f]));
+        const clean = (obj: Formation) =>
+          Object.fromEntries(Object.entries(obj).filter(([, v]) => v !== null && v !== undefined && v !== ""));
+        const merged = data.map((d) => ({ ...(staticBySlug.get(d.slug) || {}), ...clean(d) } as Formation));
+        const sanitySlugs = new Set(data.map((d) => d.slug));
+        const staticOnly = staticFormations.filter((f) => !sanitySlugs.has(f.slug));
+        setFormations([...merged, ...staticOnly]);
       })
       .catch(() => {
         /* on conserve les données statiques en cas d'erreur réseau */
@@ -42,5 +52,6 @@ export function useFormationsByCategory() {
   return {
     marchandises: formations.filter((f) => f.category === "marchandises"),
     voyageurs: formations.filter((f) => f.category === "voyageurs"),
+    auto: formations.filter((f) => f.category === "auto"),
   };
 }
