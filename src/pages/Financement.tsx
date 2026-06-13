@@ -61,6 +61,26 @@ export default function Financement() {
                   >
                     {d.link.label} <ArrowRight className="h-3.5 w-3.5" />
                   </a>
+                  {d.links && (
+                    <div className="mt-4 border-t border-slate-100 pt-4">
+                      {d.linksLabel && (
+                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">{d.linksLabel}</p>
+                      )}
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {d.links.map((l) => (
+                          <a
+                            key={l.url}
+                            href={l.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-brand-navy hover:border-brand-blue/50 hover:text-brand-blue transition-colors"
+                          >
+                            {l.label}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
