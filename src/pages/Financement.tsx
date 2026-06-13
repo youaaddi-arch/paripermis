@@ -49,39 +49,18 @@ export default function Financement() {
 
             <div className="mt-8 space-y-5">
               {list.map((d) => (
-                <div key={d.code} className="card p-6">
+                <Link
+                  key={d.code}
+                  to={`/financement/${d.code}`}
+                  className="card block p-6 transition-colors hover:border-brand-blue/40"
+                >
                   <p className="text-lg font-bold text-brand-navy">{d.name}</p>
                   <p className="mt-2 text-sm text-slate-600">{d.description}</p>
                   <p className="mt-3 text-xs font-medium text-slate-400">Public : {d.public}</p>
-                  <a
-                    href={d.link.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-blue hover:gap-2 transition-all"
-                  >
-                    {d.link.label} <ArrowRight className="h-3.5 w-3.5" />
-                  </a>
-                  {d.links && (
-                    <div className="mt-4 border-t border-slate-100 pt-4">
-                      {d.linksLabel && (
-                        <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">{d.linksLabel}</p>
-                      )}
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {d.links.map((l) => (
-                          <a
-                            key={l.url}
-                            href={l.url}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="rounded-full border border-slate-200 px-3 py-1 text-xs font-medium text-brand-navy hover:border-brand-blue/50 hover:text-brand-blue transition-colors"
-                          >
-                            {l.label}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
+                  <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-blue">
+                    Voir le détail, les conditions et les formations <ArrowRight className="h-3.5 w-3.5" />
+                  </span>
+                </Link>
               ))}
             </div>
           </div>
