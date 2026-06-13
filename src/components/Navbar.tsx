@@ -19,7 +19,7 @@ function Underline() {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { marchandises, voyageurs } = useFormationsByCategory();
+  const { marchandises, voyageurs, auto } = useFormationsByCategory();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -49,8 +49,22 @@ export default function Navbar() {
             <button className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-brand-green">
               Formations <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
             </button>
-            <div className="invisible absolute left-1/2 top-full w-[520px] -translate-x-1/2 pt-3 opacity-0 transition-all group-hover:visible group-hover:opacity-100">
-              <div className="grid grid-cols-2 gap-6 rounded-xl border border-slate-200 bg-white p-5 shadow-lg">
+            <div className="invisible absolute left-1/2 top-full w-[720px] -translate-x-1/2 pt-3 opacity-0 transition-all group-hover:visible group-hover:opacity-100">
+              <div className="grid grid-cols-3 gap-6 rounded-xl border border-slate-200 bg-white p-5 shadow-lg">
+                <div>
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand-navy">
+                    Auto &amp; Moto
+                  </p>
+                  <ul className="space-y-1.5">
+                    {auto.map((f) => (
+                      <li key={f.slug}>
+                        <Link to={`/formations/${f.slug}`} className="text-sm text-slate-600 hover:text-brand-green">
+                          {f.cardTitle}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
                 <div>
                   <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand-green">
                     Transport de Marchandises
@@ -81,7 +95,7 @@ export default function Navbar() {
                 </div>
                 <Link
                   to="/formations"
-                  className="col-span-2 mt-1 text-sm font-semibold text-brand-green hover:underline"
+                  className="col-span-3 mt-1 text-sm font-semibold text-brand-green hover:underline"
                 >
                   Voir toutes nos formations →
                 </Link>
