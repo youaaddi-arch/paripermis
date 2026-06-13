@@ -126,6 +126,7 @@ export interface DispositifDetail {
   prerequis: string[];
   modalites: string[];
   avantages?: string[];
+  pieces?: string[]; // pièces à fournir pour constituer le dossier
 }
 
 export const dispositifDetails: Record<string, DispositifDetail> = {
@@ -319,6 +320,16 @@ export const dispositifDetails: Record<string, DispositifDetail> = {
       "Maintien de la rémunération (100 % jusqu'à 2 SMIC, 90 % au-delà, sous conditions)",
       "Prise en charge des frais pédagogiques et, le cas échéant, des frais annexes",
       "Congé spécifique : votre contrat de travail est suspendu, pas rompu",
+    ],
+    pieces: [
+      "Dossier de demande de prise en charge Transitions Pro (formulaire à compléter en ligne)",
+      "Pièce d'identité en cours de validité",
+      "Devis et programme détaillé de la formation (fournis par PariPermis)",
+      "Attestation ou convention d'inscription en formation",
+      "Justificatifs d'ancienneté : bulletins de salaire et/ou certificats de travail",
+      "Autorisation d'absence signée par l'employeur",
+      "Descriptif du projet de reconversion (lettre / CV) ; entretien CEP recommandé",
+      "Pour les salariés en CDD : justificatifs France Travail et historique des contrats",
     ],
   },
   REG: {

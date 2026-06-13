@@ -90,6 +90,10 @@ export default function FinancementDetail() {
             </ol>
           </Block>
 
+          {detail.pieces && detail.pieces.length > 0 && (
+            <Block icon={ClipboardCheck} title="Pièces à fournir pour la demande"><BulletList items={detail.pieces} /></Block>
+          )}
+
           {detail.avantages && detail.avantages.length > 0 && (
             <Block icon={Sparkles} title="Avantages"><BulletList items={detail.avantages} /></Block>
           )}

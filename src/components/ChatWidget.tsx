@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MessageCircle, X, Send, Bot } from "lucide-react";
 import { site } from "@/lib/site";
+import { localAnswer } from "@/lib/localAssistant";
 
 interface Msg {
   role: "user" | "assistant";
@@ -39,17 +40,17 @@ export default function ChatWidget() {
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ messages: next }),
       });
-      if (res.status === 503) {
-        setError(
-          `L'assistant n'est pas encore activé. Contactez-nous au ${site.phone} ou à ${site.email}.`
-        );
+      // Si l'IA n'est pas configurée (pas de clé) ou en cas d'erreur,
+      // on bascule sur l'assistant local qui répond depuis le contenu du site.
+      if (!res.ok) {
+        setMessages((m) => [...m, { role: "assistant", content: localAnswer(content) }]);
         return;
       }
-      if (!res.ok) throw new Error("err");
       const data = await res.json();
-      setMessages((m) => [...m, { role: "assistant", content: data.reply }]);
+      const reply = data?.reply || localAnswer(content);
+      setMessages((m) => [...m, { role: "assistant", content: reply }]);
     } catch {
-      setError(`Une erreur est survenue. Vous pouvez nous joindre au ${site.phone}.`);
+      setMessages((m) => [...m, { role: "assistant", content: localAnswer(content) }]);
     } finally {
       setLoading(false);
     }
