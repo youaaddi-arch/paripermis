@@ -863,10 +863,10 @@ const formationsData: Formation[] = [
     public:
       "Toute personne souhaitant obtenir le permis B (conduite de véhicules de tourisme et utilitaires ≤ 3,5 t). Les personnes en situation de handicap peuvent avoir des besoins spécifiques : contactez-nous pour une analyse de vos besoins et un éventuel aménagement.",
     prerequis: [
-      "Être âgé de 15 ans minimum pour s'inscrire (apprentissage anticipé de la conduite dès 15 ans)",
-      "Avoir 18 ans à la date de l'examen pratique (17 ans dans le cadre de la conduite accompagnée, selon la réglementation en vigueur)",
-      "Avoir obtenu ou préparer l'épreuve théorique générale (le Code de la route), en cours de validité",
-      "Réaliser une évaluation de départ afin de déterminer le volume de formation nécessaire",
+      "Filière classique : être âgé d'au moins 17 ans révolus pour s'inscrire et conduire dès l'obtention du permis (depuis le 1ᵉʳ janvier 2024)",
+      "Conduite accompagnée (AAC) : début de la formation dès 15 ans, épreuve pratique et conduite autonome à partir de 17 ans",
+      "Avoir obtenu ou préparer l'épreuve théorique générale (le Code de la route), en cours de validité (5 ans, dans la limite de 5 présentations à l'examen pratique)",
+      "Réaliser une évaluation de départ afin de déterminer le volume de formation nécessaire (20 h de conduite minimum réglementaires)",
       "Savoir lire et écrire le français ; enregistrement de la demande de permis sur le site ANTS avec le centre",
     ],
     programme: [
@@ -936,9 +936,9 @@ const formationsData: Formation[] = [
     public:
       "Toute personne souhaitant conduire un véhicule à boîte automatique (≤ 3,5 t). Particulièrement adapté pour une obtention plus rapide ou en cas de difficultés avec la boîte manuelle. Accessible aux personnes en situation de handicap (nous contacter).",
     prerequis: [
-      "Être âgé d'au moins 17 ans pour obtenir le permis BEA",
-      "Réussir des tests de connaissances : le Code de la route (épreuve théorique générale) en cours de validité",
-      "Effectuer des heures de conduite avec un instructeur agréé jusqu'à l'autonomie",
+      "Être âgé d'au moins 17 ans pour s'inscrire et conduire dès l'obtention du permis BEA (depuis le 1ᵉʳ janvier 2024) ; conduite accompagnée possible dès 15 ans",
+      "Avoir obtenu ou préparer l'épreuve théorique générale (le Code de la route), en cours de validité (5 ans)",
+      "Effectuer les heures de conduite avec un instructeur agréé jusqu'à l'autonomie (13 h minimum réglementaires sur boîte automatique)",
       "Réaliser une évaluation de départ pour déterminer le nombre d'heures nécessaires",
       "Enregistrement de la demande de permis sur le site ANTS avec le centre",
     ],
@@ -1049,8 +1049,8 @@ const formationsData: Formation[] = [
     title: "Permis Moto — AM (BSR), A1, A2 et A",
     cardTitle: "Permis Moto",
     cardSubtitle: "AM / BSR, A1, A2, A",
-    durationBadge: "AM/BSR : 7 h",
-    duration: "Variable selon le permis : AM/BSR 7 h (dont 4 h en circulation) ; A1/A2 plateau + circulation ; passerelle A2 → A 7 h",
+    durationBadge: "AM/BSR : 8 h",
+    duration: "Variable selon le permis : AM/BSR 8 h minimum (dont 3 h minimum sur voies ouvertes) sur au moins 2 jours ; A1/A2 plateau + circulation ; passerelle A2 → A 7 h",
     price: "Sur devis — évaluation offerte en agence",
     summary:
       "PariPermis vous prépare au BSR / permis AM, ainsi qu'aux permis A1, A2 et A (motos de plus de 35 kW). Nous alternons cours théoriques et formation pratique sur nos motos (Yamaha MT-07, BMW GS 800) régulièrement renouvelées, avec interventions ponctuelles de spécialistes (sapeurs-pompiers, secouristes) pour la sensibilisation aux risques.",
@@ -1069,16 +1069,16 @@ const formationsData: Formation[] = [
     public:
       "Toute personne souhaitant conduire un deux-roues : scooter ≤ 50 cm³ (AM/BSR dès 14 ans), motos légères A1, motos A2, puis A. Accessible aux personnes en situation de handicap (nous contacter).",
     prerequis: [
-      "Permis AM (BSR) : avoir 14 ans ou plus ; ASSR1/ASSR2 ou ASR pour les personnes nées après le 31/12/1997",
-      "Permis A1 : être âgé d'au moins 16 ans et avoir le Code de la route",
-      "Permis A2 : être âgé d'au moins 18 ans et avoir le Code de la route",
+      "Permis AM (BSR) : avoir 14 ans ou plus ; ASSR1, ASSR2 ou ASR (obligatoire pour les personnes nées à partir du 1ᵉʳ janvier 1988)",
+      "Permis A1 : être âgé d'au moins 16 ans et avoir réussi l'épreuve théorique moto (ETM)",
+      "Permis A2 : être âgé d'au moins 18 ans et avoir réussi l'épreuve théorique moto (ETM) — dispense si titulaire du permis A1 depuis 5 ans au plus",
       "Permis A : avoir au moins 2 ans de permis A2 et suivre la formation passerelle de 7 h",
       "Évaluation préalable du niveau ; enregistrement de la demande sur le site ANTS",
     ],
     programme: [
-      "AM / BSR : formation pratique de 7 h, dont 4 h en circulation et 3 h d'enseignement et de sensibilisation aux risques",
-      "AM / BSR : volet théorique via l'ASSR (ASSR1 en 5e, ASSR2 en 3e) ou l'ASR ; attestation de suivi permettant de circuler en scooter pendant 4 mois en attendant la réception du titre (catégorie AM)",
-      "Formation théorique moto (ETM) pour les permis A1/A2 (le cas échéant)",
+      "AM / BSR : formation pratique de 8 h minimum sur au moins 2 jours (4 h maximum par jour) — échanges sur les représentations (30 min), conduite hors circulation (1 h min), code (30 min), conduite sur voies ouvertes (3 h min) et sensibilisation aux risques (1 h min)",
+      "AM / BSR : volet théorique via l'ASSR (ASSR1 en 5e, ASSR2 en 3e) ou l'ASR ; le certificat d'examen délivré permet de circuler en scooter pendant 4 mois en attendant la réception du titre (catégorie AM, valable 15 ans)",
+      "Épreuve théorique moto (ETM) pour les permis A1/A2 : 40 questions, 35 bonnes réponses requises, valable 5 ans",
       "Maîtrise du véhicule hors circulation : plateau (maniabilité lente et rapide)",
       "Conduite en circulation et partage de la route",
       "Sensibilisation aux risques avec intervenants spécialisés (sapeurs-pompiers, secouristes…)",
@@ -1136,7 +1136,7 @@ const formationsData: Formation[] = [
       "Répondre aux questions de l'examen officiel (séries type ETG)",
     ],
     public:
-      "Toute personne préparant le Code de la route (préalable au permis B, A, ou poids lourd) en autonomie, en salle ou en formule mixte. Accessible aux personnes en situation de handicap (nous contacter).",
+      "Toute personne préparant le Code de la route (préalable au permis B et poids lourd ; le permis moto A1/A2 relève de l'ETM) en autonomie, en salle ou en formule mixte. Accessible aux personnes en situation de handicap (nous contacter).",
     prerequis: [
       "Savoir lire et écrire le français",
       "Disposer d'un accès internet pour la plateforme en ligne (formule digitale)",
@@ -1169,11 +1169,11 @@ const formationsData: Formation[] = [
       "Accès à la plateforme dès l'achat du pack. Cours collectifs et sessions accélérées selon le calendrier de l'agence.",
     accessibilite: HANDICAP,
     debouches: [
-      "Obtention du Code de la route (ETG), valable 5 ans",
-      "Prérequis indispensable au permis B, A et poids lourd",
+      "Obtention du Code de la route (ETG), valable 5 ans (dans la limite de 5 présentations à l'examen pratique)",
+      "Prérequis indispensable au permis B et poids lourd (le permis moto A1/A2 relève d'une épreuve théorique moto, l'ETM, distincte)",
     ],
     certification:
-      "Réussite de l'épreuve théorique générale (ETG) du Code de la route — validité 5 ans pour le passage des épreuves pratiques.",
+      "Réussite de l'épreuve théorique générale (ETG) du Code de la route — 40 questions, 35 bonnes réponses requises ; validité 5 ans pour le passage des épreuves pratiques.",
     image: CODE,
   },
 ];
