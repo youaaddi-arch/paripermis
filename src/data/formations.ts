@@ -38,7 +38,7 @@ const CPF_INTRO =
 const HANDICAP =
   "Les personnes en situation de handicap peuvent avoir des besoins spécifiques. Contactez-nous pour une analyse de vos besoins et un éventuel aménagement.";
 
-export const formations: Formation[] = [
+const formationsData: Formation[] = [
   // ---------------------- MARCHANDISES ----------------------
   {
     slug: "permis-c",
@@ -823,6 +823,14 @@ export const formations: Formation[] = [
     image: BUS,
   },
 ];
+
+// Chaque formation est certifiée Qualiopi et dispose d'un programme PDF servi
+// par le site (/programmes/<slug>.pdf) — repli autonome si Sanity est indisponible.
+export const formations: Formation[] = formationsData.map((f) => ({
+  ...f,
+  qualiopi: f.qualiopi ?? true,
+  programmePdfUrl: f.programmePdfUrl ?? `/programmes/${f.slug}.pdf`,
+}));
 
 export const getFormation = (slug: string) => formations.find((f) => f.slug === slug);
 export const marchandises = formations.filter((f) => f.category === "marchandises");
