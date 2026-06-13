@@ -28,9 +28,9 @@ export interface Formation {
   programmePdfUrl?: string; // lien du PDF de programme à télécharger
   rncpCode?: string; // Titres Professionnels
   rsCode?: string; // FIMO / FCO / Passerelle (Répertoire Spécifique)
-  certifInfo?: string; // numéro Certif'Info (à renseigner par l'organisme)
-  officialLinkLabel?: string; // ex : "Fiche France Compétences" / "Catalogue CARIF OREF"
-  officialLinkUrl?: string;
+  certifInfo?: string; // numéro Certif'Info (= identifiant CARIF OREF)
+  franceCompetencesUrl?: string; // fiche RNCP / RS
+  carifOrefUrl?: string; // fiche CARIF OREF / Certif'Info
 }
 
 const TRUCK = "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=80";
@@ -830,41 +830,37 @@ const formationsData: Formation[] = [
 ];
 
 // Enregistrement officiel par formation.
+// - certifInfo : identifiant CARIF OREF (= n° de la fiche intercariforef)
 // - Titres Professionnels : code RNCP + fiche France Compétences
 // - FIMO / FCO / Passerelle : code RS (Répertoire Spécifique) + fiche France Compétences
-// - Permis : lien vers le catalogue CARIF OREF (Certif'Info national)
-// Les n° Certif'Info (propres à l'organisme) sont à renseigner dans le champ certifInfo.
-const fcRncp = (code: string) => ({
-  rncpCode: code,
-  officialLinkLabel: "Fiche France Compétences",
-  officialLinkUrl: `https://www.francecompetences.fr/recherche/rncp/${code}/`,
+// - Permis : fiche CARIF OREF uniquement
+const reg = (certifInfo: string, codes?: { rncp?: string; rs?: string }): Partial<Formation> => ({
+  certifInfo,
+  carifOrefUrl: `https://www.intercariforef.org/formations/certification-${certifInfo}.html`,
+  ...(codes?.rncp
+    ? { rncpCode: codes.rncp, franceCompetencesUrl: `https://www.francecompetences.fr/recherche/rncp/${codes.rncp}/` }
+    : {}),
+  ...(codes?.rs
+    ? { rsCode: codes.rs, franceCompetencesUrl: `https://www.francecompetences.fr/recherche/rs/${codes.rs}/` }
+    : {}),
 });
-const fcRs = (code: string) => ({
-  rsCode: code,
-  officialLinkLabel: "Fiche France Compétences",
-  officialLinkUrl: `https://www.francecompetences.fr/recherche/rs/${code}/`,
-});
-const carifOref = {
-  officialLinkLabel: "Catalogue CARIF OREF",
-  officialLinkUrl: "https://reflet.cariforef.fr/",
-};
 
 const registrations: Record<string, Partial<Formation>> = {
-  // Permis (délivrés par la Préfecture — référencés au catalogue CARIF OREF)
-  "permis-c": { ...carifOref },
-  "permis-ce": { ...carifOref },
-  "permis-d": { ...carifOref },
-  // Titres Professionnels (RNCP)
-  "tp-transport-marchandises-porteur": fcRncp("39796"),
-  "tp-transport-marchandises-tous-vehicules": fcRncp("39795"),
-  "tp-transport-en-commun": fcRncp("37878"),
-  // FIMO / FCO / Passerelle (Répertoire Spécifique)
-  "fimo-marchandises": fcRs("5769"),
-  "fco-marchandises": fcRs("5769"),
-  "passerelle-marchandises": fcRs("5769"),
-  "fimo-voyageurs": fcRs("5768"),
-  "fco-voyageurs": fcRs("5768"),
-  "passerelle-voyageurs": fcRs("5768"),
+  // Permis (fiche CARIF OREF)
+  "permis-c": reg("54660"),
+  "permis-ce": reg("81306"),
+  "permis-d": reg("54662"),
+  // Titres Professionnels (RNCP + France Compétences)
+  "tp-transport-marchandises-porteur": reg("103807", { rncp: "39796" }),
+  "tp-transport-marchandises-tous-vehicules": reg("117566", { rncp: "39795" }),
+  "tp-transport-en-commun": reg("100817", { rncp: "37878" }),
+  // FIMO / FCO / Passerelle (RS + France Compétences)
+  "fimo-marchandises": reg("84554", { rs: "5769" }),
+  "fco-marchandises": reg("84557", { rs: "5769" }),
+  "passerelle-marchandises": reg("84558", { rs: "5769" }),
+  "fimo-voyageurs": reg("84405", { rs: "5768" }),
+  "fco-voyageurs": reg("84529", { rs: "5768" }),
+  "passerelle-voyageurs": reg("84532", { rs: "5768" }),
 };
 
 // Chaque formation est certifiée Qualiopi et dispose d'un programme PDF servi

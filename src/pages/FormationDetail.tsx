@@ -137,7 +137,7 @@ export default function FormationDetail() {
 
           <Block icon={Award} title="Certification / Validation">
             <p>{f.certification}</p>
-            {(f.rncpCode || f.rsCode || f.certifInfo || f.officialLinkUrl) && (
+            {(f.rncpCode || f.rsCode || f.certifInfo || f.franceCompetencesUrl || f.carifOrefUrl) && (
               <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5">
                 <p className="text-sm font-semibold text-brand-navy">Enregistrement officiel</p>
                 <ul className="mt-3 flex flex-wrap gap-2">
@@ -157,16 +157,28 @@ export default function FormationDetail() {
                     </li>
                   )}
                 </ul>
-                {f.officialLinkUrl && (
-                  <a
-                    href={f.officialLinkUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:gap-2.5 transition-all"
-                  >
-                    {f.officialLinkLabel || "Voir la fiche officielle"} <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                )}
+                <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+                  {f.franceCompetencesUrl && (
+                    <a
+                      href={f.franceCompetencesUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:gap-2.5 transition-all"
+                    >
+                      Fiche France Compétences <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                  {f.carifOrefUrl && (
+                    <a
+                      href={f.carifOrefUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:gap-2.5 transition-all"
+                    >
+                      Fiche CARIF OREF <ExternalLink className="h-3.5 w-3.5" />
+                    </a>
+                  )}
+                </div>
               </div>
             )}
           </Block>
