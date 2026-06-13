@@ -266,8 +266,8 @@ async function main() {
       rncpCode: f.rncpCode,
       rsCode: f.rsCode,
       certifInfo: f.certifInfo,
-      officialLinkLabel: f.officialLinkLabel,
-      officialLinkUrl: f.officialLinkUrl,
+      franceCompetencesUrl: f.franceCompetencesUrl,
+      carifOrefUrl: f.carifOrefUrl,
     };
     await client.createOrReplace(doc);
     console.log(`Sanity : ${_id} publié`);
