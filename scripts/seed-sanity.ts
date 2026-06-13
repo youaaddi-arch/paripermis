@@ -279,6 +279,7 @@ async function main() {
       certification: f.certification,
       imageUrl: f.image,
       programmePdfUrl: `/programmes/${f.slug}.pdf`,
+      cpfUrl: f.cpfUrl,
       rncpCode: f.rncpCode,
       rsCode: f.rsCode,
       certifInfo: f.certifInfo,

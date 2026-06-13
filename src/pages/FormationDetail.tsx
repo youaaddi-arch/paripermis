@@ -113,6 +113,16 @@ export default function FormationDetail() {
                 <Download className="h-4 w-4" /> Télécharger le programme
               </a>
             )}
+            {f.cpfUrl && (
+              <a
+                href={f.cpfUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="btn bg-[#5b29c7] text-white hover:bg-[#4a1fa6]"
+              >
+                <Banknote className="h-4 w-4" /> S'inscrire avec mon CPF
+              </a>
+            )}
           </div>
         </div>
       </section>
@@ -204,6 +214,26 @@ export default function FormationDetail() {
               <Link to="/contact" className="btn-green mt-4 w-full">Demander un devis</Link>
               <Link to="/inscription" className="btn-outline mt-2 w-full">S'inscrire</Link>
             </div>
+
+            {f.cpfUrl && (
+              <div className="card border-[#5b29c7]/30 p-6">
+                <p className="flex items-center gap-2 text-sm font-semibold text-brand-navy">
+                  <Banknote className="h-4 w-4 text-[#5b29c7]" /> Financer avec le CPF
+                </p>
+                <p className="mt-2 text-xs text-slate-500">
+                  Cette formation est éligible au Compte Personnel de Formation. Inscrivez-vous et mobilisez vos droits
+                  directement sur Mon Compte Formation.
+                </p>
+                <a
+                  href={f.cpfUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn mt-4 w-full bg-[#5b29c7] text-white hover:bg-[#4a1fa6]"
+                >
+                  <ExternalLink className="h-4 w-4" /> S'inscrire avec mon CPF
+                </a>
+              </div>
+            )}
 
             {(f.rncpCode || f.rsCode || f.certifInfo || f.franceCompetencesUrl || f.carifOrefUrl) && (
               <div className="card border-brand-green/30 p-6">

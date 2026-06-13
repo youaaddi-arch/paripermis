@@ -28,6 +28,7 @@ export interface Formation {
   remuneration?: string; // rémunération indicative du métier visé (formations professionnelles)
   qualiopi?: boolean;
   programmePdfUrl?: string; // lien du PDF de programme à télécharger
+  cpfUrl?: string; // lien de la fiche sur Mon Compte Formation (CPF)
   rncpCode?: string; // Titres Professionnels
   rsCode?: string; // FIMO / FCO / Passerelle (Répertoire Spécifique)
   certifInfo?: string; // numéro Certif'Info (= identifiant CARIF OREF)
@@ -1315,6 +1316,20 @@ const remunerationBySlug: Record<string, string> = {
   "passerelle-voyageurs": REMU_VOYAGEURS,
 };
 
+// Liens des fiches sur Mon Compte Formation (CPF) — financement direct par le CPF.
+const cpfUrlBySlug: Record<string, string> = {
+  "permis-c":
+    "https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/78520849700012_permiscsanscode/78520849700012_permiscsanscode?contexteFormation=ACTIVITE_PROFESSIONNELLE",
+  "fco-marchandises":
+    "https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/78520849700012_FCOOCT/78520849700012_FCOOCT?contexteFormation=ACTIVITE_PROFESSIONNELLE",
+  "passerelle-marchandises":
+    "https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/78520849700012_PASSERELLEMARCHANDISE/78520849700012_PASSERELLEMARCHANDISE?contexteFormation=ACTIVITE_PROFESSIONNELLE",
+  "fimo-marchandises":
+    "https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/78520849700012_FIMOMARCHANDISESOCT/78520849700012_FIMOMARCHANDISESOCT?contexteFormation=ACTIVITE_PROFESSIONNELLE",
+  "permis-b":
+    "https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/78520849700012_20hmanuelle/78520849700012_longjumeau?contexteFormation=ACTIVITE_PROFESSIONNELLE",
+};
+
 // Chaque formation est certifiée Qualiopi et dispose d'un programme PDF servi
 // par le site (/programmes/<slug>.pdf) — repli autonome si Sanity est indisponible.
 export const formations: Formation[] = formationsData.map((f) => ({
@@ -1325,6 +1340,7 @@ export const formations: Formation[] = formationsData.map((f) => ({
   passerelles: passerellesBySlug[f.slug],
   modalitesExamen: modalitesExamenBySlug[f.slug],
   remuneration: remunerationBySlug[f.slug],
+  cpfUrl: cpfUrlBySlug[f.slug],
 }));
 
 export const getFormation = (slug: string) => formations.find((f) => f.slug === slug);
