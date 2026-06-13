@@ -59,6 +59,18 @@ export default {
           "0%": { transform: "translateX(0)" },
           "100%": { transform: "translateX(-50%)" },
         },
+        drive: {
+          "0%": { transform: "translateX(-12vw)" },
+          "100%": { transform: "translateX(100vw)" },
+        },
+        "road-dash": {
+          "0%": { backgroundPosition: "0 0" },
+          "100%": { backgroundPosition: "-80px 0" },
+        },
+        "wheel-bob": {
+          "0%,100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-2px)" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.6s ease-out both",
@@ -70,6 +82,9 @@ export default {
         "bounce-dot": "bounce-dot 1.4s infinite ease-in-out",
         "ping-slow": "ping-slow 2.5s cubic-bezier(0,0,0.2,1) infinite",
         marquee: "marquee 28s linear infinite",
+        drive: "drive 9s linear infinite",
+        "road-dash": "road-dash 0.6s linear infinite",
+        "wheel-bob": "wheel-bob 0.5s ease-in-out infinite",
       },
     },
   },

@@ -99,7 +99,10 @@
   .animate-float-slow,
   .animate-blob,
   .text-gradient,
-  .animate-marquee {
+  .animate-marquee,
+  .animate-drive,
+  .animate-road-dash,
+  .animate-wheel-bob {
     animation: none !important;
   }
 }
