@@ -89,13 +89,11 @@ const formationsData: Formation[] = [
       "Avoir procédé à l'enregistrement de la demande de permis en ligne sur le site ANTS en lien avec notre centre de formation",
     ],
     programme: [
-      "Accueil, présentation de la formation et évaluation de départ (niveau de conduite et prérequis)",
-      "Réglementation du transport et sécurité : signalisation, gabarit, masses et dimensions, documents de bord",
-      "Connaissance du véhicule : organes mécaniques, vérifications courantes de sécurité (intérieures et extérieures) et interrogation orale (fiches)",
-      "Maniabilité hors circulation (plateau) : prise en main du porteur, manœuvres et placements de précision",
-      "Conduite en circulation : agglomération, route et voie rapide en fonction du gabarit du véhicule",
-      "Conduite en conditions difficiles, éco-conduite et partage de la route avec les autres usagers",
-      "Préparation aux épreuves (hors circulation et en circulation) et examen blanc",
+      "Compétence 1 — Maîtriser le maniement du véhicule dans un trafic faible ou nul : connaître les principaux organes et commandes, s'installer au poste de conduite, démarrer et s'arrêter, doser l'accélération et le freinage, utiliser la boîte de vitesses, diriger le véhicule en avant et en marche arrière",
+      "Compétence 2 — Effectuer les vérifications courantes de sécurité du véhicule et les exercices de maniabilité : vérifications intérieures et extérieures, interrogation orale (fiches), manœuvres de maniabilité (marche arrière sinueuse, mise à quai, demi-tour)",
+      "Compétence 3 — Appréhender la route en fonction du gabarit du véhicule dans des conditions normales de circulation : rechercher la signalisation et les indices utiles, positionner le véhicule et choisir la voie, adapter l'allure, franchir intersections et carrefours à sens giratoire en tenant compte du porte-à-faux et du balayage",
+      "Compétence 4 — Circuler dans des conditions difficiles et partager la route avec les autres usagers : évaluer et maintenir les distances de sécurité, croiser, dépasser et être dépassé, négocier les virages et les déclivités, s'insérer et sortir d'une voie rapide, conduire quand l'adhérence et la visibilité sont réduites",
+      "Compétence 5 — Pratiquer une conduite autonome, sûre et économique : suivre un itinéraire en autonomie, anticiper et analyser les situations, connaître les facteurs de risque et les comportements en cas d'accident, pratiquer l'éco-conduite et utiliser les aides à la conduite",
     ],
     methodes: ["Formation en présentiel", "Méthodes pédagogiques multiples : actives, participatives et didactiques"],
     moyens: [
@@ -109,7 +107,7 @@ const formationsData: Formation[] = [
     evaluation: [
       "Assiduité attestée par un état de présence par demi-journée, confirmé par le formateur",
       "Évaluations formatives : tests théoriques (QCM) et/ou pratiques en cours et en fin de formation",
-      "Évaluations de compétences réalisées en continu, correspondant aux contenus du REMC (Référentiel d'Éducation pour une Mobilité Citoyenne)",
+      "Évaluations de compétences réalisées en continu selon le REMC (Référentiel pour l'Éducation à une Mobilité Citoyenne) et le livret d'apprentissage de la catégorie C (arrêté du 12 mai 2014) : 5 compétences globales et 37 compétences associées",
       "Épreuves pratiques de l'examen du permis C : hors circulation et en circulation, réalisées par un inspecteur du permis de conduire",
       "Évaluation de satisfaction réalisée avant l'examen",
     ],
