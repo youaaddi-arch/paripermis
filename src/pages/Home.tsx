@@ -168,11 +168,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* MARCHANDISES */}
-      <section className="section">
+      {/* FORMATIONS (fond bleu immersif) */}
+      <section className="relative isolate overflow-hidden bg-immersive py-16 text-white md:py-20">
+        <div className="absolute inset-0 -z-10 bg-grid opacity-20" />
+        <div className="absolute -left-20 top-10 -z-10 h-72 w-72 rounded-full bg-brand-green/20 blur-3xl animate-blob" />
+        <div className="absolute -right-16 bottom-10 -z-10 h-80 w-80 rounded-full bg-brand-cyan/20 blur-3xl animate-blob [animation-delay:4s]" />
+
+        {/* MARCHANDISES */}
         <div className="container">
           <Reveal>
             <SectionTitle
+              light
               eyebrow="Marchandises"
               title="Transport de Marchandises"
               subtitle="Permis, titres professionnels et formations obligatoires pour le transport de marchandises"
@@ -186,13 +192,12 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
 
-      {/* VOYAGEURS */}
-      <section className="section bg-slate-50">
-        <div className="container">
+        {/* VOYAGEURS */}
+        <div className="container mt-16">
           <Reveal>
             <SectionTitle
+              light
               eyebrow="Voyageurs"
               title="Transport de Voyageurs"
               subtitle="Permis, titres professionnels et formations obligatoires pour le transport de voyageurs"
@@ -206,7 +211,7 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <Link to="/formations" className="btn-outline">
+            <Link to="/formations" className="btn glass text-white hover:bg-white/20">
               Voir toutes nos formations <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
