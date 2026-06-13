@@ -18,22 +18,22 @@ export default function Blog() {
       <section className="section">
         <div className="container grid gap-8 md:grid-cols-2">
           {articles.map((a) => (
-            <article key={a.title} className="card group overflow-hidden">
+            <Link key={a.slug} to={`/blog/${a.slug}`} className="card card-hover group overflow-hidden">
               <div className="h-48 overflow-hidden">
-                <img src={a.image} alt={a.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <img src={a.image} alt={a.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110" />
               </div>
               <div className="p-6">
                 <div className="flex items-center gap-3 text-xs text-slate-400">
                   <span className="rounded-full bg-brand-green/10 px-2.5 py-1 font-semibold text-brand-green">{a.tag}</span>
                   <span className="flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {a.date}</span>
                 </div>
-                <h2 className="mt-3 text-lg font-bold text-brand-navy">{a.title}</h2>
+                <h2 className="mt-3 text-lg font-bold text-brand-navy group-hover:text-brand-green">{a.title}</h2>
                 <p className="mt-2 text-sm text-slate-500">{a.excerpt}</p>
-                <Link to="/contact" className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-blue hover:gap-2 transition-all">
+                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-blue transition-all group-hover:gap-2">
                   Lire l'article <ArrowRight className="h-4 w-4" />
-                </Link>
+                </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 

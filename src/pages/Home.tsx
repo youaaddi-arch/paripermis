@@ -48,12 +48,20 @@ export default function Home() {
     <>
       {/* HERO immersif */}
       <section className="relative isolate overflow-hidden bg-immersive text-white">
-        {/* image de fond */}
-        <img
-          src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1600&q=80"
-          alt=""
-          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-15"
-        />
+        {/* vidéo de fond (camion qui roule) — repli sur l'image via le poster
+            tant que /videos/camion-hero.mp4 n'est pas fourni */}
+        <video
+          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-20"
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1600&q=80"
+        >
+          <source src="/videos/camion-hero.webm" type="video/webm" />
+        </video>
+        {/* voile dégradé pour la lisibilité du texte */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-brand-navy/70 via-brand-navy/40 to-transparent" />
         {/* grille discrète */}
         <div className="absolute inset-0 -z-10 bg-grid opacity-40" />
         {/* blobs animés */}
@@ -365,9 +373,9 @@ export default function Home() {
 
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {articles.map((a, i) => (
-              <Reveal key={a.title} delay={(i % 4) * 90}>
+              <Reveal key={a.slug} delay={(i % 4) * 90}>
                 <Link
-                  to="/blog"
+                  to={`/blog/${a.slug}`}
                   className="group flex h-full flex-col overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-white/25 hover:bg-white/10"
                 >
                   <div className="h-36 overflow-hidden">
