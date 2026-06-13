@@ -3,6 +3,7 @@ import {
   ArrowLeft, ArrowRight, Clock, Phone, MapPin, CheckCircle2, Target,
   Users, ListChecks, Wrench, ClipboardCheck, CalendarClock, Accessibility,
   Briefcase, Award, Download, FileText, ShieldCheck, ExternalLink, Route,
+  GraduationCap, Banknote,
 } from "lucide-react";
 import { useFormation } from "@/lib/formations";
 import { dispositifs } from "@/data/financements";
@@ -156,6 +157,12 @@ export default function FormationDetail() {
             <ul className="list-disc space-y-1 pl-5">{f.evaluation.map((e, i) => <li key={i}>{e}</li>)}</ul>
           </Block>
 
+          {f.modalitesExamen && f.modalitesExamen.length > 0 && (
+            <Block icon={GraduationCap} title="Modalités d'examen / de certification">
+              <BulletList items={f.modalitesExamen} />
+            </Block>
+          )}
+
           <Block icon={CalendarClock} title="Modalités d'accès"><p>{f.acces}</p></Block>
 
           <Block icon={Accessibility} title="Accessibilité handicap">
@@ -169,6 +176,12 @@ export default function FormationDetail() {
           </Block>
 
           <Block icon={Briefcase} title="Débouchés professionnels"><BulletList items={f.debouches} /></Block>
+
+          {f.remuneration && (
+            <Block icon={Banknote} title="Rémunération">
+              <p>{f.remuneration}</p>
+            </Block>
+          )}
 
           {f.passerelles && (
             <Block icon={Route} title="Passerelles, équivalences et voies d'accès"><p>{f.passerelles}</p></Block>

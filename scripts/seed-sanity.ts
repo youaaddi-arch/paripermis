@@ -176,12 +176,20 @@ function generatePdf(f: Formation): Promise<void> {
     bullets(doc, f.moyens);
     section(doc, "Modalités d'évaluation");
     bullets(doc, f.evaluation);
+    if (f.modalitesExamen && f.modalitesExamen.length > 0) {
+      section(doc, "Modalités d'examen / de certification");
+      bullets(doc, f.modalitesExamen);
+    }
     section(doc, "Modalités d'accès et délais");
     paragraph(doc, f.acces);
     section(doc, "Accessibilité aux personnes en situation de handicap");
     paragraph(doc, `${f.accessibilite} Référent handicap : contact@paripermis.fr`);
     section(doc, "Débouchés professionnels");
     bullets(doc, f.debouches);
+    if (f.remuneration) {
+      section(doc, "Rémunération");
+      paragraph(doc, f.remuneration);
+    }
     if (f.passerelles) {
       section(doc, "Passerelles, équivalences et voies d'accès");
       paragraph(doc, f.passerelles);
@@ -266,6 +274,8 @@ async function main() {
       acces: f.acces,
       accessibilite: f.accessibilite,
       debouches: f.debouches,
+      modalitesExamen: f.modalitesExamen,
+      remuneration: f.remuneration,
       certification: f.certification,
       imageUrl: f.image,
       programmePdfUrl: `/programmes/${f.slug}.pdf`,

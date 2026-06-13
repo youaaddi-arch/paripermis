@@ -24,6 +24,8 @@ export interface Formation {
   debouches: string[];
   certification: string;
   image: string;
+  modalitesExamen?: string[]; // modalités d'examen / de certification (réglementation, référentiels RNCP/RS)
+  remuneration?: string; // rémunération indicative du métier visé (formations professionnelles)
   qualiopi?: boolean;
   programmePdfUrl?: string; // lien du PDF de programme à télécharger
   rncpCode?: string; // Titres Professionnels
@@ -1235,6 +1237,84 @@ const passerellesBySlug: Record<string, string> = {
     "Formation passerelle de 35 h réservée aux conducteurs déjà titulaires de la qualification initiale marchandises souhaitant exercer dans le transport de voyageurs. Aucune autre correspondance officielle.",
 };
 
+// Modalités d'examen / de certification — formations professionnelles uniquement
+// (permis lourds C/CE/D, FIMO/FCO/passerelles, Titres Professionnels).
+// Sources : Sécurité Routière (épreuves HC + circulation), Code des transports
+// (qualification CQC / FIMO-FCO) et fiches France Compétences (référentiels RNCP/RS).
+const EXAM_FIMO = [
+  "Formation de 140 h évaluée en continu, complétée d'une évaluation finale des connaissances et des compétences (questionnaire/QCM et évaluation de conduite)",
+  "L'évaluation est réalisée par le centre agréé, sous le contrôle de la DREAL (pas d'épreuve devant un inspecteur de l'État)",
+  "La réussite donne lieu à l'attestation de qualification initiale (FIMO) et à la délivrance de la carte de qualification de conducteur (CQC), valable 5 ans",
+];
+const EXAM_FCO = [
+  "Formation de 35 h sans examen final : évaluations formatives et bilan en cours de stage (actualisation des connaissances, sécurité, réglementation des temps de conduite et de repos)",
+  "À l'issue, délivrance de l'attestation de FCO et renouvellement de la carte de qualification de conducteur (CQC) pour 5 ans",
+  "Formation à renouveler tous les 5 ans pour maintenir le droit de conduire à titre professionnel",
+];
+const EXAM_PASSERELLE = [
+  "Formation passerelle de 35 h évaluée en continu par le centre agréé (sans épreuve devant un inspecteur de l'État)",
+  "À l'issue, attestation de formation et carte de qualification de conducteur (CQC) pour le nouveau secteur, valable 5 ans",
+  "Pré-requis : être déjà titulaire de la qualification (FIMO/FCO) dans l'autre secteur (marchandises ↔ voyageurs)",
+];
+const examPermis = (cat: "C" | "CE" | "D", hc: string) => [
+  "Prérequis théorique : être titulaire du code de la route (ETG) en cours de validité, ou d'un permis obtenu depuis moins de 5 ans",
+  `Épreuve hors circulation (HC / « plateau ») : ${hc} ; épreuve éliminatoire dont l'admission ouvre l'accès à l'épreuve en circulation`,
+  `Épreuve en circulation (CIR) : conduite autonome sur parcours varié évaluée par un inspecteur du permis de conduire ; admission à partir de 17 points et sans erreur éliminatoire (permis ${cat})`,
+  "Résultat consultable en ligne sous 48 h ; en cas de réussite, le Certificat d'Examen du Permis de Conduire (CEPC) tient lieu de permis pendant 4 mois",
+];
+const examTitrePro = (equivalence: string) => [
+  "Évaluation finale devant un jury habilité par le ministère du Travail : mise en situation professionnelle (conduite rationnelle, manœuvres et étude de cas), entretien technique, questionnaire professionnel et entretien final portant sur le Dossier Professionnel (DP)",
+  "Prise en compte des résultats des évaluations réalisées en cours de formation",
+  "Titre constitué d'un bloc de compétences unique non sécable : pas de validation partielle (CCP)",
+  equivalence,
+];
+
+const modalitesExamenBySlug: Record<string, string[]> = {
+  "permis-c": examPermis("C", "vérifications courantes de sécurité, interrogation orale (fiches), maniabilité et manœuvres"),
+  "permis-ce": examPermis("CE", "attelage/dételage, vérifications de sécurité, interrogation orale (fiches) et manœuvres de l'ensemble articulé"),
+  "permis-d": examPermis("D", "vérifications de sécurité propres au transport de personnes, interrogation orale (fiches), maniabilité et manœuvres"),
+  "tp-transport-marchandises-porteur": examTitrePro(
+    "Le titre confère par équivalence le permis C, la qualification initiale de conducteur (CQC) et le certificat ADR de base",
+  ),
+  "tp-transport-marchandises-tous-vehicules": examTitrePro(
+    "Le titre confère par équivalence le permis CE, la qualification initiale de conducteur (CQC) et le certificat ADR de base",
+  ),
+  "tp-transport-en-commun": examTitrePro(
+    "Le titre confère par équivalence le permis D et la qualification initiale de conducteur de voyageurs (CQC)",
+  ),
+  "fimo-marchandises": EXAM_FIMO,
+  "fimo-voyageurs": EXAM_FIMO,
+  "fco-marchandises": EXAM_FCO,
+  "fco-voyageurs": EXAM_FCO,
+  "passerelle-marchandises": EXAM_PASSERELLE,
+  "passerelle-voyageurs": EXAM_PASSERELLE,
+};
+
+// Rémunération indicative (à titre informatif). Fourchettes de marché susceptibles
+// de varier selon l'expérience, la région, l'entreprise et la convention collective
+// nationale des transports routiers (primes, frais de déplacement, heures supplémentaires).
+const REMU_PORTEUR =
+  "À titre indicatif : conducteur routier « porteur » débutant rémunéré autour du SMIC à 2 000 € brut/mois, et 2 000 à 2 400 € brut/mois avec de l'expérience. S'y ajoutent les frais de déplacement (indemnités de repas), les heures supplémentaires et les primes prévues par la convention collective nationale des transports routiers.";
+const REMU_SPL =
+  "À titre indicatif : conducteur SPL / longue distance rémunéré de 2 000 à 2 800 € brut/mois selon l'expérience, auxquels s'ajoutent les frais de route (découchers, repas), les heures supplémentaires et les primes prévues par la convention collective des transports routiers.";
+const REMU_VOYAGEURS =
+  "À titre indicatif : conducteur de voyageurs (autocar/autobus) rémunéré du SMIC à environ 2 200 € brut/mois selon l'expérience, avec primes (amplitude, coupures), 13e mois et avantages selon l'entreprise et la convention collective applicable.";
+
+const remunerationBySlug: Record<string, string> = {
+  "permis-c": REMU_PORTEUR,
+  "tp-transport-marchandises-porteur": REMU_PORTEUR,
+  "fimo-marchandises": REMU_PORTEUR,
+  "fco-marchandises": REMU_PORTEUR,
+  "passerelle-marchandises": REMU_PORTEUR,
+  "permis-ce": REMU_SPL,
+  "tp-transport-marchandises-tous-vehicules": REMU_SPL,
+  "permis-d": REMU_VOYAGEURS,
+  "tp-transport-en-commun": REMU_VOYAGEURS,
+  "fimo-voyageurs": REMU_VOYAGEURS,
+  "fco-voyageurs": REMU_VOYAGEURS,
+  "passerelle-voyageurs": REMU_VOYAGEURS,
+};
+
 // Chaque formation est certifiée Qualiopi et dispose d'un programme PDF servi
 // par le site (/programmes/<slug>.pdf) — repli autonome si Sanity est indisponible.
 export const formations: Formation[] = formationsData.map((f) => ({
@@ -1243,6 +1323,8 @@ export const formations: Formation[] = formationsData.map((f) => ({
   programmePdfUrl: f.programmePdfUrl ?? `/programmes/${f.slug}.pdf`,
   ...registrations[f.slug],
   passerelles: passerellesBySlug[f.slug],
+  modalitesExamen: modalitesExamenBySlug[f.slug],
+  remuneration: remunerationBySlug[f.slug],
 }));
 
 export const getFormation = (slug: string) => formations.find((f) => f.slug === slug);
