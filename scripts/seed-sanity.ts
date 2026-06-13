@@ -179,9 +179,13 @@ function generatePdf(f: Formation): Promise<void> {
     section(doc, "Modalités d'accès et délais");
     paragraph(doc, f.acces);
     section(doc, "Accessibilité aux personnes en situation de handicap");
-    paragraph(doc, f.accessibilite);
+    paragraph(doc, `${f.accessibilite} Référent handicap : contact@paripermis.fr`);
     section(doc, "Débouchés professionnels");
     bullets(doc, f.debouches);
+    if (f.passerelles) {
+      section(doc, "Passerelles, équivalences et voies d'accès");
+      paragraph(doc, f.passerelles);
+    }
     section(doc, "Certification / Validation");
     paragraph(doc, f.certification);
 
@@ -268,6 +272,7 @@ async function main() {
       certifInfo: f.certifInfo,
       franceCompetencesUrl: f.franceCompetencesUrl,
       carifOrefUrl: f.carifOrefUrl,
+      passerelles: f.passerelles,
     };
     await client.createOrReplace(doc);
     console.log(`Sanity : ${_id} publié`);
