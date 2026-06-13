@@ -2,7 +2,7 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import {
   ArrowLeft, ArrowRight, Clock, Phone, MapPin, CheckCircle2, Target,
   Users, ListChecks, Wrench, ClipboardCheck, CalendarClock, Accessibility,
-  Briefcase, Award, Download, FileText, ShieldCheck,
+  Briefcase, Award, Download, FileText, ShieldCheck, ExternalLink,
 } from "lucide-react";
 import { useFormation } from "@/lib/formations";
 import { dispositifs } from "@/data/financements";
@@ -135,7 +135,41 @@ export default function FormationDetail() {
 
           <Block icon={Briefcase} title="Débouchés professionnels"><BulletList items={f.debouches} /></Block>
 
-          <Block icon={Award} title="Certification / Validation"><p>{f.certification}</p></Block>
+          <Block icon={Award} title="Certification / Validation">
+            <p>{f.certification}</p>
+            {(f.rncpCode || f.rsCode || f.certifInfo || f.officialLinkUrl) && (
+              <div className="mt-5 rounded-xl border border-slate-200 bg-slate-50 p-5">
+                <p className="text-sm font-semibold text-brand-navy">Enregistrement officiel</p>
+                <ul className="mt-3 flex flex-wrap gap-2">
+                  {f.rncpCode && (
+                    <li className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-brand-navy ring-1 ring-slate-200">
+                      Code RNCP {f.rncpCode}
+                    </li>
+                  )}
+                  {f.rsCode && (
+                    <li className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-brand-navy ring-1 ring-slate-200">
+                      Code RS {f.rsCode}
+                    </li>
+                  )}
+                  {f.certifInfo && (
+                    <li className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-brand-navy ring-1 ring-slate-200">
+                      N° Certif'Info {f.certifInfo}
+                    </li>
+                  )}
+                </ul>
+                {f.officialLinkUrl && (
+                  <a
+                    href={f.officialLinkUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:gap-2.5 transition-all"
+                  >
+                    {f.officialLinkLabel || "Voir la fiche officielle"} <ExternalLink className="h-3.5 w-3.5" />
+                  </a>
+                )}
+              </div>
+            )}
+          </Block>
         </div>
 
         {/* SIDEBAR */}

@@ -14,6 +14,7 @@ const FORMATIONS_QUERY = `*[_type == "formation"] | order(order asc){
   category, kind, title, cardTitle, cardSubtitle, durationBadge, duration, price,
   summary, objectifs, competences, public, prerequis, programme, methodes, moyens,
   evaluation, acces, accessibilite, debouches, certification, qualiopi,
+  rncpCode, rsCode, certifInfo, officialLinkLabel, officialLinkUrl,
   "image": coalesce(image.asset->url, imageUrl),
   "programmePdfUrl": coalesce(programmePdf.asset->url, programmePdfUrl)
 }`;
