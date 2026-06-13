@@ -55,7 +55,7 @@ export default function FinancementDetail() {
   return (
     <>
       {/* HERO */}
-      <section className="bg-brand-navy py-14 text-white">
+      <section className="relative overflow-hidden bg-immersive py-14 text-white">
         <div className="container">
           <Link to="/financement" className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white">
             <ArrowLeft className="h-4 w-4" /> Retour aux financements

@@ -36,7 +36,7 @@ const articles = [
 export default function Blog() {
   return (
     <>
-      <section className="bg-brand-navy py-16 text-white">
+      <section className="relative overflow-hidden bg-immersive py-16 text-white">
         <div className="container text-center">
           <h1 className="text-4xl font-extrabold text-white">Le Blog PariPermis</h1>
           <p className="mx-auto mt-4 max-w-2xl text-white/75">

@@ -1,32 +1,53 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Logo from "./Logo";
 import { useFormationsByCategory } from "@/lib/formations";
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-  `text-sm font-medium transition-colors hover:text-brand-green ${
+  `group relative text-sm font-medium transition-colors hover:text-brand-green ${
     isActive ? "text-brand-green" : "text-slate-700"
   }`;
 
+// soulignement animé partagé par les liens du menu
+function Underline() {
+  return (
+    <span className="absolute -bottom-1.5 left-0 h-0.5 w-0 rounded-full bg-gradient-to-r from-brand-green to-brand-cyan transition-all duration-300 group-hover:w-full" />
+  );
+}
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { marchandises, voyageurs } = useFormationsByCategory();
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur">
+    <header
+      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
+        scrolled
+          ? "border-slate-200 bg-white/80 shadow-sm backdrop-blur-md"
+          : "border-transparent bg-white/95 backdrop-blur"
+      }`}
+    >
       <div className="container flex h-16 items-center justify-between">
         <Logo />
 
         <nav className="hidden lg:flex items-center gap-6">
           <NavLink to="/" end className={navLinkClass}>
-            Accueil
+            Accueil <Underline />
           </NavLink>
 
           {/* Formations dropdown */}
           <div className="group relative">
-            <button className="flex items-center gap-1 text-sm font-medium text-slate-700 hover:text-brand-green">
-              Formations <ChevronDown className="h-3.5 w-3.5" />
+            <button className="flex items-center gap-1 text-sm font-medium text-slate-700 transition-colors hover:text-brand-green">
+              Formations <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
             </button>
             <div className="invisible absolute left-1/2 top-full w-[520px] -translate-x-1/2 pt-3 opacity-0 transition-all group-hover:visible group-hover:opacity-100">
               <div className="grid grid-cols-2 gap-6 rounded-xl border border-slate-200 bg-white p-5 shadow-lg">
@@ -69,27 +90,30 @@ export default function Navbar() {
           </div>
 
           <NavLink to="/financement" className={navLinkClass}>
-            Financement
+            Financement <Underline />
           </NavLink>
           <NavLink to="/metiers" className={navLinkClass}>
-            Métiers
+            Métiers <Underline />
           </NavLink>
           <NavLink to="/blog" className={navLinkClass}>
-            Blog
+            Blog <Underline />
           </NavLink>
           <NavLink to="/simulateur" className={navLinkClass}>
-            Simuler mon projet
+            Simuler mon projet <Underline />
           </NavLink>
           <NavLink to="/a-propos" className={navLinkClass}>
-            Notre Centre
+            Notre Centre <Underline />
           </NavLink>
           <NavLink to="/contact" className={navLinkClass}>
-            Contact
+            Contact <Underline />
           </NavLink>
         </nav>
 
         <div className="hidden lg:block">
-          <Link to="/inscription" className="btn-blue px-4 py-2">
+          <Link
+            to="/inscription"
+            className="btn px-4 py-2 bg-gradient-to-r from-brand-blue to-brand-cyan text-white hover:shadow-glow-blue focus:ring-brand-blue"
+          >
             S'inscrire
           </Link>
         </div>

@@ -55,7 +55,7 @@ export default function Simulateur() {
 
   return (
     <>
-      <section className="bg-brand-navy py-14 text-white">
+      <section className="relative overflow-hidden bg-immersive py-14 text-white">
         <div className="container text-center">
           <h1 className="text-4xl font-extrabold text-white">Simulez votre projet transport</h1>
           <p className="mx-auto mt-3 max-w-xl text-white/75">

@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight, Phone, MapPin, Star, ShieldCheck, BadgeCheck, CreditCard,
-  TrendingUp, Award, GraduationCap, Briefcase, Users, Bus, Truck,
-  Wallet, Building2, Download,
+  TrendingUp, Award, Briefcase, Users, Bus, Truck,
+  Wallet, Building2, Download, ChevronDown, Sparkles,
 } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
 import FormationCard from "@/components/FormationCard";
 import FinalCta from "@/components/FinalCta";
+import Reveal from "@/components/Reveal";
+import Counter from "@/components/Counter";
 import { site, stats, badges } from "@/lib/site";
 import { useFormationsByCategory } from "@/lib/formations";
 
@@ -42,76 +44,99 @@ export default function Home() {
   const { marchandises, voyageurs } = useFormationsByCategory();
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-brand-navy text-white">
+      {/* HERO immersif */}
+      <section className="relative isolate overflow-hidden bg-immersive text-white">
+        {/* image de fond */}
         <img
           src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1600&q=80"
           alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-20"
+          className="absolute inset-0 -z-10 h-full w-full object-cover opacity-15"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/95 to-brand-navy/70" />
-        <div className="container relative grid gap-10 py-20 lg:grid-cols-[1.3fr_1fr] lg:items-center lg:py-28">
+        {/* grille discrète */}
+        <div className="absolute inset-0 -z-10 bg-grid opacity-40" />
+        {/* blobs animés */}
+        <div className="absolute -left-24 top-10 -z-10 h-80 w-80 rounded-full bg-brand-green/30 blur-3xl animate-blob" />
+        <div className="absolute -right-20 bottom-0 -z-10 h-96 w-96 rounded-full bg-brand-cyan/20 blur-3xl animate-blob [animation-delay:4s]" />
+
+        <div className="container relative grid gap-10 py-20 lg:grid-cols-[1.25fr_1fr] lg:items-center lg:py-32">
           <div className="animate-fade-up">
-            <p className="mb-4 text-sm font-semibold text-white/80">
-              Pari<span className="text-brand-green">permis</span> · {site.tagline}
-            </p>
-            <h1 className="text-4xl font-extrabold leading-tight text-white md:text-5xl">
+            <span className="glass inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-xs font-semibold text-white/90">
+              <Sparkles className="h-3.5 w-3.5 text-brand-cyan" />
+              {site.tagline}
+            </span>
+            <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] text-white md:text-6xl">
               Devenez conducteur
               <br />
-              <span className="text-brand-green">professionnel</span>
+              <span className="text-gradient">professionnel</span>
             </h1>
-            <p className="mt-5 max-w-lg text-white/75">
-              Formation transport routier de qualité à Longjumeau (91). Permis C, CE, D, titres professionnels, FIMO et
-              FCO.
+            <p className="mt-6 max-w-lg text-lg text-white/80">
+              Formation transport routier de qualité à Longjumeau (91). Permis C, CE, D, titres
+              professionnels, FIMO et FCO — financement jusqu'à 100 %.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link to="/inscription" className="btn-green">
+            <div className="mt-9 flex flex-wrap gap-4">
+              <Link to="/inscription" className="btn-green text-base">
                 S'inscrire maintenant <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link to="/financement" className="btn bg-white/10 text-white ring-1 ring-white/30 hover:bg-white/20">
+              <Link to="/financement" className="btn glass text-white hover:bg-white/20">
                 Financer ma formation
               </Link>
             </div>
+            {/* mini-stats */}
+            <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4">
+              {stats.slice(0, 3).map((s) => (
+                <div key={s.label}>
+                  <Counter value={s.value} className="text-2xl font-extrabold text-white" />
+                  <p className="text-xs text-white/60">{s.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          {/* Rating card */}
-          <div className="animate-fade-up rounded-2xl bg-white p-6 text-slate-700 shadow-2xl">
-            <div className="flex items-center justify-between">
-              <p className="font-extrabold text-brand-navy">
-                Pari<span className="text-brand-green">permis</span>
-              </p>
-              <span className="text-xs text-slate-400">Centre de formation agréé</span>
-            </div>
-            <div className="mt-4 flex items-center gap-3">
-              <span className="text-4xl font-extrabold text-brand-navy">{site.rating}</span>
-              <div>
-                <div className="flex text-brand-green">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-current" />
-                  ))}
-                </div>
-                <p className="text-xs text-slate-400">{site.reviews} avis vérifiés</p>
+          {/* Rating card flottante */}
+          <div className="animate-fade-up [animation-delay:150ms] lg:animate-float-slow">
+            <div className="rounded-2xl bg-white p-6 text-slate-700 shadow-2xl ring-1 ring-black/5">
+              <div className="flex items-center justify-between">
+                <p className="font-extrabold text-brand-navy">
+                  Pari<span className="text-brand-green">permis</span>
+                </p>
+                <span className="text-xs text-slate-400">Centre agréé</span>
               </div>
-            </div>
-            <div className="mt-4 space-y-2 border-t border-slate-100 pt-4 text-sm">
-              <p className="flex items-center gap-2 text-xs text-slate-400">
-                <BadgeCheck className="h-4 w-4 text-brand-green" /> Avis certifiés norme ISO 20488
-              </p>
-              <p className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" /> {site.address}
-              </p>
-              <p className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-brand-green" /> {site.phone}
-              </p>
-              <p className="flex items-center gap-2">
-                <ShieldCheck className="h-4 w-4 text-brand-green" /> {site.agrement}
-              </p>
+              <div className="mt-4 flex items-center gap-3">
+                <span className="text-4xl font-extrabold text-brand-navy">{site.rating}</span>
+                <div>
+                  <div className="flex text-brand-green">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="text-xs text-slate-400">{site.reviews} avis vérifiés</p>
+                </div>
+              </div>
+              <div className="mt-4 space-y-2 border-t border-slate-100 pt-4 text-sm">
+                <p className="flex items-center gap-2 text-xs text-slate-400">
+                  <BadgeCheck className="h-4 w-4 text-brand-green" /> Avis certifiés norme ISO 20488
+                </p>
+                <p className="flex items-start gap-2">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" /> {site.address}
+                </p>
+                <p className="flex items-center gap-2">
+                  <Phone className="h-4 w-4 text-brand-green" /> {site.phone}
+                </p>
+                <p className="flex items-center gap-2">
+                  <ShieldCheck className="h-4 w-4 text-brand-green" /> {site.agrement}
+                </p>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* indicateur de scroll */}
+        <div className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-white/50">
+          <ChevronDown className="h-6 w-6 animate-bounce" />
+        </div>
       </section>
 
-      {/* BADGES */}
+      {/* BADGES défilants */}
       <div className="border-b border-slate-200 bg-white">
         <div className="container flex flex-wrap items-center justify-center gap-3 py-5">
           {badges.map((b, i) => {
@@ -119,7 +144,7 @@ export default function Home() {
             return (
               <span
                 key={b}
-                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600"
+                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-3 py-1.5 text-xs font-medium text-slate-600 transition-colors hover:border-brand-green/40 hover:text-brand-navy"
               >
                 <Icon className="h-3.5 w-3.5 text-brand-green" />
                 {b}
@@ -129,14 +154,14 @@ export default function Home() {
         </div>
       </div>
 
-      {/* STATS */}
+      {/* STATS animées */}
       <section className="bg-slate-50">
-        <div className="container grid grid-cols-2 gap-6 py-12 md:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.label} className="text-center">
-              <p className="text-3xl font-extrabold text-brand-green md:text-4xl">{s.value}</p>
+        <div className="container grid grid-cols-2 gap-6 py-14 md:grid-cols-4">
+          {stats.map((s, i) => (
+            <Reveal key={s.label} delay={i * 90} className="text-center">
+              <Counter value={s.value} className="text-3xl font-extrabold text-brand-green md:text-4xl" />
               <p className="mt-1 text-sm text-slate-500">{s.label}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -144,14 +169,18 @@ export default function Home() {
       {/* MARCHANDISES */}
       <section className="section">
         <div className="container">
-          <SectionTitle
-            eyebrow="Marchandises"
-            title="Transport de Marchandises"
-            subtitle="Permis, titres professionnels et formations obligatoires pour le transport de marchandises"
-          />
+          <Reveal>
+            <SectionTitle
+              eyebrow="Marchandises"
+              title="Transport de Marchandises"
+              subtitle="Permis, titres professionnels et formations obligatoires pour le transport de marchandises"
+            />
+          </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {marchandises.filter((f) => f.slug !== "passerelle-marchandises").map((f) => (
-              <FormationCard key={f.slug} formation={f} />
+            {marchandises.filter((f) => f.slug !== "passerelle-marchandises").map((f, i) => (
+              <Reveal key={f.slug} delay={(i % 3) * 90}>
+                <FormationCard formation={f} />
+              </Reveal>
             ))}
           </div>
         </div>
@@ -160,14 +189,18 @@ export default function Home() {
       {/* VOYAGEURS */}
       <section className="section bg-slate-50">
         <div className="container">
-          <SectionTitle
-            eyebrow="Voyageurs"
-            title="Transport de Voyageurs"
-            subtitle="Permis, titres professionnels et formations obligatoires pour le transport de voyageurs"
-          />
+          <Reveal>
+            <SectionTitle
+              eyebrow="Voyageurs"
+              title="Transport de Voyageurs"
+              subtitle="Permis, titres professionnels et formations obligatoires pour le transport de voyageurs"
+            />
+          </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {voyageurs.filter((f) => f.slug !== "passerelle-voyageurs").map((f) => (
-              <FormationCard key={f.slug} formation={f} />
+            {voyageurs.filter((f) => f.slug !== "passerelle-voyageurs").map((f, i) => (
+              <Reveal key={f.slug} delay={(i % 3) * 90}>
+                <FormationCard formation={f} />
+              </Reveal>
             ))}
           </div>
           <div className="mt-10 text-center">
@@ -181,25 +214,29 @@ export default function Home() {
       {/* METIERS */}
       <section className="section">
         <div className="container">
-          <SectionTitle
-            title="Quel métier vous correspond ?"
-            subtitle="Découvrez les métiers du transport, les salaires et le parcours pour y accéder"
-          />
+          <Reveal>
+            <SectionTitle
+              title="Quel métier vous correspond ?"
+              subtitle="Découvrez les métiers du transport, les salaires et le parcours pour y accéder"
+            />
+          </Reveal>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {metiersHome.map((m) => (
-              <div key={m.name} className="card p-6">
-                <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
-                  <m.icon className="h-5 w-5" />
+            {metiersHome.map((m, i) => (
+              <Reveal key={m.name} delay={i * 90}>
+                <div className="card card-hover group h-full p-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-blue-400 text-white shadow-glow-blue transition-transform group-hover:scale-110">
+                    <m.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-4 text-base font-bold text-brand-navy">{m.name}</h3>
+                  <p className="mt-1 text-sm text-slate-500">Salaire : {m.salaire}</p>
+                  <Link
+                    to="/metiers"
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-blue transition-all hover:gap-2"
+                  >
+                    Découvrir le métier <ArrowRight className="h-4 w-4" />
+                  </Link>
                 </div>
-                <h3 className="mt-4 text-base font-bold text-brand-navy">{m.name}</h3>
-                <p className="mt-1 text-sm text-slate-500">Salaire : {m.salaire}</p>
-                <Link
-                  to="/metiers"
-                  className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-blue hover:gap-2 transition-all"
-                >
-                  Découvrir le métier <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
+              </Reveal>
             ))}
           </div>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -216,19 +253,23 @@ export default function Home() {
       {/* POURQUOI */}
       <section className="section bg-slate-50">
         <div className="container">
-          <SectionTitle
-            title="Pourquoi choisir PariPermis ?"
-            subtitle="Un centre de formation d'excellence au service de votre réussite"
-          />
+          <Reveal>
+            <SectionTitle
+              title="Pourquoi choisir PariPermis ?"
+              subtitle="Un centre de formation d'excellence au service de votre réussite"
+            />
+          </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {atouts.map((a) => (
-              <div key={a.title} className="card p-6 text-center">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brand-green/10 text-brand-green">
-                  <a.icon className="h-6 w-6" />
+            {atouts.map((a, i) => (
+              <Reveal key={a.title} delay={i * 80}>
+                <div className="card card-hover group h-full p-6 text-center">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-green to-emerald-400 text-white shadow-glow transition-transform group-hover:scale-110">
+                    <a.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-4 text-base font-bold text-brand-navy">{a.title}</h3>
+                  <p className="mt-2 text-sm text-slate-500">{a.text}</p>
                 </div>
-                <h3 className="mt-4 text-base font-bold text-brand-navy">{a.title}</h3>
-                <p className="mt-2 text-sm text-slate-500">{a.text}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -237,19 +278,23 @@ export default function Home() {
       {/* FINANCEMENT */}
       <section className="section">
         <div className="container">
-          <SectionTitle
-            title="Financez votre formation"
-            subtitle="Plusieurs solutions de financement pour rendre nos formations accessibles à tous"
-          />
+          <Reveal>
+            <SectionTitle
+              title="Financez votre formation"
+              subtitle="Plusieurs solutions de financement pour rendre nos formations accessibles à tous"
+            />
+          </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {financements.map((f) => (
-              <div key={f.title} className="card p-6 text-center">
-                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
-                  <f.icon className="h-6 w-6" />
+            {financements.map((f, i) => (
+              <Reveal key={f.title} delay={i * 80}>
+                <div className="card card-hover group h-full p-6 text-center">
+                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-brand-blue to-brand-cyan text-white shadow-glow-blue transition-transform group-hover:scale-110">
+                    <f.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mt-4 text-base font-bold text-brand-navy">{f.title}</h3>
+                  <p className="mt-2 text-sm text-slate-500">{f.text}</p>
                 </div>
-                <h3 className="mt-4 text-base font-bold text-brand-navy">{f.title}</h3>
-                <p className="mt-2 text-sm text-slate-500">{f.text}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
@@ -277,16 +322,18 @@ export default function Home() {
           <h2 className="mt-2 text-3xl font-extrabold md:text-4xl">Ils nous font confiance</h2>
           <p className="mt-2 text-sm text-slate-400 underline">{site.reviews} avis certifiés norme ISO 20488</p>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {avis.map((a) => (
-              <div key={a.name} className="card p-6 text-left">
-                <div className="flex text-brand-green">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-current" />
-                  ))}
+            {avis.map((a, i) => (
+              <Reveal key={a.name} delay={i * 90}>
+                <div className="card card-hover h-full p-6 text-left">
+                  <div className="flex text-brand-green">
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <Star key={j} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
+                  <p className="mt-3 text-sm italic text-slate-600">"{a.text}"</p>
+                  <p className="mt-4 text-sm font-semibold text-brand-navy">{a.name}</p>
                 </div>
-                <p className="mt-3 text-sm italic text-slate-600">"{a.text}"</p>
-                <p className="mt-4 text-sm font-semibold text-brand-navy">{a.name}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
