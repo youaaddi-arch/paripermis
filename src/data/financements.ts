@@ -127,6 +127,7 @@ export interface DispositifDetail {
   modalites: string[];
   avantages?: string[];
   pieces?: string[]; // pièces à fournir pour constituer le dossier
+  trouverSession?: string[]; // étapes pour retrouver nos sessions dans le dossier de financement
 }
 
 export const dispositifDetails: Record<string, DispositifDetail> = {
@@ -320,6 +321,13 @@ export const dispositifDetails: Record<string, DispositifDetail> = {
       "Maintien de la rémunération (100 % jusqu'à 2 SMIC, 90 % au-delà, sous conditions)",
       "Prise en charge des frais pédagogiques et, le cas échéant, des frais annexes",
       "Congé spécifique : votre contrat de travail est suspendu, pas rompu",
+    ],
+    trouverSession: [
+      "Connectez-vous à votre espace salarié sur transitionspro-idf.fr et créez votre dossier de financement.",
+      "À l'étape « formation », recherchez l'organisme : tapez « PariPermis » (ou notre numéro de SIRET).",
+      "Sélectionnez la certification visée à l'aide de son code : TP marchandises porteur (RNCP 39796 / Certif'Info 103807), TP tous véhicules (RNCP 39795 / 117566), TP transport en commun (RNCP 37878 / 100817), FIMO/FCO (RS 5769 ou 5768).",
+      "Choisissez la session aux dates souhaitées : le numéro de session figure sur le devis que PariPermis vous remet.",
+      "Joignez notre devis + programme + attestation d'inscription, puis envoyez le dossier à Transitions Pro Île-de-France.",
     ],
     pieces: [
       "Dossier de demande de prise en charge Transitions Pro (formulaire à compléter en ligne)",

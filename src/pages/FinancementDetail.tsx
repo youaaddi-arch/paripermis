@@ -1,7 +1,7 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import {
   ArrowLeft, ArrowRight, ExternalLink, CheckCircle2, Users, ClipboardCheck,
-  ListChecks, Sparkles, GraduationCap, Phone,
+  ListChecks, Sparkles, GraduationCap, Phone, Search,
 } from "lucide-react";
 import { dispositifs, dispositifDetails } from "@/data/financements";
 import { useFormations } from "@/lib/formations";
@@ -92,6 +92,21 @@ export default function FinancementDetail() {
 
           {detail.pieces && detail.pieces.length > 0 && (
             <Block icon={ClipboardCheck} title="Pièces à fournir pour la demande"><BulletList items={detail.pieces} /></Block>
+          )}
+
+          {detail.trouverSession && detail.trouverSession.length > 0 && (
+            <Block icon={Search} title="Retrouver notre session dans votre dossier">
+              <ol className="space-y-3">
+                {detail.trouverSession.map((step, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-green/15 text-sm font-bold text-brand-green">
+                      {i + 1}
+                    </span>
+                    <span>{step}</span>
+                  </li>
+                ))}
+              </ol>
+            </Block>
           )}
 
           {detail.avantages && detail.avantages.length > 0 && (
