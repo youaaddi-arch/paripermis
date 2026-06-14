@@ -43,7 +43,7 @@ const avis = [
 ];
 
 export default function Home() {
-  const { marchandises, voyageurs, auto } = useFormationsByCategory();
+  const { marchandises, voyageurs, auto, deuxRoues } = useFormationsByCategory();
   return (
     <>
       {/* HERO immersif */}
@@ -212,18 +212,37 @@ export default function Home() {
           </div>
         </div>
 
-        {/* AUTO / MOTO */}
+        {/* AUTO */}
         <div className="container mt-16">
           <Reveal>
             <SectionTitle
               light
-              eyebrow="Auto & Moto"
-              title="Permis Auto & Moto"
-              subtitle="Permis B, boîte automatique, moto, permis accéléré et Code de la route"
+              eyebrow="Auto"
+              title="Permis Auto & Code de la route"
+              subtitle="Permis B, boîte automatique (BEA), conduite accompagnée, conduite supervisée, passerelle BEA → B, accéléré et Code"
             />
           </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {auto.map((f, i) => (
+              <Reveal key={f.slug} delay={(i % 3) * 90}>
+                <FormationCard formation={f} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        {/* DEUX-ROUES */}
+        <div className="container mt-16">
+          <Reveal>
+            <SectionTitle
+              light
+              eyebrow="Deux-roues"
+              title="Permis Deux-roues"
+              subtitle="Permis AM (BSR), A1 (& stage 125 cm³), A2 et passerelle A2 vers A"
+            />
+          </Reveal>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {deuxRoues.map((f, i) => (
               <Reveal key={f.slug} delay={(i % 3) * 90}>
                 <FormationCard formation={f} />
               </Reveal>
