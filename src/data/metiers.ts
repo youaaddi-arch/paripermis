@@ -16,8 +16,21 @@ export interface Metier {
   evolution: string;
   salaire: string;
   demande: string;
+  insertion: string; // taux d'insertion dans l'emploi (source AFT)
+  employeurs: string[]; // principaux employeurs/recruteurs du secteur en France
+  image: string;
   parcours: Parcours[];
 }
+
+// Photos d'illustration (Unsplash).
+const PH_TRUCK = "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1100&q=80";
+const PH_SPL = "https://images.unsplash.com/photo-1591768793355-74d04bb6608f?auto=format&fit=crop&w=1100&q=80";
+const PH_BUS = "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1100&q=80";
+const PH_CAR = "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1100&q=80";
+
+// Taux d'insertion : enquête AFT (2023) — ≈ 80 % en emploi 6 mois après une
+// formation transport (permis + FIMO ou Titre Professionnel) cofinancée par l'AFT.
+const INSERTION = "≈ 80 % en emploi dans les 6 mois suivant la formation (enquête AFT 2023)";
 
 // Parcours réutilisables
 const PORTEUR: Parcours[] = [
@@ -91,6 +104,9 @@ export const metiers: Metier[] = [
       "Évolution possible vers la conduite SPL (super lourd), des spécialisations (ADR, frigorifique, benne) ou des fonctions d'exploitation.",
     salaire: "1 900 € – 2 300 € brut/mois",
     demande: "Forte demande",
+    insertion: INSERTION,
+    employeurs: ["Geodis", "XPO Logistics", "Dachser", "DB Schenker", "Jacky Perrenot", "FM Logistic"],
+    image: PH_TRUCK,
     parcours: PORTEUR,
   },
   {
@@ -110,6 +126,9 @@ export const metiers: Metier[] = [
       "Spécialisations très recherchées (ADR, transport exceptionnel, frigorifique) et évolution vers formateur ou exploitation.",
     salaire: "2 200 € – 2 600 € brut/mois",
     demande: "Forte demande",
+    insertion: INSERTION,
+    employeurs: ["Geodis", "XPO Logistics", "Dachser", "Jacky Perrenot", "Transports Malherbe", "GT Solutions"],
+    image: PH_SPL,
     parcours: SPL,
   },
   {
@@ -129,6 +148,9 @@ export const metiers: Metier[] = [
       "Évolution vers la conduite longue distance (SPL), des spécialisations ou des postes de chef d'équipe / exploitation.",
     salaire: "1 850 € – 2 100 € brut/mois",
     demande: "Forte demande",
+    insertion: INSERTION,
+    employeurs: ["Geodis", "DHL", "Chronopost", "DB Schenker", "Heppner", "FM Logistic"],
+    image: PH_TRUCK,
     parcours: PORTEUR,
   },
   {
@@ -148,6 +170,9 @@ export const metiers: Metier[] = [
       "Spécialisation parmi les mieux rémunérées ; évolution vers la formation, le conseil à la sécurité (CSTMD) ou l'exploitation.",
     salaire: "2 400 € – 2 800 € brut/mois",
     demande: "Forte demande",
+    insertion: INSERTION,
+    employeurs: ["Groupe Charles André (GCA)", "Hoyer", "Suttons", "Transports Bert", "STEF (température dirigée)"],
+    image: PH_SPL,
     parcours: [
       {
         id: "permis-c-fimo-adr",
@@ -182,6 +207,9 @@ export const metiers: Metier[] = [
       "Évolution vers la conduite de car (longue distance), le tutorat/formation ou des fonctions de régulation/exploitation.",
     salaire: "1 900 € – 2 200 € brut/mois",
     demande: "Forte demande",
+    insertion: INSERTION,
+    employeurs: ["Keolis (groupe SNCF)", "Transdev", "RATP Dev", "réseaux urbains locaux"],
+    image: PH_BUS,
     parcours: VOYAGEURS,
   },
   {
@@ -201,6 +229,9 @@ export const metiers: Metier[] = [
       "Évolution vers le grand tourisme, le transport international, le tutorat ou l'exploitation.",
     salaire: "2 000 € – 2 300 € brut/mois",
     demande: "Forte demande",
+    insertion: INSERTION,
+    employeurs: ["Keolis", "Transdev", "RATP Dev", "FlixBus / BlaBlaCar Bus", "autocaristes régionaux"],
+    image: PH_CAR,
     parcours: VOYAGEURS,
   },
 ];
