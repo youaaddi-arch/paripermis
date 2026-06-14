@@ -1333,17 +1333,17 @@ const formationsData: Formation[] = [
     public:
       "Toute personne d'au moins 16 ans souhaitant conduire une moto légère 125 cm³ (A1), et titulaires du permis B visant la formation 125 (« stage 125 »). Accessible aux personnes en situation de handicap (nous contacter).",
     prerequis: [
-      "Être âgé d'au moins 16 ans",
-      "Réussir l'épreuve théorique moto (ETM) — 40 questions, 35 bonnes réponses requises, valable 5 ans",
-      "Enregistrement de la demande de permis sur le site ANTS",
+      "Permis A1 : être âgé d'au moins 16 ans et réussir l'épreuve théorique moto (ETM) — 40 questions, 35 bonnes réponses requises, valable 5 ans",
+      "Permis A1 : enregistrement de la demande de permis sur le site ANTS",
+      "Stage 125 (autre voie, pour les titulaires du permis B) : permis B depuis au moins 2 ans — ni ETM ni examen requis (dispense si conduite d'un 125/L5e attestée dans les 5 ans)",
     ],
     programme: [
-      "Épreuve théorique moto (ETM)",
-      "Compétence 1 — Connaître et maîtriser sa moto dans un trafic faible ou nul (plateau : maniabilité lente et rapide, freinages)",
-      "Compétence 2 — Appréhender la route et circuler dans des conditions normales",
-      "Compétence 3 — Circuler dans des conditions difficiles et partager la route avec les autres usagers",
-      "Compétence 4 — Pratiquer une conduite autonome, sûre et économique",
-      "Stage 125 (titulaires du permis B) : formation de 7 h obligatoire pour conduire un 125 cm³ (L3e) ou un tricycle > 50 cm³ (depuis le 1ᵉʳ janvier 2011)",
+      "Permis A1 — Épreuve théorique moto (ETM)",
+      "Permis A1 — Compétence 1 : connaître et maîtriser sa moto dans un trafic faible ou nul (plateau : maniabilité lente et rapide, freinages)",
+      "Permis A1 — Compétence 2 : appréhender la route et circuler dans des conditions normales",
+      "Permis A1 — Compétence 3 : circuler dans des conditions difficiles et partager la route avec les autres usagers",
+      "Permis A1 — Compétence 4 : pratiquer une conduite autonome, sûre et économique",
+      "Stage 125 (titulaires du permis B) : formation de 7 h (2 h théorie + 2 h plateau + 3 h circulation), SANS examen ni ETM — attestation de suivi délivrée, pour conduire un 125 cm³ ou un tricycle L5e (depuis le 1ᵉʳ janvier 2011)",
     ],
     methodes: [
       "Alternance théorie (ETM) / plateau / circulation",
