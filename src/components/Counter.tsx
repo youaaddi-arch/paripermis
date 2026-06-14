@@ -46,7 +46,7 @@ export default function Counter({ value, className = "" }: { value: string; clas
     return () => obs.disconnect();
   }, [target]);
 
-  const display = decimals > 0 ? n.toFixed(decimals) : Math.round(n).toLocaleString("fr-FR");
+  const display = decimals > 0 ? n.toFixed(decimals).replace(".", ",") : Math.round(n).toLocaleString("fr-FR");
 
   if (!isNumeric) {
     return <span ref={ref} className={className}>{value}</span>;

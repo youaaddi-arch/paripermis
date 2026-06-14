@@ -1,7 +1,7 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import {
   ArrowLeft, ArrowRight, Truck, Bus, TrendingUp, Banknote, ListChecks,
-  Route as RouteIcon, GraduationCap, Phone, Clock,
+  Route as RouteIcon, GraduationCap, Phone, Clock, ExternalLink,
 } from "lucide-react";
 import { getMetier } from "@/data/metiers";
 import { useFormations } from "@/lib/formations";
@@ -30,6 +30,9 @@ export default function MetierDetail() {
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-brand-green/20 px-3 py-1 text-xs font-semibold text-brand-green ring-1 ring-brand-green/30">
               <TrendingUp className="h-3 w-3" /> {m.demande}
+            </span>
+            <span className="inline-flex items-center rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-white ring-1 ring-white/25">
+              Code ROME {m.romeCode}
             </span>
           </div>
           <h1 className="mt-4 max-w-3xl text-3xl font-extrabold text-white md:text-4xl">{m.name}</h1>
@@ -107,6 +110,41 @@ export default function MetierDetail() {
                 </div>
               ))}
             </div>
+          </section>
+
+          {/* SOURCES */}
+          <section className="border-t border-slate-200 pt-8">
+            <h2 className="flex items-center gap-2 text-xl font-bold text-brand-navy">
+              <ExternalLink className="h-5 w-5 text-brand-green" /> Sources
+            </h2>
+            <ul className="mt-4 space-y-2 text-sm text-slate-600">
+              <li>
+                <a
+                  href={`https://candidat.francetravail.fr/metierscope/fiche-metier/${m.romeCode}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 font-semibold text-brand-blue hover:underline"
+                >
+                  France Travail — fiche métier ROME {m.romeCode} <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+                <span className="text-slate-400"> (missions, accès au métier, salaires)</span>
+              </li>
+              <li>
+                <a
+                  href="https://statistiques.francetravail.org/bmo"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 font-semibold text-brand-blue hover:underline"
+                >
+                  France Travail — enquête Besoins en Main-d'Œuvre (BMO) <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+                <span className="text-slate-400"> (tensions et projets de recrutement)</span>
+              </li>
+            </ul>
+            <p className="mt-3 text-xs text-slate-400">
+              Salaires indicatifs susceptibles de varier selon l'expérience, la région et la convention collective
+              nationale des transports routiers.
+            </p>
           </section>
         </div>
 
