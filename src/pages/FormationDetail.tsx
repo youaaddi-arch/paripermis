@@ -42,11 +42,18 @@ export default function FormationDetail() {
 
   const accent = f.category === "marchandises" ? "text-brand-blue" : "text-brand-green";
 
-  // Apprentissage : réservé aux certifications RNCP (Titres Pro).
-  // Transition Pro : réservée aux certifications enregistrées RNCP/RS (pas les permis).
+  // Éligibilité des dispositifs selon la formation :
+  // - CPF : code + permis groupe léger (B, A1, A2) et groupe lourd (C/CE/D) +
+  //   certifications RNCP/RS ; exclus : AM/BSR, passerelles, formation 7 h.
+  // - Contrat de pro & Projet de Transition Pro : réservés aux certifications
+  //   enregistrées (RNCP/RS) — FIMO/FCO, passerelles transport, Titres Pro.
+  // - Apprentissage : réservé aux Titres Professionnels (RNCP).
+  const isRegistered = !!(f.rncpCode || f.rsCode);
   const finDispositifs = dispositifs.filter((d) => {
+    if (d.code === "CPF") return f.cpfEligible !== false;
     if (d.code === "APP") return f.kind === "Titre Professionnel";
-    if (d.code === "PTP") return f.kind !== "Permis";
+    if (d.code === "PRO") return isRegistered;
+    if (d.code === "PTP") return isRegistered;
     return true;
   });
 

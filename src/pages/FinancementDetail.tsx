@@ -41,7 +41,9 @@ export default function FinancementDetail() {
 
   const concernees = formations.filter((f) => {
     if (detail.scope === "rncp") return f.kind === "Titre Professionnel";
-    if (detail.scope === "registered") return f.kind !== "Permis";
+    if (detail.scope === "registered") return !!(f.rncpCode || f.rsCode);
+    // scope "all" : le CPF exclut les formations non éligibles (AM/BSR, passerelles, formation 7 h)
+    if (d.code === "CPF") return f.cpfEligible !== false;
     return true;
   });
 
