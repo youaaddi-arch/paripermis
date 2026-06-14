@@ -29,6 +29,7 @@ export interface Formation {
   qualiopi?: boolean;
   programmePdfUrl?: string; // lien du PDF de programme à télécharger
   cpfUrl?: string; // lien de la fiche sur Mon Compte Formation (CPF)
+  cpfEligible?: boolean; // éligibilité au CPF (faux : AM/BSR, passerelles, formation 7 h)
   rncpCode?: string; // Titres Professionnels
   rsCode?: string; // FIMO / FCO / Passerelle (Répertoire Spécifique)
   certifInfo?: string; // numéro Certif'Info (= identifiant CARIF OREF)
@@ -1706,6 +1707,11 @@ const cpfUrlBySlug: Record<string, string> = {
     "https://www.moncompteformation.gouv.fr/espace-prive/html/#/formation/recherche/78520849700012_20hmanuelle/78520849700012_longjumeau?contexteFormation=ACTIVITE_PROFESSIONNELLE",
 };
 
+// Formations NON éligibles au CPF : permis AM (BSR), passerelles et formation
+// de 7 h ne figurent pas dans la liste légale (code + groupe léger B/A1/A2 +
+// groupe lourd C/CE/D + certifications RNCP/RS).
+const cpfNonEligible = new Set(["permis-am", "passerelle-bea-b", "passerelle-a2-a"]);
+
 // Chaque formation est certifiée Qualiopi et dispose d'un programme PDF servi
 // par le site (/programmes/<slug>.pdf) — repli autonome si Sanity est indisponible.
 export const formations: Formation[] = formationsData.map((f) => ({
@@ -1717,6 +1723,7 @@ export const formations: Formation[] = formationsData.map((f) => ({
   modalitesExamen: modalitesExamenBySlug[f.slug],
   remuneration: remunerationBySlug[f.slug],
   cpfUrl: cpfUrlBySlug[f.slug],
+  cpfEligible: !cpfNonEligible.has(f.slug),
 }));
 
 export const getFormation = (slug: string) => formations.find((f) => f.slug === slug);
