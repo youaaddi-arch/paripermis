@@ -1,4 +1,4 @@
-export type Category = "marchandises" | "voyageurs" | "auto";
+export type Category = "marchandises" | "voyageurs" | "auto" | "deux-roues";
 
 export interface Formation {
   slug: string;
@@ -991,6 +991,199 @@ const formationsData: Formation[] = [
     image: CAR,
   },
   {
+    slug: "permis-aac",
+    category: "auto",
+    kind: "Permis",
+    title: "Permis B en AAC — Conduite accompagnée (dès 15 ans)",
+    cardTitle: "Permis AAC",
+    cardSubtitle: "Conduite accompagnée dès 15 ans",
+    durationBadge: "Dès 15 ans",
+    duration: "Formation initiale (20 h minimum) + phase de conduite accompagnée (1 an et 3 000 km minimum)",
+    price: "Sur devis — évaluation d'1 h offerte en agence",
+    summary:
+      "L'Apprentissage Anticipé de la Conduite (AAC) permet de commencer la formation au permis B dès 15 ans. Après une formation initiale en auto-école, le candidat conduit accompagné d'un adulte pendant au moins 1 an, ce qui augmente fortement le taux de réussite et réduit la période probatoire à 2 ans.",
+    objectifs: [
+      "Acquérir les bases de la conduite lors de la formation initiale",
+      "Consolider son expérience pendant la phase de conduite accompagnée",
+      "Conduire de façon autonome, sûre, économique et citoyenne",
+      "Se présenter et réussir l'examen du permis B dès 17 ans",
+    ],
+    competences: [
+      "Maîtriser le maniement du véhicule dans un trafic faible ou nul",
+      "Appréhender la route et circuler dans des conditions normales",
+      "Circuler dans des conditions difficiles et partager la route avec les autres usagers",
+      "Pratiquer une conduite autonome, sûre et économique",
+    ],
+    public:
+      "Jeunes dès 15 ans souhaitant préparer le permis B en conduite accompagnée. Les personnes en situation de handicap peuvent avoir des besoins spécifiques : contactez-nous pour une analyse de vos besoins.",
+    prerequis: [
+      "Être âgé d'au moins 15 ans à l'entrée en formation",
+      "Accord des représentants légaux et de l'assureur du véhicule",
+      "Obtenir l'épreuve théorique générale (Code de la route), en cours de validité (5 ans)",
+      "Réaliser la formation initiale (20 h de conduite minimum) sanctionnée par une attestation de fin de formation initiale (AFFI)",
+      "Accompagnateur titulaire du permis B depuis au moins 5 ans sans interruption",
+    ],
+    programme: [
+      "Formation au Code de la route (épreuve théorique générale)",
+      "Compétence 1 — Maîtriser le maniement du véhicule dans un trafic faible ou nul",
+      "Compétence 2 — Appréhender la route et circuler dans des conditions normales",
+      "Compétence 3 — Circuler dans des conditions difficiles et partager la route avec les autres usagers",
+      "Compétence 4 — Pratiquer une conduite autonome, sûre et économique",
+      "Rendez-vous préalable avec l'enseignant et l'accompagnateur, puis phase de conduite accompagnée (≥ 1 an et ≥ 3 000 km)",
+      "Deux rendez-vous pédagogiques obligatoires pendant la phase accompagnée",
+    ],
+    methodes: [
+      "Pédagogie individualisée à partir du niveau évalué",
+      "Alternance code / simulateur / conduite réelle",
+      "Suivi pédagogique numérique consultable sur compte personnel",
+    ],
+    moyens: [
+      "Moniteurs diplômés (BEPECASER ou Titre Pro ECSR)",
+      "Véhicules à double commande récents",
+      "Simulateurs de conduite et plateforme de Code en ligne",
+    ],
+    evaluation: [
+      "Évaluations continues consignées dans le livret d'apprentissage (REMC, arrêté du 13 mai 2013)",
+      "Attestation de fin de formation initiale (AFFI) puis rendez-vous pédagogiques",
+      "Examen officiel : Code puis épreuve pratique (dès 17 ans)",
+    ],
+    acces:
+      "Inscription après une évaluation de départ (1 h offerte). Délai indicatif d'accès : sous 2 semaines après validation du dossier.",
+    accessibilite: HANDICAP,
+    debouches: [
+      "Période probatoire réduite à 2 ans (au lieu de 3)",
+      "Meilleur taux de réussite à l'examen",
+      "Autonomie et mobilité au quotidien",
+    ],
+    certification:
+      "Permis de conduire catégorie B délivré par l'État après réussite de l'épreuve pratique (présentation possible dès 17 ans).",
+    image: CAR,
+  },
+  {
+    slug: "permis-cs",
+    category: "auto",
+    kind: "Permis",
+    title: "Permis B en conduite supervisée (CS)",
+    cardTitle: "Permis CS",
+    cardSubtitle: "Conduite supervisée dès 18 ans",
+    durationBadge: "Dès 18 ans",
+    duration: "Formation initiale (20 h minimum) + phase de conduite supervisée (sans durée ni kilométrage minimum)",
+    price: "Sur devis — évaluation d'1 h offerte en agence",
+    summary:
+      "La conduite supervisée permet, dès 18 ans, d'acquérir de l'expérience accompagné d'un conducteur avant de passer (ou repasser) l'examen pratique du permis B. Elle peut être choisie dès le départ ou après un échec à l'épreuve pratique.",
+    objectifs: [
+      "Acquérir les bases de la conduite lors de la formation initiale",
+      "Gagner en expérience et en confiance pendant la phase supervisée",
+      "Conduire de façon autonome, sûre, économique et citoyenne",
+      "Se présenter et réussir l'examen pratique du permis B",
+    ],
+    competences: [
+      "Maîtriser le maniement du véhicule dans un trafic faible ou nul",
+      "Appréhender la route et circuler dans des conditions normales",
+      "Circuler dans des conditions difficiles et partager la route avec les autres usagers",
+      "Pratiquer une conduite autonome, sûre et économique",
+    ],
+    public:
+      "Candidats de 18 ans minimum souhaitant acquérir de l'expérience avant l'examen, ou après un ou plusieurs échecs à l'épreuve pratique. Accessible aux personnes en situation de handicap (nous contacter).",
+    prerequis: [
+      "Être âgé d'au moins 18 ans",
+      "Obtenir l'épreuve théorique générale (Code de la route), en cours de validité (5 ans)",
+      "Avoir suivi la formation initiale (20 h de conduite minimum) et obtenu l'attestation de fin de formation initiale (AFFI)",
+      "Accord de l'assureur du véhicule ; accompagnateur titulaire du permis B depuis au moins 5 ans",
+    ],
+    programme: [
+      "Formation au Code de la route (épreuve théorique générale)",
+      "Compétence 1 — Maîtriser le maniement du véhicule dans un trafic faible ou nul",
+      "Compétence 2 — Appréhender la route et circuler dans des conditions normales",
+      "Compétence 3 — Circuler dans des conditions difficiles et partager la route avec les autres usagers",
+      "Compétence 4 — Pratiquer une conduite autonome, sûre et économique",
+      "Rendez-vous préalable avec l'enseignant et l'accompagnateur, puis phase de conduite supervisée (sans durée ni distance minimale)",
+    ],
+    methodes: [
+      "Pédagogie individualisée à partir du niveau évalué",
+      "Alternance code / simulateur / conduite réelle",
+      "Suivi pédagogique numérique consultable sur compte personnel",
+    ],
+    moyens: [
+      "Moniteurs diplômés (BEPECASER ou Titre Pro ECSR)",
+      "Véhicules à double commande récents",
+      "Simulateurs de conduite et plateforme de Code en ligne",
+    ],
+    evaluation: [
+      "Évaluations continues consignées dans le livret d'apprentissage (REMC, arrêté du 13 mai 2013)",
+      "Attestation de fin de formation initiale (AFFI) puis rendez-vous préalable",
+      "Examen officiel : Code puis épreuve pratique de conduite avec un inspecteur",
+    ],
+    acces:
+      "Inscription après une évaluation de départ (1 h offerte). Délai indicatif d'accès : sous 2 semaines après validation du dossier.",
+    accessibilite: HANDICAP,
+    debouches: [
+      "Expérience de conduite renforcée avant l'examen",
+      "Solution adaptée après un échec à l'épreuve pratique",
+      "Autonomie et mobilité au quotidien",
+    ],
+    certification:
+      "Permis de conduire catégorie B délivré par l'État après réussite de l'épreuve pratique.",
+    image: CAR,
+  },
+  {
+    slug: "passerelle-bea-b",
+    category: "auto",
+    kind: "Formation",
+    title: "Passerelle BEA → B — Boîte automatique vers boîte manuelle (7 h)",
+    cardTitle: "Passerelle BEA → B",
+    cardSubtitle: "Boîte auto vers boîte manuelle",
+    durationBadge: "7 h",
+    duration: "7 heures de formation pratique (sans examen)",
+    price: "Sur devis — nous consulter",
+    summary:
+      "Cette formation de 7 heures permet aux titulaires du permis B limité à la boîte automatique (BEA, code 78) de lever cette restriction et de conduire un véhicule à boîte manuelle. Depuis le 1ᵉʳ mars 2024, elle est accessible immédiatement après l'obtention du permis BEA (plus de délai de 3 mois).",
+    objectifs: [
+      "Maîtriser l'utilisation de la boîte de vitesses manuelle (embrayage, passage des rapports)",
+      "Adapter sa conduite à un véhicule à boîte manuelle en sécurité",
+      "Lever la restriction « boîte automatique » (code 78) du permis B",
+    ],
+    competences: [
+      "Démarrer, s'arrêter et utiliser l'embrayage avec aisance",
+      "Passer les rapports en fonction de l'allure et de la situation",
+      "Conduire un véhicule à boîte manuelle en circulation en sécurité",
+    ],
+    public:
+      "Titulaires du permis B restreint à la boîte automatique (BEA) souhaitant conduire une boîte manuelle. Accessible aux personnes en situation de handicap (nous contacter).",
+    prerequis: [
+      "Être titulaire du permis B limité à la boîte automatique (code 78), y compris depuis l'obtention récente (plus de délai de 3 mois depuis le 1ᵉʳ mars 2024)",
+      "Formation dispensée par une auto-école labellisée « École conduite qualité »",
+    ],
+    programme: [
+      "Séquence théorique : intérêt et fonctionnement de la boîte de vitesses manuelle",
+      "Maîtrise du véhicule hors circulation : embrayage, démarrages, passage des rapports",
+      "Conduite en circulation : utilisation de la boîte manuelle dans des situations variées",
+      "Bilan de la formation et délivrance de l'attestation de suivi",
+    ],
+    methodes: [
+      "Formation pratique individualisée de 7 h",
+      "Alternance hors circulation et en circulation",
+    ],
+    moyens: [
+      "Moniteurs diplômés",
+      "Véhicule à boîte manuelle à double commande",
+    ],
+    evaluation: [
+      "Pas d'examen : évaluation continue par l'enseignant pendant les 7 h",
+      "Délivrance d'une attestation de suivi de formation permettant de lever la restriction « boîte automatique »",
+    ],
+    acces:
+      "Inscription après vérification des prérequis. Délai indicatif d'accès : sous 2 semaines.",
+    accessibilite: HANDICAP,
+    debouches: [
+      "Conduite de tous les véhicules de catégorie B, boîte manuelle comme automatique",
+      "Suppression de la restriction « boîte automatique » (code 78) sur le permis",
+    ],
+    certification:
+      "Attestation de suivi de la formation de 7 h ; la restriction « boîte automatique » est levée et le permis B « complet » est délivré par l'État.",
+    image: CAR,
+  },
+  {
     slug: "permis-accelere",
     category: "auto",
     kind: "Permis",
@@ -1056,74 +1249,246 @@ const formationsData: Formation[] = [
     image: CAR2,
   },
   {
-    slug: "permis-moto",
-    category: "auto",
+    slug: "permis-am",
+    category: "deux-roues",
     kind: "Permis",
-    title: "Permis Moto — AM (BSR), A1, A2 et A",
-    cardTitle: "Permis Moto",
-    cardSubtitle: "AM / BSR, A1, A2, A",
-    durationBadge: "AM/BSR : 8 h",
-    duration: "Variable selon le permis : AM/BSR 8 h minimum (dont 3 h minimum sur voies ouvertes) sur au moins 2 jours ; A1/A2 plateau + circulation ; passerelle A2 → A 7 h",
-    price: "Sur devis — évaluation offerte en agence",
+    title: "Permis AM (BSR) — Scooter & cyclomoteur 50 cm³",
+    cardTitle: "Permis AM (BSR)",
+    cardSubtitle: "Scooter 50 cm³ dès 14 ans",
+    durationBadge: "8 h",
+    duration: "8 heures minimum de formation pratique sur au moins 2 jours (4 h maximum par jour)",
+    price: "Sur devis — nous consulter",
     summary:
-      "PariPermis vous prépare au BSR / permis AM, ainsi qu'aux permis A1, A2 et A (motos de plus de 35 kW). Nous alternons cours théoriques et formation pratique sur nos motos (Yamaha MT-07, BMW GS 800) régulièrement renouvelées, avec interventions ponctuelles de spécialistes (sapeurs-pompiers, secouristes) pour la sensibilisation aux risques.",
+      "Le permis AM (ex-BSR) permet de conduire un cyclomoteur ou scooter de 50 cm³ et un quadricycle léger à moteur dès 14 ans. Il associe une attestation de sécurité routière (ASSR/ASR) et une formation pratique de 8 heures.",
     objectifs: [
-      "Maîtriser la conduite d'un deux-roues motorisé en sécurité (plateau et circulation)",
-      "Connaître et appliquer la réglementation propre aux deux-roues",
-      "Adopter l'équipement et les comportements de sécurité adaptés",
-      "Être prêt à réussir les épreuves du permis moto visé",
+      "Conduire un cyclomoteur 50 cm³ ou un quadricycle léger en sécurité",
+      "Adopter les équipements et comportements de sécurité adaptés",
+      "Connaître les principaux risques routiers du deux-roues",
     ],
     competences: [
-      "Réaliser les manœuvres de maniabilité à allure lente et soutenue (plateau)",
-      "Circuler en sécurité en intégrant la vulnérabilité du motard",
-      "Vérifier et utiliser les équipements de protection individuelle",
-      "Gérer les situations à risque spécifiques aux deux-roues",
+      "Maîtriser le maniement du cyclomoteur hors circulation",
+      "Circuler en sécurité sur les voies ouvertes à la circulation",
+      "Identifier et anticiper les risques propres au deux-roues",
     ],
     public:
-      "Toute personne souhaitant conduire un deux-roues : scooter ≤ 50 cm³ (AM/BSR dès 14 ans), motos légères A1, motos A2, puis A. Accessible aux personnes en situation de handicap (nous contacter).",
+      "Jeunes dès 14 ans (et toute personne née à partir du 1ᵉʳ janvier 1988 ne possédant pas de permis) souhaitant conduire un scooter 50 cm³. Accessible aux personnes en situation de handicap (nous contacter).",
     prerequis: [
-      "Permis AM (BSR) : avoir 14 ans ou plus ; ASSR1, ASSR2 ou ASR (obligatoire pour les personnes nées à partir du 1ᵉʳ janvier 1988)",
-      "Permis A1 : être âgé d'au moins 16 ans et avoir réussi l'épreuve théorique moto (ETM)",
-      "Permis A2 : être âgé d'au moins 18 ans et avoir réussi l'épreuve théorique moto (ETM) — dispense si titulaire du permis A1 depuis 5 ans au plus",
-      "Permis A : avoir au moins 2 ans de permis A2 et suivre la formation passerelle de 7 h",
-      "Évaluation préalable du niveau ; enregistrement de la demande sur le site ANTS",
+      "Être âgé d'au moins 14 ans",
+      "Être titulaire de l'ASSR1 ou ASSR2 (au collège) ou de l'ASR — obligatoire pour les personnes nées à partir du 1ᵉʳ janvier 1988",
     ],
     programme: [
-      "AM / BSR : formation pratique de 8 h minimum sur au moins 2 jours (4 h maximum par jour) — échanges sur les représentations (30 min), conduite hors circulation (1 h min), code (30 min), conduite sur voies ouvertes (3 h min) et sensibilisation aux risques (1 h min)",
-      "AM / BSR : volet théorique via l'ASSR (ASSR1 en 5e, ASSR2 en 3e) ou l'ASR ; le certificat d'examen délivré permet de circuler en scooter pendant 4 mois en attendant la réception du titre (catégorie AM, valable 15 ans)",
-      "Épreuve théorique moto (ETM) pour les permis A1/A2 : 40 questions, 35 bonnes réponses requises, valable 5 ans",
-      "Permis A1/A2/A — Compétence 1 : connaître et maîtriser sa moto dans un trafic faible ou nul (s'équiper, déplacer la moto, maintien de l'équilibre, maniabilité lente et rapide, freinages, plateau)",
-      "Permis A1/A2/A — Compétence 2 : appréhender la route et circuler dans des conditions normales (signalisation et indices utiles, positionnement, allure, intersections et giratoires)",
-      "Permis A1/A2/A — Compétence 3 : circuler dans des conditions difficiles et partager la route avec les autres usagers (distances de sécurité, dépassements, voie rapide, conditions dégradées, vulnérabilité du motard)",
-      "Permis A1/A2/A — Compétence 4 : pratiquer une conduite autonome, sûre et économique (autonomie, facteurs de risque, équipement de protection, éco-conduite)",
-      "Sensibilisation aux risques avec intervenants spécialisés (sapeurs-pompiers, secouristes…) ; examen blanc et préparation aux épreuves",
-      "Formation 7 h obligatoire pour conduire un 125 cm³ (L3e) ou un tricycle > 50 cm³ avec le permis B (depuis le 1ᵉʳ janvier 2011)",
+      "Échanges sur les représentations individuelles de la conduite (30 min)",
+      "Formation aux règles de circulation et au code (30 min)",
+      "Conduite hors circulation : maniement du véhicule (1 h minimum)",
+      "Conduite sur les voies ouvertes à la circulation publique (3 h minimum)",
+      "Sensibilisation aux risques (1 h minimum)",
     ],
     methodes: [
-      "Alternance cours théoriques / pratique pour une mise en application progressive",
-      "Interventions ponctuelles de spécialistes (pompiers, secouristes, préventeurs santé)",
+      "Formation pratique de 8 h sur 2 jours, en petit groupe",
+      "Alternance hors circulation et en circulation",
+    ],
+    moyens: [
+      "Cyclomoteurs et équipements de protection",
+      "Piste / plateau et moniteurs diplômés",
+    ],
+    evaluation: [
+      "Évaluation continue par l'enseignant pendant la formation (pas d'examen)",
+      "Délivrance d'une attestation de suivi (catégorie AM) ; le certificat d'examen permet de circuler 4 mois en attendant le titre (validité 15 ans)",
+    ],
+    acces:
+      "Inscription après vérification des prérequis (ASSR/ASR). Délai indicatif d'accès : sous 2 semaines.",
+    accessibilite: HANDICAP,
+    debouches: [
+      "Mobilité autonome dès 14 ans en scooter 50 cm³",
+      "Conduite d'un quadricycle léger à moteur (voiturette ≤ 50 cm³)",
+    ],
+    certification:
+      "Catégorie AM du permis de conduire délivrée par l'État après la formation (volet théorique ASSR/ASR + 8 h pratiques).",
+    image: MOTO,
+  },
+  {
+    slug: "permis-a1",
+    category: "deux-roues",
+    kind: "Permis",
+    title: "Permis A1 — Moto légère 125 cm³ (& stage 125)",
+    cardTitle: "Permis A1",
+    cardSubtitle: "Moto 125 cm³ dès 16 ans",
+    durationBadge: "Dès 16 ans",
+    duration: "Épreuve théorique moto (ETM) + formation pratique (plateau et circulation)",
+    price: "Sur devis — évaluation offerte en agence",
+    summary:
+      "Le permis A1 autorise la conduite des motos légères jusqu'à 125 cm³ et 11 kW dès 16 ans. PariPermis prépare l'épreuve théorique moto (ETM) et les épreuves pratiques (plateau et circulation). Les titulaires du permis B peuvent, eux, conduire un 125 cm³ après une formation de 7 h (« stage 125 »).",
+    objectifs: [
+      "Connaître et maîtriser la moto à allure lente et soutenue (plateau)",
+      "Circuler en sécurité en intégrant la vulnérabilité du motard",
+      "Adopter l'équipement et les comportements de sécurité",
+      "Réussir l'épreuve théorique moto (ETM) et les épreuves pratiques",
+    ],
+    competences: [
+      "Connaître et maîtriser sa moto dans un trafic faible ou nul (plateau)",
+      "Appréhender la route et circuler dans des conditions normales",
+      "Circuler dans des conditions difficiles et partager la route",
+      "Pratiquer une conduite autonome, sûre et économique",
+    ],
+    public:
+      "Toute personne d'au moins 16 ans souhaitant conduire une moto légère 125 cm³ (A1), et titulaires du permis B visant la formation 125 (« stage 125 »). Accessible aux personnes en situation de handicap (nous contacter).",
+    prerequis: [
+      "Être âgé d'au moins 16 ans",
+      "Réussir l'épreuve théorique moto (ETM) — 40 questions, 35 bonnes réponses requises, valable 5 ans",
+      "Enregistrement de la demande de permis sur le site ANTS",
+    ],
+    programme: [
+      "Épreuve théorique moto (ETM)",
+      "Compétence 1 — Connaître et maîtriser sa moto dans un trafic faible ou nul (plateau : maniabilité lente et rapide, freinages)",
+      "Compétence 2 — Appréhender la route et circuler dans des conditions normales",
+      "Compétence 3 — Circuler dans des conditions difficiles et partager la route avec les autres usagers",
+      "Compétence 4 — Pratiquer une conduite autonome, sûre et économique",
+      "Stage 125 (titulaires du permis B) : formation de 7 h obligatoire pour conduire un 125 cm³ (L3e) ou un tricycle > 50 cm³ (depuis le 1ᵉʳ janvier 2011)",
+    ],
+    methodes: [
+      "Alternance théorie (ETM) / plateau / circulation",
       "Suivi pédagogique numérique",
     ],
     moyens: [
-      "Motos récentes et régulièrement renouvelées (Yamaha MT-07, BMW GS 800, motos A1/A2)",
-      "Piste / plateau de maniabilité, équipements de protection",
-      "Moniteurs diplômés de la mention deux-roues",
+      "Motos A1 récentes, piste / plateau de maniabilité",
+      "Équipements de protection ; moniteurs de la mention deux-roues",
     ],
     evaluation: [
-      "Suivi continu de la progression sur plateau et en circulation",
+      "Suivi continu sur plateau et en circulation (livret REMC, arrêté du 12 mai 2014)",
       "Examen blanc avant présentation",
-      "Examens officiels : épreuve théorique moto (ETM) le cas échéant, plateau et circulation",
+      "Examens officiels : ETM, plateau et circulation",
     ],
     acces:
-      "Inscription après évaluation. Démarrage selon les disponibilités et le calendrier d'examen. Délai indicatif d'accès : sous 2 semaines.",
+      "Inscription après évaluation. Délai indicatif d'accès : sous 2 semaines.",
     accessibilite: HANDICAP,
     debouches: [
-      "Mobilité à deux-roues (scooter, moto)",
-      "Conduite d'un 125 cm³ avec le permis B après la formation de 7 h",
-      "Loisir et liberté de déplacement",
+      "Conduite d'une moto légère 125 cm³ (A1)",
+      "Conduite d'un 125 cm³ avec le permis B après le stage de 7 h",
+      "Accès ultérieur au permis A2 puis A",
     ],
     certification:
-      "Permis AM, A1, A2 ou A délivré par l'État après réussite des épreuves ; attestation de suivi pour la formation 7 h (125 cm³).",
+      "Permis A1 délivré par l'État après réussite de l'ETM et des épreuves pratiques ; attestation de suivi pour le stage 125 (titulaires du permis B).",
+    image: MOTO,
+  },
+  {
+    slug: "permis-a2",
+    category: "deux-roues",
+    kind: "Permis",
+    title: "Permis A2 — Moto de puissance intermédiaire (≤ 35 kW)",
+    cardTitle: "Permis A2",
+    cardSubtitle: "Moto ≤ 35 kW dès 18 ans",
+    durationBadge: "Dès 18 ans",
+    duration: "Épreuve théorique moto (ETM) + formation pratique (plateau et circulation)",
+    price: "Sur devis — évaluation offerte en agence",
+    summary:
+      "Le permis A2 autorise la conduite des motos d'une puissance maximale de 35 kW dès 18 ans. Après 2 ans de permis A2, une formation passerelle de 7 h donne accès au permis A (toutes cylindrées).",
+    objectifs: [
+      "Connaître et maîtriser la moto à allure lente et soutenue (plateau)",
+      "Circuler en sécurité en intégrant la vulnérabilité du motard",
+      "Adopter l'équipement et les comportements de sécurité",
+      "Réussir l'épreuve théorique moto (ETM) et les épreuves pratiques",
+    ],
+    competences: [
+      "Connaître et maîtriser sa moto dans un trafic faible ou nul (plateau)",
+      "Appréhender la route et circuler dans des conditions normales",
+      "Circuler dans des conditions difficiles et partager la route",
+      "Pratiquer une conduite autonome, sûre et économique",
+    ],
+    public:
+      "Toute personne d'au moins 18 ans souhaitant conduire une moto de puissance intermédiaire (≤ 35 kW). Accessible aux personnes en situation de handicap (nous contacter).",
+    prerequis: [
+      "Être âgé d'au moins 18 ans",
+      "Réussir l'épreuve théorique moto (ETM) — dispense si titulaire du permis A1 depuis 5 ans au plus",
+      "Enregistrement de la demande de permis sur le site ANTS",
+    ],
+    programme: [
+      "Épreuve théorique moto (ETM) le cas échéant",
+      "Compétence 1 — Connaître et maîtriser sa moto dans un trafic faible ou nul (plateau : maniabilité lente et rapide, freinages)",
+      "Compétence 2 — Appréhender la route et circuler dans des conditions normales",
+      "Compétence 3 — Circuler dans des conditions difficiles et partager la route avec les autres usagers",
+      "Compétence 4 — Pratiquer une conduite autonome, sûre et économique",
+      "Sensibilisation aux risques et examen blanc avant présentation",
+    ],
+    methodes: [
+      "Alternance théorie (ETM) / plateau / circulation",
+      "Interventions ponctuelles de spécialistes (pompiers, secouristes)",
+      "Suivi pédagogique numérique",
+    ],
+    moyens: [
+      "Motos A2 récentes (ex. Yamaha MT-07 bridée), piste / plateau de maniabilité",
+      "Équipements de protection ; moniteurs de la mention deux-roues",
+    ],
+    evaluation: [
+      "Suivi continu sur plateau et en circulation (livret REMC, arrêté du 12 mai 2014)",
+      "Examen blanc avant présentation",
+      "Examens officiels : ETM, plateau et circulation",
+    ],
+    acces:
+      "Inscription après évaluation. Délai indicatif d'accès : sous 2 semaines.",
+    accessibilite: HANDICAP,
+    debouches: [
+      "Conduite d'une moto ≤ 35 kW (A2)",
+      "Accès au permis A après 2 ans et la formation passerelle de 7 h",
+      "Mobilité et loisir à moto",
+    ],
+    certification:
+      "Permis A2 délivré par l'État après réussite de l'ETM (le cas échéant) et des épreuves pratiques (plateau et circulation).",
+    image: MOTO,
+  },
+  {
+    slug: "passerelle-a2-a",
+    category: "deux-roues",
+    kind: "Formation",
+    title: "Passerelle A2 → A — Formation de 7 h",
+    cardTitle: "Passerelle A2 → A",
+    cardSubtitle: "Accès au permis A (toutes cylindrées)",
+    durationBadge: "7 h",
+    duration: "7 heures de formation (2 h théorie + 2 h hors circulation + 3 h en circulation), sans examen",
+    price: "Sur devis — nous consulter",
+    summary:
+      "La formation passerelle de 7 heures permet aux titulaires du permis A2 depuis au moins 2 ans d'accéder au permis A (motos de plus de 35 kW), sans nouvel examen. Elle est encadrée par l'arrêté du 8 novembre 2012.",
+    objectifs: [
+      "Approfondir la connaissance et la maîtrise d'une moto plus puissante",
+      "Renforcer la sécurité et l'analyse des situations de conduite",
+      "Obtenir le permis A (toutes cylindrées)",
+    ],
+    competences: [
+      "Analyser les accidents les plus fréquents et les facteurs de risque du motard",
+      "Maîtriser la moto lors de manœuvres hors circulation",
+      "Conduire en sécurité une moto de forte puissance en circulation",
+    ],
+    public:
+      "Titulaires du permis A2 depuis au moins 2 ans souhaitant accéder au permis A. Accessible aux personnes en situation de handicap (nous contacter).",
+    prerequis: [
+      "Être titulaire du permis A2 depuis au moins 2 ans",
+      "Enregistrement de la demande de permis sur le site ANTS",
+    ],
+    programme: [
+      "Module théorique (2 h) : accidentalité du motard, facteurs de risque, réglementation et équipement",
+      "Module hors circulation (2 h) : maniabilité d'une moto de forte puissance (plateau)",
+      "Module en circulation (3 h) : conduite sécurisée et analyse des situations",
+    ],
+    methodes: [
+      "Formation pratique de 7 h en petit groupe",
+      "Alternance théorie / plateau / circulation",
+    ],
+    moyens: [
+      "Motos de catégorie A (> 35 kW), piste / plateau",
+      "Équipements de protection ; moniteurs de la mention deux-roues",
+    ],
+    evaluation: [
+      "Pas d'examen : évaluation continue par l'enseignant pendant les 7 h (arrêté du 8 novembre 2012)",
+      "Délivrance d'une attestation de suivi de formation",
+    ],
+    acces:
+      "Inscription après vérification de l'ancienneté du permis A2. Délai indicatif d'accès : sous 2 semaines.",
+    accessibilite: HANDICAP,
+    debouches: [
+      "Conduite de toutes les motos (permis A, sans limite de puissance)",
+      "Conduite des tricycles à moteur de plus de 15 kW",
+    ],
+    certification:
+      "Permis A délivré par l'État après la formation de 7 h (attestation de suivi), sans nouvel examen.",
     image: MOTO,
   },
   {

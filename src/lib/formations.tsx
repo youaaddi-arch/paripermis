@@ -53,5 +53,6 @@ export function useFormationsByCategory() {
     marchandises: formations.filter((f) => f.category === "marchandises"),
     voyageurs: formations.filter((f) => f.category === "voyageurs"),
     auto: formations.filter((f) => f.category === "auto"),
+    deuxRoues: formations.filter((f) => f.category === "deux-roues"),
   };
 }
