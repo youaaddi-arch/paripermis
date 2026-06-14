@@ -15,8 +15,17 @@ function MetierCard({ m }: { m: (typeof metiers)[number] }) {
   return (
     <Link
       to={`/metiers/${m.slug}`}
-      className="card group flex flex-col p-6 transition-all hover:-translate-y-1 hover:border-brand-green/50 hover:shadow-lg"
+      className="card group flex flex-col overflow-hidden p-0 transition-all hover:-translate-y-1 hover:border-brand-green/50 hover:shadow-lg"
     >
+      <div className="relative h-40 w-full overflow-hidden">
+        <img
+          src={m.image}
+          alt={m.name}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+      <div className="flex flex-1 flex-col p-6">
       <div className="flex items-center justify-between">
         <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-brand-blue/10 text-brand-blue">
           <Icon className="h-5 w-5" />
@@ -35,6 +44,7 @@ function MetierCard({ m }: { m: (typeof metiers)[number] }) {
         Voir la fiche métier
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
       </span>
+      </div>
     </Link>
   );
 }

@@ -1,7 +1,7 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import {
   ArrowLeft, ArrowRight, Truck, Bus, TrendingUp, Banknote, ListChecks,
-  Route as RouteIcon, GraduationCap, Phone, Clock, ExternalLink,
+  Route as RouteIcon, GraduationCap, Phone, Clock, ExternalLink, Target, Building2,
 } from "lucide-react";
 import { getMetier } from "@/data/metiers";
 import { useFormations } from "@/lib/formations";
@@ -18,8 +18,10 @@ export default function MetierDetail() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-immersive py-14 text-white">
-        <div className="container">
+      <section className="relative overflow-hidden bg-brand-navy py-14 text-white">
+        <img src={m.image} alt={m.name} className="absolute inset-0 h-full w-full object-cover opacity-25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy/95 to-brand-navy/60" />
+        <div className="container relative">
           <Link to="/metiers" className="inline-flex items-center gap-1.5 text-sm text-white/70 hover:text-white">
             <ArrowLeft className="h-4 w-4" /> Retour aux métiers
           </Link>
@@ -37,9 +39,14 @@ export default function MetierDetail() {
           </div>
           <h1 className="mt-4 max-w-3xl text-3xl font-extrabold text-white md:text-4xl">{m.name}</h1>
           <p className="mt-3 max-w-2xl text-white/75">{m.description}</p>
-          <p className="mt-4 inline-flex items-center gap-2 font-semibold text-brand-green">
-            <Banknote className="h-4 w-4" /> Salaire débutant : {m.salaire}
-          </p>
+          <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+            <p className="inline-flex items-center gap-2 font-semibold text-brand-green">
+              <Banknote className="h-4 w-4" /> Salaire débutant : {m.salaire}
+            </p>
+            <p className="inline-flex items-center gap-2 font-semibold text-brand-green">
+              <Target className="h-4 w-4" /> Insertion : {m.insertion}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -65,6 +72,23 @@ export default function MetierDetail() {
               <TrendingUp className="h-5 w-5 text-brand-green" /> Perspectives et évolution
             </h2>
             <p className="mt-4 text-slate-600">{m.evolution}</p>
+          </section>
+
+          {/* EMPLOYEURS */}
+          <section className="border-t border-slate-200 pt-8">
+            <h2 className="flex items-center gap-2 text-xl font-bold text-brand-navy">
+              <Building2 className="h-5 w-5 text-brand-green" /> Principaux employeurs en France
+            </h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Parmi les principaux recruteurs du secteur en France :
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {m.employeurs.map((e) => (
+                <span key={e} className="rounded-full bg-brand-blue/5 px-3 py-1.5 text-sm font-semibold text-brand-navy ring-1 ring-brand-blue/15">
+                  {e}
+                </span>
+              ))}
+            </div>
           </section>
 
           {/* PARCOURS DE FORMATION */}
@@ -139,6 +163,17 @@ export default function MetierDetail() {
                   France Travail — enquête Besoins en Main-d'Œuvre (BMO) <ExternalLink className="h-3.5 w-3.5" />
                 </a>
                 <span className="text-slate-400"> (tensions et projets de recrutement)</span>
+              </li>
+              <li>
+                <a
+                  href="https://www.aft-dev.com/actualites/taux-demploi-pres-80-apres-formation-cofinancee-laft"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1 font-semibold text-brand-blue hover:underline"
+                >
+                  AFT — taux d'emploi après une formation transport <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+                <span className="text-slate-400"> (taux d'insertion à 6 mois)</span>
               </li>
             </ul>
             <p className="mt-3 text-xs text-slate-400">
