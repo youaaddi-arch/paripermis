@@ -83,7 +83,7 @@ const formationsData: Formation[] = [
     prerequis: [
       "Être titulaire du permis B en cours de validité",
       "Être titulaire de l'Épreuve Théorique Générale (ETG) ou avoir obtenu son dernier permis (sauf permis deux-roues) depuis moins de 5 ans",
-      "Être âgé d'au moins 21 ans",
+      "Être âgé d'au moins 21 ans, ou 18 ans dans le cadre d'une formation professionnelle de conducteur (titre professionnel, CAP ou Bac pro)",
       "Être reconnu apte lors d'une visite médicale auprès d'un médecin agréé par sa préfecture (ou de la commission médicale des permis de conduire selon les cas)",
       "Savoir lire et écrire la langue française",
       "Avoir procédé à l'enregistrement de la demande de permis en ligne sur le site ANTS en lien avec notre centre de formation",
@@ -158,7 +158,7 @@ const formationsData: Formation[] = [
     prerequis: [
       "Être titulaire du permis C en cours de validité",
       "Être titulaire de l'Épreuve Théorique Générale (ETG) ou avoir obtenu son dernier permis (sauf permis deux-roues) depuis moins de 5 ans",
-      "Être âgé d'au moins 21 ans",
+      "Être âgé d'au moins 21 ans, ou 18 ans dans le cadre d'une formation professionnelle de conducteur (titre professionnel, CAP ou Bac pro)",
       "Être reconnu apte lors d'une visite médicale auprès d'un médecin agréé par sa préfecture (ou de la commission médicale des permis de conduire selon les cas)",
       "Savoir lire et écrire la langue française",
       "Avoir procédé à l'enregistrement de la demande de permis en ligne sur le site ANTS en lien avec notre centre de formation",
@@ -366,7 +366,7 @@ const formationsData: Formation[] = [
       "Toute personne débutante souhaitant exercer une activité de transport de marchandises dans un cadre professionnel (compte d'autrui ou compte propre, salarié ou indépendant) ou dans le cadre associatif. Les personnes en situation de handicap peuvent avoir des besoins spécifiques, n'hésitez pas à nous contacter.",
     prerequis: [
       "Être titulaire du permis C ou CE ou C1 ou C1E en cours de validité",
-      "Être âgé d'au moins 21 ans",
+      "Être âgé d'au moins 18 ans : la FIMO permet de conduire un véhicule du groupe lourd de marchandises dès 18 ans (21 ans sans qualification)",
       "Savoir lire et écrire le français",
     ],
     programme: [
@@ -428,7 +428,7 @@ const formationsData: Formation[] = [
     prerequis: [
       "Être titulaire du permis C ou CE ou C1 ou C1E en cours de validité et justifier de la régularité de sa situation au regard des obligations de qualification",
       "Être titulaire d'une CQC (Carte de Qualification de Conducteur) ou d'un titre ou diplôme admis en équivalence",
-      "Être âgé d'au moins 21 ans",
+      "Être âgé d'au moins 18 ans (secteur marchandises)",
       "Savoir lire et écrire le français",
     ],
     programme: [
@@ -490,7 +490,7 @@ const formationsData: Formation[] = [
     prerequis: [
       "Être titulaire du permis C ou CE ou C1 ou C1E en cours de validité",
       "Être titulaire d'une CQC ou d'un titre ou diplôme admis en équivalence au titre de la qualification initiale des conducteurs de transport de voyageurs",
-      "Être âgé d'au moins 21 ans",
+      "Être âgé d'au moins 18 ans (secteur marchandises)",
       "Savoir lire et écrire le français",
     ],
     programme: [
@@ -553,7 +553,7 @@ const formationsData: Formation[] = [
     prerequis: [
       "Être titulaire du permis B en cours de validité",
       "Être titulaire de l'Épreuve Théorique Générale ou avoir obtenu son dernier permis depuis moins de 5 ans",
-      "Être âgé d'au moins 24 ans (abaissement possible sous conditions)",
+      "Être âgé d'au moins 24 ans, ou 21 ans avec la qualification (FIMO voyageurs) ou dans le cadre d'un titre professionnel ; abaissements spécifiques pour les services réguliers dont le parcours ne dépasse pas 50 km",
       "Être reconnu apte lors d'une visite médicale auprès d'un médecin agréé",
       "Savoir lire et écrire la langue française",
     ],
@@ -688,7 +688,7 @@ const formationsData: Formation[] = [
       "Toute personne débutante souhaitant exercer une activité de transport de voyageurs dans un cadre professionnel (compte d'autrui ou compte propre, salarié ou indépendant) ou dans le cadre associatif. Les personnes en situation de handicap peuvent avoir des besoins spécifiques, n'hésitez pas à nous contacter.",
     prerequis: [
       "Être titulaire du permis D ou DE ou D1 ou D1E en cours de validité",
-      "Être âgé d'au moins 21 ans",
+      "Être âgé d'au moins 21 ans avec la qualification (FIMO voyageurs) : conduite possible dès 21 ans (24 ans sans qualification ; abaissements pour certains services réguliers ≤ 50 km)",
       "Savoir lire et écrire le français",
     ],
     programme: [
