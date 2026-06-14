@@ -16,7 +16,7 @@ export const site = {
 export const stats = [
   { value: "4 500", label: "Formations par an" },
   { value: "83%", label: "Réussite au permis" },
-  { value: "Meilleur", label: "Rapport qualité / prix" },
+  { value: "4,8/5", label: "Avis Google" },
   { value: "20 ans", label: "D'expérience" },
 ];
 

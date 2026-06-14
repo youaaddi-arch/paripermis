@@ -8,6 +8,7 @@ export interface Parcours {
 
 export interface Metier {
   slug: string;
+  romeCode: string; // code ROME de la fiche métier France Travail
   name: string;
   category: "marchandises" | "voyageurs";
   description: string;
@@ -75,6 +76,7 @@ const VOYAGEURS: Parcours[] = [
 export const metiers: Metier[] = [
   {
     slug: "chauffeur-poids-lourd",
+    romeCode: "N4101",
     name: "Chauffeur Poids Lourd",
     category: "marchandises",
     description:
@@ -93,6 +95,7 @@ export const metiers: Metier[] = [
   },
   {
     slug: "chauffeur-spl",
+    romeCode: "N4101",
     name: "Chauffeur SPL",
     category: "marchandises",
     description:
@@ -111,6 +114,7 @@ export const metiers: Metier[] = [
   },
   {
     slug: "chauffeur-livreur-pl",
+    romeCode: "N4105",
     name: "Chauffeur-Livreur PL",
     category: "marchandises",
     description:
@@ -129,6 +133,7 @@ export const metiers: Metier[] = [
   },
   {
     slug: "conducteur-citerne-adr",
+    romeCode: "N4101",
     name: "Conducteur Citerne / ADR",
     category: "marchandises",
     description:
@@ -162,6 +167,7 @@ export const metiers: Metier[] = [
   },
   {
     slug: "conducteur-de-bus",
+    romeCode: "N4103",
     name: "Conducteur de Bus",
     category: "voyageurs",
     description:
@@ -180,6 +186,7 @@ export const metiers: Metier[] = [
   },
   {
     slug: "conducteur-de-car",
+    romeCode: "N4103",
     name: "Conducteur de Car",
     category: "voyageurs",
     description:
