@@ -43,7 +43,7 @@ const avis = [
 ];
 
 export default function Home() {
-  const { marchandises, voyageurs } = useFormationsByCategory();
+  const { marchandises, voyageurs, auto } = useFormationsByCategory();
   return (
     <>
       {/* HERO immersif */}
@@ -205,6 +205,25 @@ export default function Home() {
           </Reveal>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {voyageurs.filter((f) => f.slug !== "passerelle-voyageurs").map((f, i) => (
+              <Reveal key={f.slug} delay={(i % 3) * 90}>
+                <FormationCard formation={f} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+
+        {/* AUTO / MOTO */}
+        <div className="container mt-16">
+          <Reveal>
+            <SectionTitle
+              light
+              eyebrow="Auto & Moto"
+              title="Permis Auto & Moto"
+              subtitle="Permis B, boîte automatique, moto, permis accéléré et Code de la route"
+            />
+          </Reveal>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {auto.map((f, i) => (
               <Reveal key={f.slug} delay={(i % 3) * 90}>
                 <FormationCard formation={f} />
               </Reveal>

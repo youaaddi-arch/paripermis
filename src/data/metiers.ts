@@ -7,9 +7,12 @@ export interface Parcours {
 }
 
 export interface Metier {
+  slug: string;
   name: string;
   category: "marchandises" | "voyageurs";
   description: string;
+  missions: string[];
+  evolution: string;
   salaire: string;
   demande: string;
   parcours: Parcours[];
@@ -71,37 +74,73 @@ const VOYAGEURS: Parcours[] = [
 
 export const metiers: Metier[] = [
   {
+    slug: "chauffeur-poids-lourd",
     name: "Chauffeur Poids Lourd",
     category: "marchandises",
     description:
       "Le chauffeur poids lourd conduit un véhicule isolé de plus de 3,5 tonnes pour transporter des marchandises. Il assure la livraison en toute sécurité, gère le chargement/déchargement et respecte la réglementation du transport routier. C'est un métier d'autonomie avec une forte demande.",
+    missions: [
+      "Conduire un véhicule porteur de plus de 3,5 t et livrer les marchandises",
+      "Vérifier, charger, arrimer et décharger la marchandise en sécurité",
+      "Respecter la réglementation (temps de conduite et de repos, chronotachygraphe)",
+      "Assurer la relation avec les clients et l'exploitation",
+    ],
+    evolution:
+      "Évolution possible vers la conduite SPL (super lourd), des spécialisations (ADR, frigorifique, benne) ou des fonctions d'exploitation.",
     salaire: "1 900 € – 2 300 € brut/mois",
     demande: "Forte demande",
     parcours: PORTEUR,
   },
   {
+    slug: "chauffeur-spl",
     name: "Chauffeur SPL",
     category: "marchandises",
     description:
       "Le chauffeur SPL (Super Poids Lourd) conduit des ensembles articulés — tracteur + semi-remorque — pour le transport de marchandises longue distance, en national et international. C'est le profil le plus recherché du transport routier, avec les meilleures rémunérations.",
+    missions: [
+      "Conduire un ensemble articulé (tracteur + semi-remorque) sur longue distance",
+      "Atteler/dételer et contrôler la sécurité de l'ensemble",
+      "Organiser ses tournées (national/international) et gérer les documents de transport",
+      "Optimiser sa conduite (sécurité et éco-conduite)",
+    ],
+    evolution:
+      "Spécialisations très recherchées (ADR, transport exceptionnel, frigorifique) et évolution vers formateur ou exploitation.",
     salaire: "2 200 € – 2 600 € brut/mois",
     demande: "Forte demande",
     parcours: SPL,
   },
   {
+    slug: "chauffeur-livreur-pl",
     name: "Chauffeur-Livreur PL",
     category: "marchandises",
     description:
       "Le chauffeur-livreur poids lourd assure la distribution de marchandises en zone urbaine et régionale avec un véhicule de plus de 3,5 tonnes. Il combine conduite, relation client et manutention. C'est un métier dynamique avec de nombreuses opportunités d'embauche.",
+    missions: [
+      "Distribuer des marchandises en zone urbaine et régionale (tournées)",
+      "Gérer le chargement, le déchargement et la manutention",
+      "Assurer la relation client et les documents de livraison",
+      "Respecter les délais et la réglementation routière",
+    ],
+    evolution:
+      "Évolution vers la conduite longue distance (SPL), des spécialisations ou des postes de chef d'équipe / exploitation.",
     salaire: "1 850 € – 2 100 € brut/mois",
     demande: "Forte demande",
     parcours: PORTEUR,
   },
   {
+    slug: "conducteur-citerne-adr",
     name: "Conducteur Citerne / ADR",
     category: "marchandises",
     description:
       "Le conducteur citerne transporte des liquides (carburants, produits chimiques, alimentaires) dans des véhicules-citernes. Spécialisation très recherchée et parmi les mieux rémunérées du transport routier, elle nécessite une certification ADR complémentaire.",
+    missions: [
+      "Transporter des produits liquides ou dangereux en véhicule-citerne",
+      "Appliquer les procédures de sécurité ADR (chargement, dépotage, signalisation)",
+      "Contrôler la citerne et les équipements de sécurité",
+      "Respecter une réglementation stricte (ADR, temps de conduite)",
+    ],
+    evolution:
+      "Spécialisation parmi les mieux rémunérées ; évolution vers la formation, le conseil à la sécurité (CSTMD) ou l'exploitation.",
     salaire: "2 400 € – 2 800 € brut/mois",
     demande: "Forte demande",
     parcours: [
@@ -122,21 +161,41 @@ export const metiers: Metier[] = [
     ],
   },
   {
+    slug: "conducteur-de-bus",
     name: "Conducteur de Bus",
     category: "voyageurs",
     description:
       "Le conducteur de bus assure le transport de voyageurs en milieu urbain et périurbain. Il conduit son véhicule en toute sécurité, accueille les passagers, vend des titres de transport et veille au confort et à la sécurité de tous. C'est un métier de contact, de responsabilité et de service.",
+    missions: [
+      "Transporter des voyageurs en milieu urbain et périurbain en sécurité",
+      "Accueillir les passagers, vendre et contrôler les titres de transport",
+      "Respecter les horaires, les arrêts et l'accessibilité PMR",
+      "Veiller au confort et à la sécurité à bord",
+    ],
+    evolution:
+      "Évolution vers la conduite de car (longue distance), le tutorat/formation ou des fonctions de régulation/exploitation.",
     salaire: "1 900 € – 2 200 € brut/mois",
     demande: "Forte demande",
     parcours: VOYAGEURS,
   },
   {
+    slug: "conducteur-de-car",
     name: "Conducteur de Car",
     category: "voyageurs",
     description:
       "Le conducteur de car assure le transport de voyageurs sur longue distance : lignes interurbaines, transports scolaires, excursions touristiques en France et à l'étranger. C'est un métier qui allie conduite, relation client et découverte.",
+    missions: [
+      "Transporter des voyageurs sur lignes interurbaines, scolaires et touristiques",
+      "Préparer les itinéraires et assurer le confort et la sécurité des passagers",
+      "Accueillir et informer la clientèle",
+      "Respecter la réglementation (temps de conduite, chronotachygraphe)",
+    ],
+    evolution:
+      "Évolution vers le grand tourisme, le transport international, le tutorat ou l'exploitation.",
     salaire: "2 000 € – 2 300 € brut/mois",
     demande: "Forte demande",
     parcours: VOYAGEURS,
   },
 ];
+
+export const getMetier = (slug: string) => metiers.find((m) => m.slug === slug);
