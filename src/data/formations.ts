@@ -40,12 +40,12 @@ export interface Formation {
 
 const PX = (id: number) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1100`;
 const TRUCK = PX(2199293); // semi-remorque moderne (porteur / marchandises)
-const TRUCK2 = PX(193667); // Kenworth T680 — ensemble articulé moderne (SPL)
+const TRUCK2 = "/images/super-lourd.webp"; // photo fournie par le client (super-lourd / CE)
 const BUS = PX(68427); // bus blanc moderne en circulation
 const BUS2 = PX(18029613); // autocar moderne
 const CAR = "/images/voiture.webp"; // photo fournie par le client (conduite)
 const CAR2 = "/images/voiture.webp";
-const MOTO = PX(13274378); // motard équipé sur route
+const MOTO = "/images/moto.webp"; // photo fournie par le client (deux-roues)
 const CODE = "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80";
 
 const CPF_INTRO =

@@ -25,7 +25,7 @@ export interface Metier {
 // Photos d'illustration (Pexels) — visuels modernes.
 const PX = (id: number) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1100`;
 const PH_TRUCK = PX(2199293); // semi-remorque moderne (porteur)
-const PH_SPL = PX(193667); // ensemble articulé moderne (SPL)
+const PH_SPL = "/images/super-lourd.webp"; // photo fournie par le client (super-lourd)
 const PH_BUS = PX(68427); // bus moderne
 const PH_CAR = PX(18029613); // autocar moderne (conducteur de car)
 
