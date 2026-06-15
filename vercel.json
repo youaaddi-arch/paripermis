@@ -13,7 +13,7 @@
     { "source": "/permis-bateau", "destination": "/formations", "permanent": true },
     { "source": "/recuperation-de-points", "destination": "/formations", "permanent": true },
     { "source": "/contactez-nous", "destination": "/contact", "permanent": true },
-    { "source": "/agence-longjumeau", "destination": "/a-propos", "permanent": true },
+    { "source": "/agence-longjumeau", "destination": "/contact", "permanent": true },
     { "source": "/agence-paris", "destination": "/contact", "permanent": true }
   ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]

@@ -22,11 +22,12 @@ export interface Metier {
   parcours: Parcours[];
 }
 
-// Photos d'illustration (Unsplash).
-const PH_TRUCK = "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1100&q=80";
-const PH_SPL = "https://images.unsplash.com/photo-1591768793355-74d04bb6608f?auto=format&fit=crop&w=1100&q=80";
-const PH_BUS = "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=1100&q=80";
-const PH_CAR = "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1100&q=80";
+// Photos d'illustration (Pexels) — visuels modernes.
+const PX = (id: number) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1100`;
+const PH_TRUCK = PX(2199293); // semi-remorque moderne (porteur)
+const PH_SPL = PX(27099095); // ensemble articulé moderne (SPL)
+const PH_BUS = PX(68427); // bus moderne
+const PH_CAR = PX(18029613); // autocar moderne (conducteur de car)
 
 // Taux d'insertion : enquête AFT (2023) — ≈ 80 % en emploi 6 mois après une
 // formation transport (permis + FIMO ou Titre Professionnel) cofinancée par l'AFT.
