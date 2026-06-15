@@ -217,23 +217,21 @@ export default function Home() {
         ].map((cat, idx) => (
           <div key={cat.eyebrow} className={`container ${idx > 0 ? "mt-12" : ""}`}>
             <Reveal>
-              <div className="grid items-stretch gap-6 lg:grid-cols-[0.85fr_1.15fr]">
-                {/* Bannière de catégorie (une seule image) */}
-                <div className="relative min-h-[240px] overflow-hidden rounded-2xl ring-1 ring-white/10">
-                  <img src={cat.img} alt={cat.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/55 to-transparent" />
-                  <div className="relative flex h-full flex-col justify-end p-6">
-                    <span className="text-xs font-semibold uppercase tracking-wide text-brand-green">{cat.eyebrow}</span>
-                    <h3 className="mt-1 text-2xl font-extrabold text-white">{cat.title}</h3>
-                    <p className="mt-2 max-w-md text-sm text-white/75">{cat.subtitle}</p>
-                  </div>
+              {/* Bannière de catégorie (une seule image, pleine largeur) */}
+              <div className="relative h-52 overflow-hidden rounded-2xl ring-1 ring-white/10 md:h-64">
+                <img src={cat.img} alt={cat.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/45 to-transparent" />
+                <div className="relative flex h-full flex-col justify-end p-6">
+                  <span className="text-xs font-semibold uppercase tracking-wide text-brand-green">{cat.eyebrow}</span>
+                  <h3 className="mt-1 text-2xl font-extrabold text-white md:text-3xl">{cat.title}</h3>
+                  <p className="mt-2 max-w-xl text-sm text-white/75">{cat.subtitle}</p>
                 </div>
-                {/* Rubriques (permis) sans image répétée */}
-                <div className="grid content-start gap-3 sm:grid-cols-2">
-                  {cat.items.map((f) => (
-                    <FormationCard key={f.slug} formation={f} compact />
-                  ))}
-                </div>
+              </div>
+              {/* Rubriques (permis) sous la photo */}
+              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {cat.items.map((f) => (
+                  <FormationCard key={f.slug} formation={f} compact />
+                ))}
               </div>
             </Reveal>
           </div>
