@@ -4,29 +4,33 @@ import { site } from "@/lib/site";
 
 export default function FinalCta() {
   return (
-    <section className="relative isolate overflow-hidden border-t border-slate-100 bg-white text-slate-700">
-      <div className="absolute -left-16 -top-10 -z-10 h-72 w-72 rounded-full bg-brand-green/10 blur-3xl" />
-      <div className="absolute -right-16 bottom-0 -z-10 h-80 w-80 rounded-full bg-brand-cyan/10 blur-3xl" />
-      <div className="container py-20 text-center">
-        <p className="text-2xl font-extrabold text-brand-navy">
-          Pari<span className="text-gradient">permis</span>
-        </p>
-        <h2 className="mt-4 text-3xl font-extrabold text-brand-navy md:text-4xl">Prêt à démarrer votre formation ?</h2>
-        <p className="mx-auto mt-3 max-w-xl text-slate-500">
-          Contactez-nous pour un entretien personnalisé et un devis gratuit
-        </p>
-        <p className="mt-4 text-sm text-slate-400">
-          {site.address}
-          <br />
-          {site.agrement}
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <Link to="/contact" className="btn-green text-base">
-            Nous contacter <ArrowRight className="h-4 w-4" />
-          </Link>
-          <a href={site.phoneHref} className="btn-outline">
-            <Phone className="h-4 w-4" /> {site.phone}
-          </a>
+    <section className="bg-white py-20 md:py-28">
+      <div className="container">
+        <div className="relative isolate overflow-hidden rounded-[2rem] bg-immersive px-6 py-16 text-center md:px-16 md:py-24">
+          <div className="absolute inset-0 -z-10 bg-grid opacity-30" />
+          <span className="eyebrow text-brand-green">
+            <span className="h-px w-6 bg-white/30" />
+            PariPermis
+          </span>
+          <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-semibold leading-[1.1] tracking-tight text-white md:text-[2.8rem]">
+            Prêt à démarrer votre formation ?
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl text-white/65">
+            Contactez-nous pour un entretien personnalisé et un devis gratuit, sans engagement.
+          </p>
+          <p className="mt-5 text-sm text-white/45">
+            {site.address}
+            <br />
+            {site.agrement}
+          </p>
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
+            <Link to="/contact" className="btn-green text-base">
+              Nous contacter <ArrowRight className="h-4 w-4" />
+            </Link>
+            <a href={site.phoneHref} className="btn glass text-white hover:bg-white/20">
+              <Phone className="h-4 w-4" /> {site.phone}
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -10,21 +10,29 @@ export default {
     extend: {
       colors: {
         brand: {
-          green: "#16a34a",
-          "green-dark": "#15803d",
-          navy: "#0f1f3d",
-          "navy-light": "#1a2f54",
+          green: "#0f9d6b",
+          "green-dark": "#0b7a52",
+          "green-soft": "#eef7f2",
+          navy: "#0d1828",
+          "navy-light": "#1c2c44",
+          ink: "#0a1220",
+          gold: "#c4a05a",
           blue: "#1d4ed8",
           cyan: "#22d3ee",
         },
       },
       fontFamily: {
-        sans: ["Poppins", "Inter", "system-ui", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["Fraunces", "Georgia", "serif"],
+      },
+      letterSpacing: {
+        tightest: "-0.04em",
       },
       boxShadow: {
-        glow: "0 0 0 1px rgba(255,255,255,0.06), 0 20px 60px -15px rgba(22,163,74,0.45)",
-        "glow-blue": "0 20px 60px -15px rgba(29,78,216,0.5)",
-        soft: "0 10px 40px -12px rgba(15,31,61,0.18)",
+        glow: "0 18px 50px -20px rgba(15,157,107,0.45)",
+        "glow-blue": "0 18px 50px -20px rgba(29,78,216,0.4)",
+        soft: "0 18px 50px -24px rgba(13,24,40,0.22)",
+        premium: "0 1px 2px rgba(13,24,40,0.04), 0 12px 40px -20px rgba(13,24,40,0.18)",
       },
       keyframes: {
         "fade-up": {
