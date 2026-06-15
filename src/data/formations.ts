@@ -40,7 +40,7 @@ export interface Formation {
 
 const PX = (id: number) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1100`;
 const TRUCK = PX(2199293); // semi-remorque moderne (porteur / marchandises)
-const TRUCK2 = PX(27099095); // Kenworth T680 — ensemble articulé moderne (SPL)
+const TRUCK2 = PX(193667); // Kenworth T680 — ensemble articulé moderne (SPL)
 const BUS = PX(68427); // bus blanc moderne en circulation
 const BUS2 = PX(18029613); // autocar moderne
 const CAR = PX(18948281); // voiture moderne sur route
