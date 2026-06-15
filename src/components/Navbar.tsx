@@ -12,7 +12,7 @@ const navLinkClass = ({ isActive }: { isActive: boolean }) =>
 // soulignement animé partagé par les liens du menu
 function Underline() {
   return (
-    <span className="absolute -bottom-1.5 left-0 h-0.5 w-0 rounded-full bg-gradient-to-r from-brand-green to-brand-cyan transition-all duration-300 group-hover:w-full" />
+    <span className="absolute -bottom-1.5 left-0 h-px w-0 rounded-full bg-brand-green transition-all duration-300 group-hover:w-full" />
   );
 }
 
@@ -32,8 +32,8 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 border-b transition-all duration-300 ${
         scrolled
-          ? "border-slate-200 bg-white/80 shadow-sm backdrop-blur-md"
-          : "border-transparent bg-white/95 backdrop-blur"
+          ? "border-slate-200/70 bg-white/85 shadow-premium backdrop-blur-xl"
+          : "border-transparent bg-white/90 backdrop-blur"
       }`}
     >
       <div className="container flex h-16 items-center justify-between">
@@ -50,7 +50,7 @@ export default function Navbar() {
               Formations <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
             </button>
             <div className="invisible absolute left-1/2 top-full w-[920px] -translate-x-1/2 pt-3 opacity-0 transition-all group-hover:visible group-hover:opacity-100">
-              <div className="grid grid-cols-4 gap-6 rounded-xl border border-slate-200 bg-white p-5 shadow-lg">
+              <div className="grid grid-cols-4 gap-6 rounded-2xl border border-slate-200/70 bg-white p-6 shadow-soft">
                 <div>
                   <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand-navy">
                     Auto
@@ -138,10 +138,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:block">
-          <Link
-            to="/inscription"
-            className="btn px-4 py-2 bg-gradient-to-r from-brand-blue to-brand-cyan text-white hover:shadow-glow-blue focus:ring-brand-blue"
-          >
+          <Link to="/inscription" className="btn-green px-5 py-2.5">
             S'inscrire
           </Link>
         </div>
