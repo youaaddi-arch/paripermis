@@ -22,12 +22,11 @@ export interface Metier {
   parcours: Parcours[];
 }
 
-// Photos d'illustration (Pexels) — visuels modernes.
-const PX = (id: number) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1100`;
-const PH_TRUCK = PX(2199293); // semi-remorque moderne (porteur)
-const PH_SPL = "/images/super-lourd.webp"; // photo fournie par le client (super-lourd)
-const PH_BUS = PX(68427); // bus moderne
-const PH_CAR = PX(18029613); // autocar moderne (conducteur de car)
+// Visuels fournis par le client (brandés PariPermis).
+const PH_TRUCK = "/images/camion.webp"; // porteur / livreur
+const PH_SPL = "/images/super-lourd.webp"; // super-lourd
+const PH_BUS = "/images/autocar.webp"; // conducteur de bus
+const PH_CAR = "/images/autocar.webp"; // conducteur de car
 
 // Taux d'insertion : enquête AFT (2023) — ≈ 80 % en emploi 6 mois après une
 // formation transport (permis + FIMO ou Titre Professionnel) cofinancée par l'AFT.

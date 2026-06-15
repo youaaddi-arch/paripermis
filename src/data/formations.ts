@@ -38,14 +38,14 @@ export interface Formation {
   passerelles?: string; // passerelles, équivalences et voies d'accès (France Compétences)
 }
 
-const PX = (id: number) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1100`;
-const TRUCK = PX(2199293); // semi-remorque moderne (porteur / marchandises)
-const TRUCK2 = "/images/super-lourd.webp"; // photo fournie par le client (super-lourd / CE)
-const BUS = PX(68427); // bus blanc moderne en circulation
-const BUS2 = PX(18029613); // autocar moderne
-const CAR = "/images/voiture.webp"; // photo fournie par le client (conduite)
+// Visuels fournis par le client (brandés PariPermis) — droits OK.
+const TRUCK = "/images/camion.webp"; // marchandises / porteur (permis C, FIMO, passerelle)
+const TRUCK2 = "/images/super-lourd.webp"; // super-lourd (permis CE, TP tous véhicules)
+const BUS = "/images/autocar.webp"; // voyageurs (permis D, FIMO/FCO/passerelle voyageurs)
+const BUS2 = "/images/autocar.webp";
+const CAR = "/images/voiture.webp"; // auto (B, BEA, AAC, CS, accéléré)
 const CAR2 = "/images/voiture.webp";
-const MOTO = "/images/moto.webp"; // photo fournie par le client (deux-roues)
+const MOTO = "/images/moto.webp"; // deux-roues (AM, A1, A2, passerelle A2→A)
 const CODE = "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80";
 
 const CPF_INTRO =
@@ -464,7 +464,7 @@ const formationsData: Formation[] = [
     ],
     certification:
       "Renouvellement de la CQC Marchandises — Validité 5 ans. Code RS 5769. Certificateur : Ministère de la Transition Écologique. Formation éligible au CPF.",
-    image: TRUCK2,
+    image: TRUCK,
   },
   {
     slug: "passerelle-marchandises",
