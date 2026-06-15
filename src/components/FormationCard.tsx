@@ -2,8 +2,37 @@ import { Link } from "react-router-dom";
 import { Clock, ArrowRight } from "lucide-react";
 import type { Formation } from "@/data/formations";
 
-export default function FormationCard({ formation }: { formation: Formation }) {
+export default function FormationCard({
+  formation,
+  compact = false,
+}: {
+  formation: Formation;
+  compact?: boolean;
+}) {
   const accent = formation.category === "marchandises" ? "bg-brand-blue" : "bg-brand-green";
+
+  // Mode compact : rubrique sans image (utilisé sous une bannière de catégorie).
+  if (compact) {
+    return (
+      <Link
+        to={`/formations/${formation.slug}`}
+        className="card card-hover group flex items-center gap-4 p-4"
+      >
+        <span className={`inline-flex shrink-0 items-center gap-1 rounded-full ${accent} px-2.5 py-1 text-xs font-semibold text-white`}>
+          <Clock className="h-3 w-3" />
+          {formation.durationBadge}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block truncate font-bold text-brand-navy transition-colors group-hover:text-brand-green">
+            {formation.cardTitle}
+          </span>
+          <span className="block truncate text-sm text-slate-500">{formation.cardSubtitle}</span>
+        </span>
+        <ArrowRight className="h-4 w-4 shrink-0 text-brand-blue transition-transform group-hover:translate-x-1" />
+      </Link>
+    );
+  }
+
   return (
     <Link
       to={`/formations/${formation.slug}`}
