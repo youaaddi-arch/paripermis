@@ -44,6 +44,10 @@ const avis = [
 
 export default function Home() {
   const { marchandises, voyageurs, auto, deuxRoues } = useFormationsByCategory();
+  // Scission des marchandises : poids lourd (porteur) vs super-lourd (ensemble articulé).
+  const superLourdSlugs = ["permis-ce", "tp-transport-marchandises-tous-vehicules"];
+  const poidsLourd = marchandises.filter((f) => !superLourdSlugs.includes(f.slug));
+  const superLourd = marchandises.filter((f) => superLourdSlugs.includes(f.slug));
   return (
     <>
       {/* HERO immersif */}
@@ -177,10 +181,17 @@ export default function Home() {
         {[
           {
             img: "/images/camion.webp",
-            eyebrow: "Marchandises",
-            title: "Transport de Marchandises",
-            subtitle: "Permis poids lourd, titres professionnels, FIMO et FCO marchandises.",
-            items: marchandises,
+            eyebrow: "Poids lourd",
+            title: "Poids lourd — porteur",
+            subtitle: "Permis C, titre pro porteur, FIMO et FCO marchandises.",
+            items: poidsLourd,
+          },
+          {
+            img: "/images/super-lourd.webp",
+            eyebrow: "Super lourd",
+            title: "Super lourd — ensemble articulé",
+            subtitle: "Permis CE et titre professionnel tous véhicules.",
+            items: superLourd,
           },
           {
             img: "/images/autocar.webp",
