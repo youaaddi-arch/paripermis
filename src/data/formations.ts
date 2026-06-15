@@ -43,8 +43,8 @@ const TRUCK = PX(2199293); // semi-remorque moderne (porteur / marchandises)
 const TRUCK2 = PX(193667); // Kenworth T680 — ensemble articulé moderne (SPL)
 const BUS = PX(68427); // bus blanc moderne en circulation
 const BUS2 = PX(18029613); // autocar moderne
-const CAR = PX(18948281); // voiture moderne sur route
-const CAR2 = PX(34404246); // berline moderne
+const CAR = "/images/voiture.webp"; // photo fournie par le client (conduite)
+const CAR2 = "/images/voiture.webp";
 const MOTO = PX(13274378); // motard équipé sur route
 const CODE = "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80";
 
