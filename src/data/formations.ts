@@ -38,13 +38,14 @@ export interface Formation {
   passerelles?: string; // passerelles, équivalences et voies d'accès (France Compétences)
 }
 
-const TRUCK = "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=80";
-const TRUCK2 = "https://images.unsplash.com/photo-1591768793355-74d04bb6608f?auto=format&fit=crop&w=900&q=80";
-const BUS = "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=900&q=80";
-const BUS2 = "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=900&q=80";
-const CAR = "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=900&q=80";
-const CAR2 = "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=80";
-const MOTO = "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=900&q=80";
+const PX = (id: number) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=1100`;
+const TRUCK = PX(2199293); // semi-remorque moderne (porteur / marchandises)
+const TRUCK2 = PX(27099095); // Kenworth T680 — ensemble articulé moderne (SPL)
+const BUS = PX(68427); // bus blanc moderne en circulation
+const BUS2 = PX(18029613); // autocar moderne
+const CAR = PX(18948281); // voiture moderne sur route
+const CAR2 = PX(34404246); // berline moderne
+const MOTO = PX(13274378); // motard équipé sur route
 const CODE = "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80";
 
 const CPF_INTRO =

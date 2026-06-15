@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail } from "lucide-react";
 import Logo from "./Logo";
-import { site } from "@/lib/site";
+import { site, agences } from "@/lib/site";
 
 const footerFormations = [
   { label: "Permis C", slug: "permis-c" },
@@ -51,17 +51,22 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-white">Contact</h4>
-          <ul className="space-y-3 text-sm">
-            <li className="flex items-start gap-2">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
-              {site.address}
-            </li>
-            <li className="flex items-center gap-2">
-              <Phone className="h-4 w-4 shrink-0 text-brand-green" />
-              <a href={site.phoneHref} className="hover:text-brand-green">{site.phone}</a>
-            </li>
-            <li className="flex items-center gap-2">
+          <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-white">Nos agences</h4>
+          <ul className="space-y-4 text-sm">
+            {agences.map((a) => (
+              <li key={a.name}>
+                <p className="font-semibold text-white">{a.name}</p>
+                <p className="mt-1 flex items-start gap-2 text-white/70">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-green" />
+                  {a.address}
+                </p>
+                <a href={a.phoneHref} className="mt-1 flex items-center gap-2 hover:text-brand-green">
+                  <Phone className="h-4 w-4 shrink-0 text-brand-green" />
+                  {a.phone}
+                </a>
+              </li>
+            ))}
+            <li className="flex items-center gap-2 pt-1">
               <Mail className="h-4 w-4 shrink-0 text-brand-green" />
               <a href={`mailto:${site.email}`} className="hover:text-brand-green">{site.email}</a>
             </li>
