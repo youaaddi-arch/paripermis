@@ -4,6 +4,7 @@ import TopBar from "./TopBar";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ChatWidget from "./ChatWidget";
+import SeoManager from "./SeoManager";
 
 export default function Layout() {
   const { pathname } = useLocation();
@@ -13,6 +14,7 @@ export default function Layout() {
 
   return (
     <div className="flex min-h-screen flex-col">
+      <SeoManager />
       <TopBar />
       <Navbar />
       <main className="flex-1">

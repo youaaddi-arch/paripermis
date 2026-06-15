@@ -1,3 +1,20 @@
 {
+  "redirects": [
+    { "source": "/permis-auto", "destination": "/formations/permis-b", "permanent": true },
+    { "source": "/permis-bea", "destination": "/formations/permis-bea", "permanent": true },
+    { "source": "/permis-moto", "destination": "/formations", "permanent": true },
+    { "source": "/permis-poids-lourd", "destination": "/formations/permis-c", "permanent": true },
+    { "source": "/formation-acceleree", "destination": "/formations/permis-accelere", "permanent": true },
+    { "source": "/formations-fimo", "destination": "/formations/fimo-marchandises", "permanent": true },
+    { "source": "/formation-fco-passerelle", "destination": "/formations/fco-marchandises", "permanent": true },
+    { "source": "/formation-bus", "destination": "/formations/permis-d", "permanent": true },
+    { "source": "/formation-duo", "destination": "/formations/permis-b", "permanent": true },
+    { "source": "/code-de-la-route", "destination": "/formations/code-de-la-route", "permanent": true },
+    { "source": "/permis-bateau", "destination": "/formations", "permanent": true },
+    { "source": "/recuperation-de-points", "destination": "/formations", "permanent": true },
+    { "source": "/contactez-nous", "destination": "/contact", "permanent": true },
+    { "source": "/agence-longjumeau", "destination": "/a-propos", "permanent": true },
+    { "source": "/agence-paris", "destination": "/contact", "permanent": true }
+  ],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

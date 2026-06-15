@@ -13,6 +13,9 @@ import Contact from "@/pages/Contact";
 import Inscription from "@/pages/Inscription";
 import Blog from "@/pages/Blog";
 import ArticleDetail from "@/pages/ArticleDetail";
+import MentionsLegales from "@/pages/MentionsLegales";
+import Cgu from "@/pages/Cgu";
+import DonneesPersonnelles from "@/pages/DonneesPersonnelles";
 import NotFound from "@/pages/NotFound";
 
 export default function App() {
@@ -32,6 +35,9 @@ export default function App() {
         <Route path="/inscription" element={<Inscription />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<ArticleDetail />} />
+        <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path="/cgu" element={<Cgu />} />
+        <Route path="/donnees-personnelles" element={<DonneesPersonnelles />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

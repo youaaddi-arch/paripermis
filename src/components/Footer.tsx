@@ -70,9 +70,14 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container flex flex-col items-center justify-between gap-2 py-5 text-xs text-white/50 sm:flex-row">
+        <div className="container flex flex-col items-center justify-between gap-3 py-5 text-xs text-white/50 sm:flex-row">
           <p>© 2026 PariPermis — Centre de formation transport routier. Tous droits réservés.</p>
-          <p>{site.agrement} — Centre certifié Qualiopi</p>
+          <nav className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+            <Link to="/mentions-legales" className="hover:text-brand-green transition-colors">Mentions légales</Link>
+            <Link to="/cgu" className="hover:text-brand-green transition-colors">CGU</Link>
+            <Link to="/donnees-personnelles" className="hover:text-brand-green transition-colors">Données personnelles</Link>
+          </nav>
+          <p>{site.agrement} — Qualiopi</p>
         </div>
       </div>
     </footer>

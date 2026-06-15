@@ -897,6 +897,7 @@ const formationsData: Formation[] = [
       "Pédagogie individualisée à partir du niveau évalué de chaque candidat",
       "Alternance de cours de code, de simulateur et de conduite réelle",
       "Suivi pédagogique numérique : le moniteur note vos progrès sur tablette, consultable depuis votre compte personnel",
+      "Leçons de conduite possibles en duo : deux élèves par séance, en alternance conduite / observation",
     ],
     moyens: [
       "Moniteurs diplômés (titulaires du BEPECASER ou du Titre Pro ECSR)",
@@ -968,6 +969,7 @@ const formationsData: Formation[] = [
       "Pédagogie individualisée et progressive",
       "Alternance code / simulateur / conduite réelle",
       "Suivi pédagogique numérique consultable sur compte personnel",
+      "Leçons de conduite possibles en duo : deux élèves par séance, en alternance conduite / observation",
     ],
     moyens: [
       "Moniteurs diplômés",
@@ -1037,6 +1039,7 @@ const formationsData: Formation[] = [
       "Pédagogie individualisée à partir du niveau évalué",
       "Alternance code / simulateur / conduite réelle",
       "Suivi pédagogique numérique consultable sur compte personnel",
+      "Leçons de conduite possibles en duo : deux élèves par séance, en alternance conduite / observation",
     ],
     moyens: [
       "Moniteurs diplômés (BEPECASER ou Titre Pro ECSR)",
@@ -1104,6 +1107,7 @@ const formationsData: Formation[] = [
       "Pédagogie individualisée à partir du niveau évalué",
       "Alternance code / simulateur / conduite réelle",
       "Suivi pédagogique numérique consultable sur compte personnel",
+      "Leçons de conduite possibles en duo : deux élèves par séance, en alternance conduite / observation",
     ],
     moyens: [
       "Moniteurs diplômés (BEPECASER ou Titre Pro ECSR)",
