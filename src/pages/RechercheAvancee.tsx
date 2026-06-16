@@ -25,17 +25,22 @@ interface Reco { code: string; note: string; priority?: boolean }
 function financementReco(profile: ProfileId, ctx: { objectif?: string; promesse?: boolean }): Reco[] {
   switch (profile) {
     case "entreprise":
-      return ctx.objectif === "recruter"
-        ? [
-            { code: "POE", note: "POEI : France Travail finance la formation avant l'embauche (CDI, CDD, intérim). Idéal pour recruter des conducteurs.", priority: true },
-            { code: "AFPR", note: "Variante pour un CDD de 6 à moins de 12 mois." },
-            { code: "POEC", note: "Recrutement collectif financé par l'OPCO Mobilités." },
-          ]
-        : [
-            { code: "OPCO", note: "Plan de développement des compétences (OPCO Mobilités) pour vos salariés en poste.", priority: true },
-            { code: "PRO", note: "Contrat de professionnalisation pour faire monter en qualification." },
-            { code: "PTP", note: "Pour un salarié en reconversion, sur un Titre Professionnel." },
-          ];
+      if (ctx.objectif === "recruter")
+        return [
+          { code: "POE", note: "POEI : France Travail finance la formation avant l'embauche (CDI, CDD, intérim). Idéal pour recruter des conducteurs.", priority: true },
+          { code: "AFPR", note: "Variante pour un CDD de 6 à moins de 12 mois." },
+          { code: "POEC", note: "Recrutement collectif financé par l'OPCO Mobilités." },
+        ];
+      if (ctx.objectif === "fco")
+        return [
+          { code: "OPCO", note: "FCO financée via le plan de développement des compétences (OPCO Mobilités). Obligation légale à renouveler tous les 5 ans.", priority: true },
+        ];
+      // qualifier (formation professionnelle qualifiante)
+      return [
+        { code: "OPCO", note: "Plan de développement des compétences (OPCO Mobilités) pour qualifier vos salariés.", priority: true },
+        { code: "PRO", note: "Contrat de professionnalisation (alternance)." },
+        { code: "PTP", note: "Pour un salarié en reconversion, sur un Titre Professionnel." },
+      ];
     case "reconversion":
       return [
         { code: "PTP", note: "Projet de Transition Pro : prise en charge totale sur un Titre Professionnel + maintien de salaire. Conditions : 24 mois d'ancienneté (dont 12 dans l'entreprise actuelle).", priority: true },
@@ -79,27 +84,34 @@ export default function RechercheAvancee() {
 
   // Pour une entreprise, on ne pose pas la question du permis : parcours complet par défaut.
   const dejaPermisEff = profile === "entreprise" ? false : dejaPermis;
-  // Entreprise qui forme ses salariés : souvent recyclage (FCO), qualification (FIMO) ou passerelle.
-  const entrepriseFormer = profile === "entreprise" && objectif === "former";
-  // Formations recommandées : priorité au Titre Professionnel (financement souvent total).
-  const formationRecos: { slug: string; label: string; priority?: boolean }[] = entrepriseFormer
-    ? [
-        { slug: dom.fco, label: "Formation continue obligatoire (FCO) — recyclage des conducteurs déjà qualifiés", priority: true },
-        { slug: dom.fimo, label: "Qualification initiale (FIMO) — salarié titulaire du permis mais pas encore qualifié" },
-        { slug: dom.passerelle, label: "Passerelle — changement de secteur (marchandises ↔ voyageurs)" },
-        { slug: dom.tp, label: "Titre Professionnel — pour former depuis le début (inclut le permis)" },
-      ]
-    : dejaPermisEff
-    ? [
-        { slug: dom.fimo, label: "Qualification obligatoire (FIMO) — si vous n'êtes pas encore qualifié", priority: true },
-        { slug: dom.fco, label: "Recyclage (FCO) — si votre carte de qualification arrive à échéance" },
-        { slug: dom.passerelle, label: "Passerelle — si vous changez de secteur (marchandises ↔ voyageurs)" },
-      ]
-    : [
-        { slug: dom.tp, label: "Titre Professionnel — recommandé (inclut le permis + la qualification, financement souvent total)", priority: true },
-        { slug: dom.permis, label: "Le permis seul" },
-        { slug: dom.fimo, label: "+ la qualification obligatoire (FIMO)" },
-      ];
+
+  // Recommandations de formation. Rappels : la FIMO suppose d'avoir déjà le permis ;
+  // la FCO (recyclage) suppose un conducteur déjà titulaire du permis + FIMO (ou TP).
+  let formationRecos: { slug: string; label: string; priority?: boolean }[];
+  if (profile === "entreprise" && objectif === "fco") {
+    formationRecos = [
+      { slug: dom.fco, label: "Recyclage obligatoire (FCO) — conducteurs déjà titulaires du permis + FIMO (ou Titre Pro), à renouveler tous les 5 ans (carte de qualification CQC).", priority: true },
+    ];
+  } else if (profile === "entreprise" && objectif === "qualifier") {
+    formationRecos = [
+      { slug: dom.tp, label: "Titre Professionnel — qualifie au métier (inclut le permis et la FIMO), financement souvent total", priority: true },
+      { slug: dom.permis, label: "Le permis (si le salarié ne l'a pas encore)" },
+      { slug: dom.fimo, label: "FIMO — qualification initiale, uniquement si le salarié a déjà le permis" },
+      { slug: dom.passerelle, label: "Passerelle — si déjà qualifié dans l'autre secteur (marchandises ↔ voyageurs)" },
+    ];
+  } else if (dejaPermisEff) {
+    formationRecos = [
+      { slug: dom.fimo, label: "Qualification obligatoire (FIMO) — vous avez le permis, il vous manque la qualification", priority: true },
+      { slug: dom.fco, label: "Recyclage (FCO) — si votre carte de qualification (CQC) arrive à échéance (tous les 5 ans)" },
+      { slug: dom.passerelle, label: "Passerelle — si vous changez de secteur (marchandises ↔ voyageurs)" },
+    ];
+  } else {
+    formationRecos = [
+      { slug: dom.tp, label: "Titre Professionnel — recommandé (inclut le permis + la FIMO, financement souvent total)", priority: true },
+      { slug: dom.permis, label: "Le permis seul" },
+      { slug: dom.fimo, label: "+ la FIMO (qualification obligatoire — nécessite d'avoir déjà le permis)" },
+    ];
+  }
 
   return (
     <>
@@ -160,8 +172,12 @@ export default function RechercheAvancee() {
               {profile === "entreprise" && (
                 <div>
                   <h2 className="text-xl font-bold text-brand-navy">Votre objectif</h2>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                    {[{ id: "recruter", l: "Recruter de nouveaux conducteurs" }, { id: "former", l: "Former mes salariés en poste" }].map((o) => (
+                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                    {[
+                      { id: "recruter", l: "Recruter de nouveaux conducteurs" },
+                      { id: "qualifier", l: "Former / qualifier à un métier" },
+                      { id: "fco", l: "Formation continue (FCO) de mes conducteurs" },
+                    ].map((o) => (
                       <button key={o.id} onClick={() => setObjectif(o.id)} className={`rounded-xl border p-3 text-left text-sm font-semibold transition-colors ${objectif === o.id ? "border-brand-green bg-brand-green/5 text-brand-navy" : "border-slate-200 text-slate-600 hover:border-brand-green/40"}`}>
                         {o.l}
                       </button>
@@ -225,8 +241,10 @@ export default function RechercheAvancee() {
               <div>
                 <h2 className="text-xl font-bold text-brand-navy">Formations recommandées</h2>
                 <p className="mt-1 text-sm text-slate-500">
-                  {entrepriseFormer
-                    ? "Selon le besoin de vos salariés : recyclage (FCO), qualification (FIMO), passerelle ou parcours complet."
+                  {profile === "entreprise" && objectif === "fco"
+                    ? "Recyclage obligatoire (FCO) de vos conducteurs déjà qualifiés — à renouveler tous les 5 ans."
+                    : profile === "entreprise" && objectif === "qualifier"
+                    ? "Formation qualifiante vers le métier visé — priorité au Titre Professionnel."
                     : dejaPermisEff
                     ? "Vous avez déjà le permis : voici les qualifications et recyclages adaptés."
                     : "Nous privilégions le Titre Professionnel : il inclut le permis et la qualification, avec une prise en charge souvent totale."}
