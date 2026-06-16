@@ -20,6 +20,7 @@ const staticPaths = [
   "/financement",
   "/blog",
   "/simulateur",
+  "/recherche-avancee",
   "/a-propos",
   "/contact",
   "/inscription",

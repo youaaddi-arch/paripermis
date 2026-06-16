@@ -9,6 +9,7 @@ import FinancementDetail from "@/pages/FinancementDetail";
 import Metiers from "@/pages/Metiers";
 import MetierDetail from "@/pages/MetierDetail";
 import Simulateur from "@/pages/Simulateur";
+import RechercheAvancee from "@/pages/RechercheAvancee";
 import NotreCentre from "@/pages/NotreCentre";
 import Contact from "@/pages/Contact";
 import Inscription from "@/pages/Inscription";
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="/metiers" element={<Metiers />} />
         <Route path="/metiers/:slug" element={<MetierDetail />} />
         <Route path="/simulateur" element={<Simulateur />} />
+        <Route path="/recherche-avancee" element={<RechercheAvancee />} />
         <Route path="/a-propos" element={<NotreCentre />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/inscription" element={<Inscription />} />
