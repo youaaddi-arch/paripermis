@@ -178,8 +178,8 @@ export default function Home() {
               light
               center={false}
               eyebrow="Nos formations"
-              title="Choisissez votre catégorie"
-              subtitle="Marchandises, voyageurs, auto ou deux-roues : cliquez sur une catégorie pour découvrir toutes les formations correspondantes."
+              title="Nos domaines de formation"
+              subtitle="Choisissez votre domaine : marchandises, voyageurs, auto ou deux-roues."
             />
           </Reveal>
           <div className="mt-10">
