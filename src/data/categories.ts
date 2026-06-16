@@ -16,14 +16,14 @@ export const categories: CategoryInfo[] = [
     title: "Transport de marchandises",
     short: "Marchandises",
     subtitle: "Permis poids lourd (C, CE), titres professionnels, FIMO et FCO marchandises.",
-    image: "/images/camion.webp",
+    image: "/images/camion.jpg",
   },
   {
     slug: "voyageurs",
     title: "Transport en commun sur route",
     short: "Voyageurs",
     subtitle: "Permis D, titre professionnel, FIMO et FCO voyageurs.",
-    image: "/images/autocar.webp",
+    image: "/images/autocar.jpg",
   },
   {
     slug: "auto",
@@ -37,7 +37,7 @@ export const categories: CategoryInfo[] = [
     title: "Permis Deux-roues",
     short: "Deux-roues",
     subtitle: "Permis AM (BSR), A1 (& stage 125 cm³), A2 et passerelle A2 → A.",
-    image: "/images/moto.webp",
+    image: "/images/moto.jpg",
   },
 ];
 

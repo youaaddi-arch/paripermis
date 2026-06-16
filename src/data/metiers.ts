@@ -23,10 +23,10 @@ export interface Metier {
 }
 
 // Visuels fournis par le client (brandés PariPermis).
-const PH_TRUCK = "/images/camion.webp"; // porteur / livreur
-const PH_SPL = "/images/super-lourd.webp"; // super-lourd
-const PH_BUS = "/images/autocar.webp"; // conducteur de bus
-const PH_CAR = "/images/autocar.webp"; // conducteur de car
+const PH_TRUCK = "/images/camion.jpg"; // porteur / livreur
+const PH_SPL = "/images/super-lourd.jpg"; // super-lourd
+const PH_BUS = "/images/autocar.jpg"; // conducteur de bus
+const PH_CAR = "/images/autocar.jpg"; // conducteur de car
 
 // Taux d'insertion : enquête AFT (2023) — ≈ 80 % en emploi 6 mois après une
 // formation transport (permis + FIMO ou Titre Professionnel) cofinancée par l'AFT.

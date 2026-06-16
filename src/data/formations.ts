@@ -39,13 +39,13 @@ export interface Formation {
 }
 
 // Visuels fournis par le client (brandés PariPermis) — droits OK.
-const TRUCK = "/images/camion.webp"; // marchandises / porteur (permis C, FIMO, passerelle)
-const TRUCK2 = "/images/super-lourd.webp"; // super-lourd (permis CE, TP tous véhicules)
-const BUS = "/images/autocar.webp"; // voyageurs (permis D, FIMO/FCO/passerelle voyageurs)
-const BUS2 = "/images/autocar.webp";
+const TRUCK = "/images/camion.jpg"; // marchandises / porteur (permis C, FIMO, passerelle)
+const TRUCK2 = "/images/super-lourd.jpg"; // super-lourd (permis CE, TP tous véhicules)
+const BUS = "/images/autocar.jpg"; // voyageurs (permis D, FIMO/FCO/passerelle voyageurs)
+const BUS2 = "/images/autocar.jpg";
 const CAR = "/images/voiture.webp"; // auto (B, BEA, AAC, CS, accéléré)
 const CAR2 = "/images/voiture.webp";
-const MOTO = "/images/moto.webp"; // deux-roues (AM, A1, A2, passerelle A2→A)
+const MOTO = "/images/moto.jpg"; // deux-roues (AM, A1, A2, passerelle A2→A)
 const CODE = "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=900&q=80";
 
 const CPF_INTRO =
