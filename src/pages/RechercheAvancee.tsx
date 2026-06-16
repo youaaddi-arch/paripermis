@@ -79,8 +79,17 @@ export default function RechercheAvancee() {
 
   // Pour une entreprise, on ne pose pas la question du permis : parcours complet par défaut.
   const dejaPermisEff = profile === "entreprise" ? false : dejaPermis;
+  // Entreprise qui forme ses salariés : souvent recyclage (FCO), qualification (FIMO) ou passerelle.
+  const entrepriseFormer = profile === "entreprise" && objectif === "former";
   // Formations recommandées : priorité au Titre Professionnel (financement souvent total).
-  const formationRecos: { slug: string; label: string; priority?: boolean }[] = dejaPermisEff
+  const formationRecos: { slug: string; label: string; priority?: boolean }[] = entrepriseFormer
+    ? [
+        { slug: dom.fco, label: "Formation continue obligatoire (FCO) — recyclage des conducteurs déjà qualifiés", priority: true },
+        { slug: dom.fimo, label: "Qualification initiale (FIMO) — salarié titulaire du permis mais pas encore qualifié" },
+        { slug: dom.passerelle, label: "Passerelle — changement de secteur (marchandises ↔ voyageurs)" },
+        { slug: dom.tp, label: "Titre Professionnel — pour former depuis le début (inclut le permis)" },
+      ]
+    : dejaPermisEff
     ? [
         { slug: dom.fimo, label: "Qualification obligatoire (FIMO) — si vous n'êtes pas encore qualifié", priority: true },
         { slug: dom.fco, label: "Recyclage (FCO) — si votre carte de qualification arrive à échéance" },
@@ -216,7 +225,9 @@ export default function RechercheAvancee() {
               <div>
                 <h2 className="text-xl font-bold text-brand-navy">Formations recommandées</h2>
                 <p className="mt-1 text-sm text-slate-500">
-                  {dejaPermisEff
+                  {entrepriseFormer
+                    ? "Selon le besoin de vos salariés : recyclage (FCO), qualification (FIMO), passerelle ou parcours complet."
+                    : dejaPermisEff
                     ? "Vous avez déjà le permis : voici les qualifications et recyclages adaptés."
                     : "Nous privilégions le Titre Professionnel : il inclut le permis et la qualification, avec une prise en charge souvent totale."}
                 </p>
