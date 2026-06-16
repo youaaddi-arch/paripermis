@@ -61,6 +61,9 @@ export default function Simulateur() {
           <p className="mx-auto mt-3 max-w-xl text-white/75">
             En 2 étapes, découvrez les formations et financements adaptés à votre situation
           </p>
+          <Link to="/recherche-avancee" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green hover:gap-2.5">
+            Plutôt une recherche par profil (entreprise, reconversion…) ? <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 
