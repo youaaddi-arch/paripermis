@@ -48,8 +48,8 @@ const staticMeta: Record<string, { title: string; description: string }> = {
     description: "Inscrivez-vous à nos formations permis et transport. Évaluation offerte et accompagnement au financement.",
   },
   "/simulateur": {
-    title: "Simulateur de projet & financement | PariPermis",
-    description: "Simulez votre projet de formation et découvrez les financements adaptés à votre profil en quelques clics.",
+    title: "Trouver ma formation & mon financement | PariPermis",
+    description: "En 2 étapes, identifiez la formation et les financements adaptés à votre situation — particulier comme entreprise.",
   },
   "/mentions-legales": {
     title: "Mentions légales | PariPermis",

@@ -127,7 +127,7 @@ export default function Navbar() {
             Blog <Underline />
           </NavLink>
           <NavLink to="/simulateur" className={navLinkClass}>
-            Simuler mon projet <Underline />
+            Trouver ma formation <Underline />
           </NavLink>
           <NavLink to="/a-propos" className={navLinkClass}>
             Notre Centre <Underline />
@@ -165,7 +165,7 @@ export default function Navbar() {
               ["/financement", "Financement"],
               ["/metiers", "Métiers"],
               ["/blog", "Blog"],
-              ["/simulateur", "Simuler mon projet"],
+              ["/simulateur", "Trouver ma formation"],
               ["/a-propos", "Notre Centre"],
               ["/contact", "Contact"],
             ].map(([to, label]) => (

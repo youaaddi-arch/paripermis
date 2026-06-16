@@ -198,24 +198,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* RECHERCHE AVANCÉE PAR PROFIL */}
+      {/* OUTILS D'ORIENTATION */}
       <section className="bg-slate-50 py-12">
-        <div className="container">
-          <div className="card flex flex-col items-start justify-between gap-5 p-7 md:flex-row md:items-center md:p-8">
-            <div className="flex items-start gap-4">
-              <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-green/10 text-brand-green">
-                <Sparkles className="h-6 w-6" />
-              </span>
-              <div>
-                <h3 className="text-lg font-bold text-brand-navy">Vous ne savez pas par où commencer ?</h3>
-                <p className="mt-1 max-w-xl text-sm text-slate-500">
-                  Recherche avancée selon votre profil (entreprise, salarié en reconversion, demandeur d'emploi,
-                  étudiant, partenaire) : on vous propose la formation et le financement les plus adaptés.
-                </p>
-              </div>
-            </div>
-            <Link to="/recherche-avancee" className="btn-green shrink-0">
+        <div className="container grid gap-6 md:grid-cols-2">
+          {/* Recherche avancée par profil */}
+          <div className="card flex h-full flex-col p-7">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-green/10 text-brand-green">
+              <Sparkles className="h-6 w-6" />
+            </span>
+            <h3 className="mt-4 text-lg font-bold text-brand-navy">Recherche avancée par profil</h3>
+            <p className="mt-1 flex-1 text-sm text-slate-500">
+              Entreprise, salarié en reconversion, demandeur d'emploi, étudiant ou partenaire : on vous propose la
+              formation et le financement les plus adaptés à votre situation.
+            </p>
+            <Link to="/recherche-avancee" className="btn-green mt-5 w-fit">
               Accéder à la recherche avancée <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          {/* Simulateur formation & financement */}
+          <div className="card flex h-full flex-col p-7">
+            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-blue/10 text-brand-blue">
+              <Wallet className="h-6 w-6" />
+            </span>
+            <h3 className="mt-4 text-lg font-bold text-brand-navy">Trouver ma formation &amp; mon financement</h3>
+            <p className="mt-1 flex-1 text-sm text-slate-500">
+              En 2 étapes (métier visé + votre statut), découvrez le parcours de formation et les aides
+              mobilisables. Simple et rapide.
+            </p>
+            <Link to="/simulateur" className="btn-outline mt-5 w-fit">
+              Lancer le simulateur <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
@@ -251,7 +263,7 @@ export default function Home() {
           </div>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link to="/simulateur" className="btn-blue">
-              Simuler mon projet <ArrowRight className="h-4 w-4" />
+              Trouver ma formation <ArrowRight className="h-4 w-4" />
             </Link>
             <Link to="/metiers" className="btn-outline">
               Tous les métiers du transport <ArrowRight className="h-4 w-4" />
