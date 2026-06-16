@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ArrowLeft, RefreshCw, Building2, Repeat, Search, GraduationCap, Handshake, Star, CheckCircle2 } from "lucide-react";
 import { dispositifs } from "@/data/financements";
 import { getFormation } from "@/data/formations";
+import LeadForm from "@/components/LeadForm";
 
 type ProfileId = "entreprise" | "reconversion" | "demandeur" | "etudiant" | "partenaire";
 
@@ -76,6 +77,8 @@ export default function RechercheAvancee() {
   const [objectif, setObjectif] = useState<string>("recruter");
   const [promesse, setPromesse] = useState<boolean>(false);
   const [dejaPermis, setDejaPermis] = useState<boolean>(false);
+  const [fcoEligible, setFcoEligible] = useState<boolean | null>(null);
+  const [nbConducteurs, setNbConducteurs] = useState("");
 
   const dom = DOMAINES.find((d) => d.id === domaine)!;
   const reset = () => { setStep(0); setProfile(null); };
@@ -235,8 +238,81 @@ export default function RechercheAvancee() {
             </div>
           )}
 
+          {/* STEP 2 — Formation continue (FCO) entreprise : parcours dédié + devis */}
+          {step === 2 && profile === "entreprise" && objectif === "fco" && (
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-xl font-bold text-brand-navy">Formation continue (FCO) de vos conducteurs</h2>
+                <p className="mt-1 text-sm text-slate-500">
+                  La FCO est un recyclage obligatoire tous les 5 ans pour les conducteurs déjà titulaires du permis + FIMO
+                  (ou d'un titre professionnel).
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-semibold text-brand-navy">Vos conducteurs ont-ils un permis + FIMO (ou une FCO) datant de plus de 5 ans (à recycler) ?</h3>
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                  {[{ v: true, l: "Oui, recyclage nécessaire" }, { v: false, l: "Non / je ne sais pas" }].map((o) => (
+                    <button key={String(o.v)} onClick={() => setFcoEligible(o.v)} className={`rounded-xl border p-3 text-left text-sm font-semibold transition-colors ${fcoEligible === o.v ? "border-brand-green bg-brand-green/5 text-brand-navy" : "border-slate-200 text-slate-600 hover:border-brand-green/40"}`}>
+                      {o.l}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {fcoEligible === false && (
+                <p className="rounded-lg bg-amber-50 px-4 py-3 text-sm text-amber-800">
+                  La FCO se planifie dans les 12 mois précédant l'échéance des 5 ans. Contactez-nous : nous vérifions les
+                  dates de validité (carte de qualification CQC) de vos conducteurs.
+                </p>
+              )}
+
+              {fcoEligible === true && (() => {
+                const f = getFormation(dom.fco);
+                return (
+                  <>
+                    {f && (
+                      <Link to={`/formations/${f.slug}`} className="flex items-center justify-between gap-4 rounded-xl border border-brand-green bg-brand-green/5 p-4 hover:bg-brand-green/10">
+                        <span>
+                          <span className="flex items-center gap-2 font-bold text-brand-navy"><Star className="h-4 w-4 fill-brand-green text-brand-green" />{f.cardTitle}</span>
+                          <span className="mt-0.5 block text-xs text-slate-500">Recyclage de 35 h — financement via OPCO Mobilités (plan de développement des compétences).</span>
+                        </span>
+                        <ArrowRight className="h-4 w-4 shrink-0 text-brand-blue" />
+                      </Link>
+                    )}
+                    <div>
+                      <label className="mb-1 block text-sm font-semibold text-brand-navy">Nombre de conducteurs à former</label>
+                      <input
+                        type="number"
+                        min={1}
+                        value={nbConducteurs}
+                        onChange={(e) => setNbConducteurs(e.target.value)}
+                        placeholder="Ex. 5"
+                        className="input max-w-[200px]"
+                      />
+                    </div>
+                  </>
+                );
+              })()}
+
+              {fcoEligible !== null && (
+                <div className="rounded-2xl border border-slate-200 p-6">
+                  <h3 className="text-lg font-bold text-brand-navy">Vos coordonnées — demande de devis</h3>
+                  <p className="mt-1 text-sm text-slate-500">
+                    {nbConducteurs ? `Pour ${nbConducteurs} conducteur(s). ` : ""}Indiquez le nombre de conducteurs dans le message si besoin.
+                  </p>
+                  <div className="mt-4">
+                    <LeadForm submitLabel="Demander un devis" defaultFormation={dom.fco} />
+                  </div>
+                </div>
+              )}
+
+              <button onClick={reset} className="btn-outline"><RefreshCw className="h-4 w-4" /> Recommencer</button>
+            </div>
+          )}
+
           {/* STEP 2 — résultat */}
-          {step === 2 && profile && profile !== "partenaire" && (
+          {step === 2 && profile && profile !== "partenaire" && !(profile === "entreprise" && objectif === "fco") && (
             <div className="space-y-8">
               <div>
                 <h2 className="text-xl font-bold text-brand-navy">Formations recommandées</h2>
