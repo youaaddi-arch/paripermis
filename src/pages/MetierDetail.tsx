@@ -192,7 +192,7 @@ export default function MetierDetail() {
               <p className="mt-3 text-sm font-semibold text-slate-400">Demande</p>
               <p className="font-bold text-brand-green">{m.demande}</p>
               <Link to="/contact" className="btn-green mt-4 w-full">Demander un conseil</Link>
-              <Link to="/simulateur" className="btn-outline mt-2 w-full">Simuler mon projet</Link>
+              <Link to="/simulateur" className="btn-outline mt-2 w-full">Trouver ma formation</Link>
             </div>
 
             <div className="card bg-brand-navy p-6 text-white">

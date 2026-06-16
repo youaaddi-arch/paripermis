@@ -57,9 +57,9 @@ export default function Simulateur() {
     <>
       <section className="relative overflow-hidden bg-immersive py-14 text-white">
         <div className="container text-center">
-          <h1 className="text-4xl font-extrabold text-white">Simulez votre projet transport</h1>
+          <h1 className="text-4xl font-extrabold text-white">Trouvez votre formation et son financement</h1>
           <p className="mx-auto mt-3 max-w-xl text-white/75">
-            En 2 étapes, découvrez les formations et financements adaptés à votre situation
+            En 2 étapes, découvrez les formations et financements adaptés à votre situation — particulier comme entreprise.
           </p>
           <Link to="/recherche-avancee" className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-green hover:gap-2.5">
             Plutôt une recherche par profil (entreprise, reconversion…) ? <ArrowRight className="h-4 w-4" />

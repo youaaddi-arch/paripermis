@@ -101,7 +101,7 @@ export default function Metiers() {
               Contactez-nous <ArrowRight className="h-4 w-4" />
             </Link>
             <Link to="/simulateur" className="btn bg-brand-navy text-white hover:bg-brand-navy-light">
-              Simuler mon projet
+              Trouver ma formation
             </Link>
           </div>
           <p className="mt-6 text-sm text-white/70">{site.phone} · {site.city}</p>
