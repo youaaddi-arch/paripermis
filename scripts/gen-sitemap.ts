@@ -7,6 +7,7 @@ import { formations } from "../src/data/formations";
 import { metiers } from "../src/data/metiers";
 import { articles } from "../src/data/articles";
 import { dispositifs } from "../src/data/financements";
+import { categories } from "../src/data/categories";
 
 const SITE_URL = "https://paripermis.com";
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -29,6 +30,7 @@ const staticPaths = [
 
 const paths = [
   ...staticPaths,
+  ...categories.map((c) => `/categorie/${c.slug}`),
   ...formations.map((f) => `/formations/${f.slug}`),
   ...metiers.map((m) => `/metiers/${m.slug}`),
   ...articles.map((a) => `/blog/${a.slug}`),

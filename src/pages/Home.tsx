@@ -5,13 +5,12 @@ import {
   Wallet, Building2, Download, ChevronDown, Sparkles,
 } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
-import FormationCard from "@/components/FormationCard";
+import CategoryCarousel from "@/components/CategoryCarousel";
 import FinalCta from "@/components/FinalCta";
 import Reveal from "@/components/Reveal";
 import Counter from "@/components/Counter";
 import DrivingTruck from "@/components/DrivingTruck";
 import { site, stats, badges } from "@/lib/site";
-import { useFormationsByCategory } from "@/lib/formations";
 import { articles } from "@/data/articles";
 
 const heroBadgeIcons = [ShieldCheck, BadgeCheck, CreditCard, TrendingUp, MapPin];
@@ -43,11 +42,6 @@ const avis = [
 ];
 
 export default function Home() {
-  const { marchandises, voyageurs, auto, deuxRoues } = useFormationsByCategory();
-  // Scission des marchandises : poids lourd (porteur) vs super-lourd (ensemble articulé).
-  const superLourdSlugs = ["permis-ce", "tp-transport-marchandises-tous-vehicules"];
-  const poidsLourd = marchandises.filter((f) => !superLourdSlugs.includes(f.slug));
-  const superLourd = marchandises.filter((f) => superLourdSlugs.includes(f.slug));
   return (
     <>
       {/* HERO immersif */}
@@ -172,75 +166,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FORMATIONS (fond bleu immersif) */}
+      {/* FORMATIONS (fond bleu immersif) — carrousel de catégories */}
       <section className="relative isolate overflow-hidden bg-immersive py-16 text-white md:py-20">
         <div className="absolute inset-0 -z-10 bg-grid opacity-20" />
         <div className="absolute -left-20 top-10 -z-10 h-72 w-72 rounded-full bg-brand-green/20 blur-3xl animate-blob" />
         <div className="absolute -right-16 bottom-10 -z-10 h-80 w-80 rounded-full bg-brand-cyan/20 blur-3xl animate-blob [animation-delay:4s]" />
 
-        {[
-          {
-            img: "/images/camion.webp",
-            eyebrow: "Poids lourd",
-            title: "Poids lourd — porteur",
-            subtitle: "Permis C, titre pro porteur, FIMO et FCO marchandises.",
-            items: poidsLourd,
-          },
-          {
-            img: "/images/super-lourd.webp",
-            eyebrow: "Super lourd",
-            title: "Super lourd — ensemble articulé",
-            subtitle: "Permis CE et titre professionnel tous véhicules.",
-            items: superLourd,
-          },
-          {
-            img: "/images/autocar.webp",
-            eyebrow: "Voyageurs",
-            title: "Transport en commun sur route",
-            subtitle: "Permis D, titres professionnels, FIMO et FCO voyageurs.",
-            items: voyageurs,
-          },
-          {
-            img: "/images/voiture.webp",
-            eyebrow: "Auto",
-            title: "Permis Auto & Code de la route",
-            subtitle: "Permis B, BEA, conduite accompagnée et supervisée, accéléré et Code.",
-            items: auto,
-          },
-          {
-            img: "/images/moto.webp",
-            eyebrow: "Deux-roues",
-            title: "Permis Deux-roues",
-            subtitle: "Permis AM (BSR), A1 (& stage 125 cm³), A2 et passerelle A2 → A.",
-            items: deuxRoues,
-          },
-        ].map((cat, idx) => (
-          <div key={cat.eyebrow} className={`container ${idx > 0 ? "mt-12" : ""}`}>
-            <Reveal>
-              {/* Bannière de catégorie (une seule image, pleine largeur) */}
-              <div className="relative h-52 overflow-hidden rounded-2xl ring-1 ring-white/10 md:h-64">
-                <img src={cat.img} alt={cat.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-brand-navy/45 to-transparent" />
-                <div className="relative flex h-full flex-col justify-end p-6">
-                  <span className="text-xs font-semibold uppercase tracking-wide text-brand-green">{cat.eyebrow}</span>
-                  <h3 className="mt-1 text-2xl font-extrabold text-white md:text-3xl">{cat.title}</h3>
-                  <p className="mt-2 max-w-xl text-sm text-white/75">{cat.subtitle}</p>
-                </div>
-              </div>
-              {/* Rubriques (permis) sous la photo */}
-              <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                {cat.items.map((f) => (
-                  <FormationCard key={f.slug} formation={f} compact />
-                ))}
-              </div>
-            </Reveal>
+        <div className="container">
+          <Reveal>
+            <SectionTitle
+              light
+              eyebrow="Nos formations"
+              title="Choisissez votre catégorie"
+              subtitle="Marchandises, voyageurs, auto ou deux-roues : cliquez sur une catégorie pour découvrir toutes les formations correspondantes."
+            />
+          </Reveal>
+          <div className="mt-10">
+            <CategoryCarousel />
           </div>
-        ))}
-
-        <div className="container mt-12 text-center">
-          <Link to="/formations" className="btn glass text-white hover:bg-white/20">
-            Voir toutes nos formations <ArrowRight className="h-4 w-4" />
-          </Link>
+          <div className="mt-10 text-center">
+            <Link to="/formations" className="btn glass text-white hover:bg-white/20">
+              Voir toutes nos formations <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </section>
 

@@ -3,6 +3,7 @@ import Layout from "@/components/Layout";
 import Home from "@/pages/Home";
 import Formations from "@/pages/Formations";
 import FormationDetail from "@/pages/FormationDetail";
+import CategoriePage from "@/pages/CategoriePage";
 import Financement from "@/pages/Financement";
 import FinancementDetail from "@/pages/FinancementDetail";
 import Metiers from "@/pages/Metiers";
@@ -24,6 +25,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/formations" element={<Formations />} />
+        <Route path="/categorie/:cat" element={<CategoriePage />} />
         <Route path="/formations/:slug" element={<FormationDetail />} />
         <Route path="/financement" element={<Financement />} />
         <Route path="/financement/:code" element={<FinancementDetail />} />
