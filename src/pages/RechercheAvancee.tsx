@@ -77,8 +77,10 @@ export default function RechercheAvancee() {
 
   const finRecos = profile ? financementReco(profile, { objectif, promesse }) : [];
 
+  // Pour une entreprise, on ne pose pas la question du permis : parcours complet par défaut.
+  const dejaPermisEff = profile === "entreprise" ? false : dejaPermis;
   // Formations recommandées : priorité au Titre Professionnel (financement souvent total).
-  const formationRecos: { slug: string; label: string; priority?: boolean }[] = dejaPermis
+  const formationRecos: { slug: string; label: string; priority?: boolean }[] = dejaPermisEff
     ? [
         { slug: dom.fimo, label: "Qualification obligatoire (FIMO) — si vous n'êtes pas encore qualifié", priority: true },
         { slug: dom.fco, label: "Recyclage (FCO) — si votre carte de qualification arrive à échéance" },
@@ -172,17 +174,19 @@ export default function RechercheAvancee() {
                 </div>
               )}
 
-              <div>
-                <h2 className="text-xl font-bold text-brand-navy">Avez-vous déjà le permis visé ?</h2>
-                <p className="mt-1 text-sm text-slate-500">S'il vous manque seulement la qualification, on vous oriente vers la FIMO, une passerelle ou un recyclage (FCO).</p>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                  {[{ v: false, l: "Non, je dois passer le permis" }, { v: true, l: "Oui, j'ai déjà le permis" }].map((o) => (
-                    <button key={String(o.v)} onClick={() => setDejaPermis(o.v)} className={`rounded-xl border p-3 text-left text-sm font-semibold transition-colors ${dejaPermis === o.v ? "border-brand-green bg-brand-green/5 text-brand-navy" : "border-slate-200 text-slate-600 hover:border-brand-green/40"}`}>
-                      {o.l}
-                    </button>
-                  ))}
+              {profile !== "entreprise" && (
+                <div>
+                  <h2 className="text-xl font-bold text-brand-navy">Avez-vous déjà le permis visé ?</h2>
+                  <p className="mt-1 text-sm text-slate-500">S'il vous manque seulement la qualification, on vous oriente vers la FIMO, une passerelle ou un recyclage (FCO).</p>
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {[{ v: false, l: "Non, je dois passer le permis" }, { v: true, l: "Oui, j'ai déjà le permis" }].map((o) => (
+                      <button key={String(o.v)} onClick={() => setDejaPermis(o.v)} className={`rounded-xl border p-3 text-left text-sm font-semibold transition-colors ${dejaPermis === o.v ? "border-brand-green bg-brand-green/5 text-brand-navy" : "border-slate-200 text-slate-600 hover:border-brand-green/40"}`}>
+                        {o.l}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               <div className="flex justify-between">
                 <button onClick={() => setStep(0)} className="btn-outline"><ArrowLeft className="h-4 w-4" /> Retour</button>
@@ -212,7 +216,7 @@ export default function RechercheAvancee() {
               <div>
                 <h2 className="text-xl font-bold text-brand-navy">Formations recommandées</h2>
                 <p className="mt-1 text-sm text-slate-500">
-                  {dejaPermis
+                  {dejaPermisEff
                     ? "Vous avez déjà le permis : voici les qualifications et recyclages adaptés."
                     : "Nous privilégions le Titre Professionnel : il inclut le permis et la qualification, avec une prise en charge souvent totale."}
                 </p>
