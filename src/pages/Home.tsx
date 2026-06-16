@@ -5,6 +5,7 @@ import {
   Wallet, Building2, Download, ChevronDown, Sparkles,
 } from "lucide-react";
 import SectionTitle from "@/components/SectionTitle";
+import SearchBar from "@/components/SearchBar";
 import CategoryCarousel from "@/components/CategoryCarousel";
 import FinalCta from "@/components/FinalCta";
 import Reveal from "@/components/Reveal";
@@ -80,6 +81,10 @@ export default function Home() {
               <Link to="/financement" className="btn glass text-white hover:bg-white/20">
                 Financer ma formation
               </Link>
+            </div>
+            {/* Barre de recherche */}
+            <div className="mt-8">
+              <SearchBar />
             </div>
             {/* mini-stats */}
             <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4">
