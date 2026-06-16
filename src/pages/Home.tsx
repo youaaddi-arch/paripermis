@@ -176,6 +176,7 @@ export default function Home() {
           <Reveal>
             <SectionTitle
               light
+              center={false}
               eyebrow="Nos formations"
               title="Choisissez votre catégorie"
               subtitle="Marchandises, voyageurs, auto ou deux-roues : cliquez sur une catégorie pour découvrir toutes les formations correspondantes."
@@ -184,7 +185,7 @@ export default function Home() {
           <div className="mt-10">
             <CategoryCarousel />
           </div>
-          <div className="mt-10 text-center">
+          <div className="mt-10">
             <Link to="/formations" className="btn glass text-white hover:bg-white/20">
               Voir toutes nos formations <ArrowRight className="h-4 w-4" />
             </Link>
